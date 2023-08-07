@@ -1,9 +1,9 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
-import NavBar from "./NavBar";
-import ProductGrid from "./ProductGrid";
-import ProductCategories from "./ProductCategories";
-import Footer from "./Footer";
-import Header from "./Header";
+import NavBar from "./components/NavBar";
+import ProductGrid from "./components/ProductGrid";
+import ProductCategories from "./components/ProductCategories";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 function App() {
   return (
@@ -14,10 +14,8 @@ function App() {
                   "aside main"
                   "footer footer"`,
       }}
-      gridTemplateRows={"50px 1fr 30px"}
-      gridTemplateColumns={{ base: "1fr", lg: "30% 70%" }} // 30% and 70% columns
       gap="1"
-      color="blackAlpha.700"
+      color="red.700"
       fontWeight="bold"
     >
       <GridItem pl="2" bg="gray.300" area={"header"}>
