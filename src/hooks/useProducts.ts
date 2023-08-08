@@ -15,16 +15,16 @@ export interface Product {
   category: Category;
   images: string[];
 }
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 12;
 
 const usePoducts = () => {
   const fetchProducts = ({ pageParam = 1 }) =>
     apiClientDetails
-      .get<Product[]>(`?offset=${pageParam}&limit=${PAGE_SIZE}`)
+      .get<Product[]>(`products?offset=${pageParam}&limit=${PAGE_SIZE}`)
       .then((res) => res.data);
 
   const searchQuery = useInfiniteQuery<Product[]>({
-    queryKey: [],
+    queryKey: ["products"],
     queryFn: fetchProducts,
     getNextPageParam: (lastPage) => {
       return lastPage.length === PAGE_SIZE
