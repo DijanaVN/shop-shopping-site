@@ -13,6 +13,7 @@ import {
 import useCategories from "../hooks/useUpdateCategories";
 import { GrMenu } from "react-icons/gr";
 import { useSelectedCategoryContext } from "../StateManagement/SelectedCategoryContext";
+import { Link } from "react-router-dom";
 
 const ProductCategories = () => {
   const { searchQuery } = useCategories();
@@ -46,44 +47,46 @@ const ProductCategories = () => {
         <List>
           {searchQuery.data.map((m) => (
             <ListItem key={m.id}>
-              <Flex padding={1}>
-                <Button
-                  bg={"primary.50"}
-                  padding={8}
-                  onClick={() => {
-                    setSelectedCategory(m);
-                  }}
-                  variant={"solid"}
-                  display="flex"
-                  flexDirection="row"
-                  alignItems="center"
-                  justifyContent="left"
-                  backgroundColor="light"
-                  width="100%"
-                  borderRadius="none"
-                >
-                  <Box
-                    width="14"
-                    borderRadius="50%"
-                    overflow="hidden"
-                    marginRight={5}
+              <Link to={"/category"}>
+                <Flex padding={1}>
+                  <Button
+                    bg={"primary.50"}
+                    padding={8}
+                    onClick={() => {
+                      setSelectedCategory(m);
+                    }}
+                    variant={"solid"}
+                    display="flex"
+                    flexDirection="row"
+                    alignItems="center"
+                    justifyContent="left"
+                    backgroundColor="light"
+                    width="100%"
+                    borderRadius="none"
                   >
-                    <Image
-                      boxSize="100%"
-                      objectFit="cover"
-                      src={m.image}
-                      alt={m.name}
-                    />
-                  </Box>
-                  <Box
-                    display={"flex"}
-                    flexDirection="column"
-                    fontSize={{ base: "xs", md: "md", lg: "lg" }}
-                  >
-                    <Text>{m.name}</Text>
-                  </Box>
-                </Button>
-              </Flex>
+                    <Box
+                      width="14"
+                      borderRadius="50%"
+                      overflow="hidden"
+                      marginRight={5}
+                    >
+                      <Image
+                        boxSize="100%"
+                        objectFit="cover"
+                        src={m.image}
+                        alt={m.name}
+                      />
+                    </Box>
+                    <Box
+                      display={"flex"}
+                      flexDirection="column"
+                      fontSize={{ base: "xs", md: "md", lg: "lg" }}
+                    >
+                      <Text>{m.name}</Text>
+                    </Box>
+                  </Button>
+                </Flex>
+              </Link>
             </ListItem>
           ))}
         </List>{" "}
