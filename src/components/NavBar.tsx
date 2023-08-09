@@ -1,9 +1,10 @@
-import { Button, Flex, HStack, Image } from "@chakra-ui/react";
+import { Text, Flex, HStack, Image } from "@chakra-ui/react";
 // import ColorModeSwitch from "./ColorModeSwitch";
 import { FiShoppingCart } from "react-icons/fi";
 import { FcSearch } from "react-icons/fc";
 import logoImage from "../../src/images/best prices.png"; // Import the logo image
 import { Link } from "react-router-dom";
+import ProductCategories from "./ProductCategories";
 
 const NavBar = () => {
   return (
@@ -24,7 +25,7 @@ const NavBar = () => {
         fontWeight={"bold"}
       >
         <Link to={"/"}>Home</Link>
-        <Link to={"/category"}>Categories</Link>
+        <ProductCategories />
         <Link to={"/signIn"}>Sign In </Link>
         <Link to={"/footer"}>Contact </Link>
         <Link to={"/aboutUs"}> About Us</Link>

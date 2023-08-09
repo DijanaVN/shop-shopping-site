@@ -11,9 +11,9 @@ function HomePage() {
     <Grid
       templateAreas={{
         base: `'header' "nav" "main" "footer"`,
-        lg: `"header header" "nav nav"
-                  "aside main"
-                  "footer footer"`,
+        lg: `"header " " nav"
+                  " main"
+                  "footer"`,
       }}
       gap="1"
       color="red.700"
@@ -24,11 +24,6 @@ function HomePage() {
         <CategoryUpdateForm />
       </GridItem>
 
-      <Show above="lg">
-        <GridItem pl="2" area={"aside"}>
-          <ProductCategories />
-        </GridItem>
-      </Show>
       <GridItem pl="2" area={"main"}>
         <ProductGrid />
       </GridItem>
