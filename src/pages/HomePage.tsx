@@ -23,9 +23,7 @@ function HomePage() {
         <Header />
         <CategoryUpdateForm />
       </GridItem>
-      <GridItem pl="2" area={"nav"}>
-        <NavBar />
-      </GridItem>
+
       <Show above="lg">
         <GridItem pl="2" area={"aside"}>
           <ProductCategories />
