@@ -32,7 +32,12 @@ const ProductGrid = () => {
         {searchQuery.data.pages.map((page, pageIndex) => (
           <React.Fragment key={pageIndex}>
             {page.map((product) => (
-              <Card key={product.id} maxW="sm" marginBottom={5}>
+              <Card
+                bg={"primary.500"}
+                key={product.id}
+                maxW="sm"
+                marginBottom={5}
+              >
                 <CardBody>
                   <Image
                     src={product.images[2]} // Assuming the third image is the main image
@@ -64,12 +69,12 @@ const ProductGrid = () => {
         ))}
       </Flex>
       {searchQuery.hasNextPage && (
-        <button
+        <Button
           onClick={() => searchQuery.fetchNextPage()}
           disabled={searchQuery.isFetchingNextPage}
         >
           {searchQuery.isFetchingNextPage ? "Loading..." : "Load More"}
-        </button>
+        </Button>
       )}
     </>
   );
