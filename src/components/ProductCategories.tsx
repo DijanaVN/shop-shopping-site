@@ -10,19 +10,17 @@ import {
   HStack,
   IconButton,
 } from "@chakra-ui/react";
-import useCategories from "../hooks/useCategories";
-import { BiDownArrowAlt } from "react-icons/bi";
+import useCategories from "../hooks/useUpdateCategories";
 import { GrMenu } from "react-icons/gr";
+import { useSelectedCategoryContext } from "../StateManagement/SelectedCategoryContext";
 
 const ProductCategories = () => {
   const { searchQuery } = useCategories();
+  const { setSelectedCategory } = useSelectedCategoryContext();
 
   if (!searchQuery.data) {
     return <Text>Loading...</Text>;
   }
-  console.log(searchQuery.data);
-
-  searchQuery.data.map((m) => console.log(m.name));
 
   return (
     <>
@@ -33,7 +31,6 @@ const ProductCategories = () => {
           aria-label="menu button"
         ></IconButton>
         <Text>Categories</Text>
-        {/* <BiDownArrowAlt /> */}
       </HStack>
       <Box>
         {searchQuery.isLoading && (
@@ -54,7 +51,7 @@ const ProductCategories = () => {
                   bg={"primary.50"}
                   padding={8}
                   onClick={() => {
-                    console.log(m.name);
+                    setSelectedCategory(m);
                   }}
                   variant={"solid"}
                   display="flex"

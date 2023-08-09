@@ -1,5 +1,10 @@
-import { useInfiniteQuery, useMutation, useQuery } from "@tanstack/react-query";
-import apiClientDetails from "./../services/api-client-details";
+import {
+  useInfiniteQuery,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
+import apiClientDetails from "../services/api-client-details";
 
 export interface Category {
   id: number;
@@ -8,6 +13,7 @@ export interface Category {
 }
 
 const useCategories = () => {
+  const queryClient = useQueryClient();
   const fetchCategories = () =>
     apiClientDetails.get<Category[]>(`categories`).then((res) => res.data);
 
@@ -18,15 +24,14 @@ const useCategories = () => {
 
   const updateCategoryMutation = useMutation(
     (updatedCategory: Partial<Category>) => {
-      const { id, ...categoryToUpdate } = updatedCategory;
       return apiClientDetails.put<Category>(
-        `categories/${id}`,
-        categoryToUpdate
+        `categories/${updatedCategory.id}`,
+        updatedCategory
       );
     },
     {
       onSuccess: () => {
-        searchQuery.refetch();
+        queryClient.invalidateQueries(["categories"]);
       },
     }
   );

@@ -4,6 +4,7 @@ import ProductGrid from "./components/ProductGrid";
 import ProductCategories from "./components/ProductCategories";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import CategoryUpdateForm from "./components/CategoryUpdateForm";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
     >
       <GridItem pl="2" area={"header"}>
         <Header />
+        <CategoryUpdateForm />
       </GridItem>
       <GridItem pl="2" area={"nav"}>
         <NavBar />
