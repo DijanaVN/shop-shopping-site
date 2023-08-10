@@ -1,22 +1,19 @@
 import {
   Text,
-  Image,
   Box,
   Button,
-  Flex,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
 import useCategories from "../hooks/useUpdateCategories";
-import { GrMenu } from "react-icons/gr";
 import { useSelectedCategoryContext } from "../StateManagement/SelectedCategoryContext";
 import { Link } from "react-router-dom";
 
 const ProductCategories = () => {
   const { searchQuery } = useCategories();
-  const { setSelectedCategory } = useSelectedCategoryContext();
+  const { selectedCategory, onClick } = useSelectedCategoryContext();
 
   if (!searchQuery.data) {
     return <Text>Loading...</Text>;
@@ -37,13 +34,18 @@ const ProductCategories = () => {
         {searchQuery.data.map((category) => (
           <MenuItem
             key={category.id}
+            _hover={{ bg: "primary.500" }} // Change background color on hover
             onClick={() => {
-              setSelectedCategory(category);
+              onClick(category);
             }}
           >
             <Link to={`/category`}>
               <Box>
-                <Text>{category.name}</Text>
+                <Text
+                  color={selectedCategory === category ? "blue.500" : "black"}
+                >
+                  {category.name}
+                </Text>
               </Box>
             </Link>
           </MenuItem>

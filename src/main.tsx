@@ -8,6 +8,7 @@ import { SelectedCategoryProvider } from "./StateManagement/SelectedCategoryCont
 import customTheme from "./components/customeTheme";
 import { RouterProvider } from "react-router-dom";
 import router from "./routing/routes";
+import { CategoryProductsProvider } from "./StateManagement/CategoryProductsContext";
 
 const queryClient = new QueryClient();
 
@@ -15,9 +16,11 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={customTheme}>
-        <SelectedCategoryProvider>
-          <RouterProvider router={router} />
-        </SelectedCategoryProvider>
+        <CategoryProductsProvider>
+          <SelectedCategoryProvider>
+            <RouterProvider router={router} />
+          </SelectedCategoryProvider>
+        </CategoryProductsProvider>
         <ReactQueryDevtools />
       </ChakraProvider>
     </QueryClientProvider>

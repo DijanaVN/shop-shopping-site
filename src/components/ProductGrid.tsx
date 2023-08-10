@@ -12,7 +12,6 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import usePoducts from "../hooks/useProducts";
-import { Product } from "../hooks/useProducts";
 import React from "react";
 
 const ProductGrid = () => {
@@ -22,6 +21,7 @@ const ProductGrid = () => {
     return <Text>Loading...</Text>;
   }
 
+  // console.log(searchQuery.data);
   return (
     <>
       <Flex
@@ -46,6 +46,7 @@ const ProductGrid = () => {
                   />
                   <Stack mt="6" spacing="3">
                     <Heading size="md">{product.title}</Heading>
+                    <Text>Category:{product.category.name}</Text>
                     <Text>{product.description}</Text>
                     <Text color="yellow.400" fontSize="2xl">
                       ${product.price}
