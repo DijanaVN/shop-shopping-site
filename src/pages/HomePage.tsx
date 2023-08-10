@@ -1,9 +1,10 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import NavBar from "../components/NavBar";
 import ProductGrid from "../components/ProductGrid";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import CategoryUpdateForm from "../components/CategoryUpdateForm";
+import CreateNewCategoryForm from "./../components/CreateNewCategoryForm";
 
 function HomePage() {
   return (
@@ -20,7 +21,10 @@ function HomePage() {
     >
       <GridItem pl="2" area={"header"}>
         <Header />
-        <CategoryUpdateForm />
+        <HStack>
+          <CategoryUpdateForm />
+          <CreateNewCategoryForm />
+        </HStack>
       </GridItem>
 
       <GridItem pl="2" area={"main"}>

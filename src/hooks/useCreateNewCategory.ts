@@ -8,7 +8,7 @@ interface CreateNewCategory {
 
 const useCreateNewCategory = () => {
   const queryClient = useQueryClient();
-  const createCategory = useMutation(
+  const createNewCategory = useMutation(
     (category: CreateNewCategory) => {
       return apiClientDetails.post(`categories`, category);
     },
@@ -21,7 +21,7 @@ const useCreateNewCategory = () => {
     }
   );
 
-  return { createCategory: createCategory.mutate };
+  return { createNewCategory: createNewCategory.mutate };
 };
 
 export default useCreateNewCategory;
