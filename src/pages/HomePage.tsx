@@ -1,7 +1,6 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "../components/NavBar";
 import ProductGrid from "../components/ProductGrid";
-import ProductCategories from "../components/ProductCategories";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import CategoryUpdateForm from "../components/CategoryUpdateForm";
