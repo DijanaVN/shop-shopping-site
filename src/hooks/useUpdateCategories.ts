@@ -1,16 +1,6 @@
-import {
-  useInfiniteQuery,
-  useMutation,
-  useQuery,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import apiClientDetails from "../services/api-client-details";
-
-export interface Category {
-  id: number;
-  name: string;
-  image: string;
-}
+import { Category } from "./useProducts";
 
 const useCategories = () => {
   const queryClient = useQueryClient();

@@ -1,7 +1,7 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import apiClientDetails from "./../services/api-client-details";
 
-interface Category {
+export interface Category {
   id: number;
   name: string;
   image: string;

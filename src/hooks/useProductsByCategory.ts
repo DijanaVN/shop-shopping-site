@@ -1,20 +1,6 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import apiClientDetails from "./../services/api-client-details";
-
-interface Category {
-  id: number;
-  name: string;
-  image: string;
-}
-
-export interface Product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: Category;
-  images: string[];
-}
+import { Category, Product } from "./useProducts";
 
 const usePoductsByCategory = (category: Category) => {
   const fetchProducts = () =>

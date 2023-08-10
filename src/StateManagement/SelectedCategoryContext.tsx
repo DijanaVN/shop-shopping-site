@@ -1,5 +1,6 @@
 import React, { ReactNode, createContext, useContext, useState } from "react";
-import useCategories, { Category } from "../hooks/useUpdateCategories";
+import useCategories from "../hooks/useUpdateCategories";
+import { Category } from "../hooks/useProducts";
 
 type SelectedCategoryContext = {
   selectedCategory: Category | null;
