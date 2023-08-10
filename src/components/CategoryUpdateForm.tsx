@@ -28,9 +28,7 @@ type FormData = z.infer<typeof categorySchema>;
 
 const CategoryUpdateForm: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  // const { updatedCategoryName, setUpdatedCategoryName, handleUpdateCategory } =
-  //   useCategoryContext();
-  const { searchQuery, updateCategory } = useCategories();
+  const { updateCategory } = useCategories();
 
   const {
     handleSubmit,

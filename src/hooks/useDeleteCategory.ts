@@ -1,11 +1,5 @@
-import {
-  useInfiniteQuery,
-  useMutation,
-  useQuery,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import apiClientDetails from "./../services/api-client-details";
-import { Category, Product } from "./useProducts";
 
 const useDeleteCategory = () => {
   const queryClient = useQueryClient();

@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { useSelectedCategoryContext } from "../StateManagement/SelectedCategoryContext";
 import usePoductsByCategory from "../hooks/useProductsByCategory";
+import DeleteCategoryButton from "./../components/DeleteCategory";
 
 const CategoryGridPage = () => {
   const { selectedCategory } = useSelectedCategoryContext();
@@ -23,7 +24,7 @@ const CategoryGridPage = () => {
 
     return (
       <>
-        {" "}
+        {searchQuery.data?.length === 0 && <DeleteCategoryButton />}
         {searchQuery.data?.length === 0 ? (
           <Center paddingTop={10}>
             <Text color={"primary.600"} fontSize={18} fontWeight={"bold"}>
