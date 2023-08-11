@@ -30,6 +30,7 @@ import { useNavigate } from "react-router-dom";
 //   name: z.string().min(3, "Category name must be at least 3 characters"),
 //   image: z.string(),
 // });
+
 const productSchema = z.object({
   title: z.string().min(3, "Product name must be at least 3 characters"),
   price: z.number({ invalid_type_error: "Price field is required." }),
@@ -79,7 +80,7 @@ const CreateNewProductForm: React.FC = () => {
       setNewProduct(newProduct);
 
       // Optionally, you can handle success or navigate to another page
-      console.log("Product updated successfully");
+      console.log("Product created successfully");
       console.log(data);
       navigate("/newProduct");
       onClose();

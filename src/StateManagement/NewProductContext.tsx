@@ -1,5 +1,6 @@
 import React, { ReactNode, createContext, useContext, useState } from "react";
 import { NewProduct } from "../hooks/useCreateNewProduct";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 type NewProductContext = {
   newProduct: NewProduct | null;
@@ -22,7 +23,10 @@ export function useNewProductContext() {
 }
 
 export function NewProductProvider({ children }: ProductContextProps) {
-  const [newProduct, setNewProduct] = useState<NewProduct | null>(null);
+  const [newProduct, setNewProduct] = useLocalStorage<NewProduct | null>(
+    "NewProductStorage",
+    null
+  );
 
   // const onClick = (Product: NewProduct| null) => {
   //   setNewProduct(Product);
