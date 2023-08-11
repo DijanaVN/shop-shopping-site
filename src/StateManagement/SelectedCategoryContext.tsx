@@ -1,11 +1,11 @@
 import React, { ReactNode, createContext, useContext, useState } from "react";
-import useCategories from "../hooks/useUpdateCategories";
+import useCategories from "../hooks/useCategories";
 import { Category } from "../hooks/useProducts";
 
 type SelectedCategoryContext = {
   selectedCategory: Category | null;
   setSelectedCategory: React.Dispatch<React.SetStateAction<Category | null>>;
-  onClick: (id: Category) => void;
+  onClick: (category: Category | null) => void;
 };
 
 type CategoryContextProps = {
@@ -27,9 +27,10 @@ export function SelectedCategoryProvider({ children }: CategoryContextProps) {
     null
   );
 
-  const onClick = (m: Category | null) => {
-    setSelectedCategory(m);
+  const onClick = (category: Category | null) => {
+    setSelectedCategory(category);
   };
+
   console.log(selectedCategory);
 
   return (

@@ -1,36 +1,24 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import apiClientDetails from "./../services/api-client-details";
 
-export interface Category {
-  id: number;
-  name: string;
-  image: string;
-}
+export type Category = string[];
 
 export interface Product {
   id: number;
   title: string;
-  price: number;
+  price: string;
   description: string;
-  category: Category;
-  images: string[];
+  category: string;
+  image: string;
 }
-const PAGE_SIZE = 12;
 
 const usePoducts = () => {
-  const fetchProducts = ({ pageParam = 1 }) =>
-    apiClientDetails
-      .get<Product[]>(`products?offset=${pageParam}&limit=${PAGE_SIZE}`)
-      .then((res) => res.data);
+  const fetchProducts = () =>
+    apiClientDetails.get<Product[]>(`/`).then((res) => res.data);
 
-  const searchQuery = useInfiniteQuery<Product[]>({
+  const searchQuery = useQuery<Product[]>({
     queryKey: ["products"],
     queryFn: fetchProducts,
-    getNextPageParam: (lastPage) => {
-      return lastPage.length === PAGE_SIZE
-        ? lastPage[lastPage.length - 1].id
-        : undefined;
-    },
   });
   console.log(searchQuery.data);
   return {

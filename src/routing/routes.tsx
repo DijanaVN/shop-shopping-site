@@ -3,6 +3,7 @@ import HomePage from "../pages/HomePage";
 import CategoryGrid from "../pages/CategoryGridPage";
 import Layout from "./../pages/Layout";
 import ErrorPage from "./../pages/ErrorPage";
+import NewProductPage from "../pages/NewProductPage";
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "/category", element: <CategoryGrid /> },
+      { path: "/newProduct", element: <NewProductPage /> },
     ],
   },
 ]);

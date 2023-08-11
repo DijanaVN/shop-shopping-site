@@ -5,11 +5,11 @@ import { Category, Product } from "./useProducts";
 const usePoductsByCategory = (category: Category) => {
   const fetchProducts = () =>
     apiClientDetails
-      .get<Product[]>(`categories/${category.id}/products`)
+      .get<Product[]>(`category/${category}`)
       .then((res) => res.data);
 
   const searchQuery = useQuery<Product[]>({
-    queryKey: ["products", category.id],
+    queryKey: ["category", category],
     queryFn: fetchProducts,
   });
   console.log(searchQuery.data);

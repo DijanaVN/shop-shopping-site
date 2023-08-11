@@ -8,6 +8,7 @@ const customTheme = extendTheme({
       100: "#807da1",
       500: "#f7d7ee",
       600: "#484770",
+      400: "#c5e0b8",
     },
   },
   fonts: {

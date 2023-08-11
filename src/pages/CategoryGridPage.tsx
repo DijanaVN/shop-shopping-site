@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { useSelectedCategoryContext } from "../StateManagement/SelectedCategoryContext";
 import usePoductsByCategory from "../hooks/useProductsByCategory";
-import DeleteCategoryButton from "./../components/DeleteCategory";
+import DeleteCategoryButton from "../components/DeleteProduct";
 
 const CategoryGridPage = () => {
   const { selectedCategory } = useSelectedCategoryContext();
@@ -24,7 +24,6 @@ const CategoryGridPage = () => {
 
     return (
       <>
-        {searchQuery.data?.length === 0 && <DeleteCategoryButton />}
         {searchQuery.data?.length === 0 ? (
           <Center paddingTop={10}>
             <Text color={"primary.600"} fontSize={18} fontWeight={"bold"}>
@@ -38,16 +37,16 @@ const CategoryGridPage = () => {
             margin={2} // Adjust the margin for better spacing
           >
             {searchQuery.data?.map((m) => (
-              <Card bg={"primary.500"} key={m.id} maxW="sm" marginBottom={5}>
+              <Card key={m.id} bg={"primary.500"} maxW="sm" marginBottom={5}>
                 <CardBody>
                   <Image
-                    src={m.images[0]} // Assuming the third image is the main image
+                    src={m.image} // Assuming the third image is the main image
                     alt={m.title}
                     borderRadius="lg"
                   />
                   <Stack mt="6" spacing="3">
                     <Heading size="md">{m.title}</Heading>
-                    <Text fontWeight={"bold"}>Category: {m.category.name}</Text>
+                    <Text fontWeight={"bold"}>Category: {m.category}</Text>
                     <Text>{m.title}</Text>
                     <Text color="yellow.400" fontSize="2xl">
                       ${m.price}

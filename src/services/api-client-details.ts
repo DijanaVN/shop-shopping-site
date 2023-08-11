@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClientDetails = axios.create({
-  baseURL: " https://api.escuelajs.co/api/v1/",
+  baseURL: "https://fakestoreapi.com/products",
 });
 
 export default apiClientDetails;

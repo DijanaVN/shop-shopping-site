@@ -3,8 +3,8 @@ import NavBar from "../components/NavBar";
 import ProductGrid from "../components/ProductGrid";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import CategoryUpdateForm from "../components/CategoryUpdateForm";
-import CreateNewCategoryForm from "./../components/CreateNewCategoryForm";
+// import CategoryUpdateForm from "../components/CategoryUpdateForm";
+import CreateNewCategoryForm from "../components/CreateNewProductForm";
 
 function HomePage() {
   return (
@@ -22,7 +22,7 @@ function HomePage() {
       <GridItem pl="2" area={"header"}>
         <Header />
         <HStack>
-          <CategoryUpdateForm />
+          {/* <CategoryUpdateForm /> */}
           <CreateNewCategoryForm />
         </HStack>
       </GridItem>

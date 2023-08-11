@@ -7,7 +7,7 @@ import {
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
-import useCategories from "../hooks/useUpdateCategories";
+import useCategories from "../hooks/useCategories";
 import { useSelectedCategoryContext } from "../StateManagement/SelectedCategoryContext";
 import { Link } from "react-router-dom";
 
@@ -31,22 +31,18 @@ const ProductCategories = () => {
         Categories
       </MenuButton>
       <MenuList>
-        {searchQuery.data.map((category) => (
+        {searchQuery.data.map((category, index) => (
           <MenuItem
-            key={category.id}
-            _hover={{ bg: "primary.500" }} // Change background color on hover
+            key={index}
+            _hover={{ bg: "primary.500" }}
             onClick={() => {
               onClick(category);
             }}
           >
             <Link to={`/category`}>
-              <Box>
-                <Text
-                  color={selectedCategory === category ? "blue.500" : "black"}
-                >
-                  {category.name}
-                </Text>
-              </Box>
+              <Text color={selectedCategory === category ? "blue" : "black"}>
+                {category}
+              </Text>
             </Link>
           </MenuItem>
         ))}

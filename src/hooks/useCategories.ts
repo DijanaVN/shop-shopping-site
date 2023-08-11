@@ -12,25 +12,25 @@ const useCategories = () => {
     queryFn: fetchCategories,
   });
 
-  const updateCategoryMutation = useMutation(
-    (updatedCategory: Partial<Category>) => {
-      return apiClientDetails.put<Category>(
-        `categories/${updatedCategory.id}`,
-        updatedCategory
-      );
-    },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries(["categories"]);
-      },
-    }
-  );
+  // const updateCategoryMutation = useMutation(
+  //   (updatedCategory: Partial<Category>) => {
+  //     return apiClientDetails.put<Category>(
+  //       `categories/${updatedCategory}`,
+  //       updatedCategory
+  //     );
+  //   },
+  //   {
+  //     onSuccess: () => {
+  //       queryClient.invalidateQueries(["categories"]);
+  //     },
+  //   }
+  // );
 
   console.log(searchQuery.data);
   return {
     searchQuery,
-    updateCategory: updateCategoryMutation.mutate,
-    isUpdating: updateCategoryMutation.isLoading,
+    // updateCategory: updateCategoryMutation.mutate,
+    // isUpdating: updateCategoryMutation.isLoading,
   };
 };
 
