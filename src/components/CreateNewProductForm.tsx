@@ -20,18 +20,14 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { FieldValues, useForm } from "react-hook-form";
-import useCreateNewProduct, { NewProduct } from "../hooks/useCreateNewProduct";
+import useCreateNewProduct from "../hooks/useCreateNewProduct";
 import shoes from "../images/alexandra-gorn-CJ6SJO_yR5w-unsplash.webp";
 import { useNewProductContext } from "../StateManagement/NewProductContext";
 import useCategories from "../hooks/useCategories";
 import { useNavigate } from "react-router-dom";
 
-// const categorySchema = z.object({
-//   name: z.string().min(3, "Category name must be at least 3 characters"),
-//   image: z.string(),
-// });
-
 const productSchema = z.object({
+  id: z.number({ invalid_type_error: "Price field is required." }),
   title: z.string().min(3, "Product name must be at least 3 characters"),
   price: z.number({ invalid_type_error: "Price field is required." }),
   description: z.string(),
@@ -50,8 +46,14 @@ const CreateNewProductForm: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { createNewProduct } = useCreateNewProduct();
-  const { setNewProduct } = useNewProductContext();
+  const { setNewProduct, newProduct } = useNewProductContext();
   const { searchQuery } = useCategories();
+  const generateRandomUniqueUri = (): number => {
+    const timestamp = Date.now(); // Get the current timestamp in milliseconds
+    const randomNum = Math.floor(Math.random() * 1000); // Generate a random number between 0 and 999
+    const id = `${timestamp}${randomNum}`; // Concatenate the timestamp and random number
+    return Number(id);
+  };
 
   const {
     handleSubmit,
@@ -60,7 +62,7 @@ const CreateNewProductForm: React.FC = () => {
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(productSchema),
-    defaultValues: { image: shoes },
+    defaultValues: { image: shoes, id: generateRandomUniqueUri() },
   });
 
   const navigate = useNavigate();
@@ -68,6 +70,7 @@ const CreateNewProductForm: React.FC = () => {
   const onSubmit = async (data: FieldValues) => {
     try {
       const newProduct = {
+        id: generateRandomUniqueUri(),
         title: data.title,
         price: data.price,
         description: data.description,
@@ -76,8 +79,8 @@ const CreateNewProductForm: React.FC = () => {
       };
 
       // Mutate the category data
-      createNewProduct(newProduct);
-      setNewProduct(newProduct);
+      createNewProduct([newProduct]);
+      setNewProduct((prevProducts) => [...prevProducts, newProduct]);
 
       // Optionally, you can handle success or navigate to another page
       console.log("Product created successfully");
@@ -89,6 +92,7 @@ const CreateNewProductForm: React.FC = () => {
       console.error("Error creating new product:", error);
     }
   };
+  console.log(newProduct);
 
   return (
     <>
@@ -100,6 +104,19 @@ const CreateNewProductForm: React.FC = () => {
           <ModalCloseButton />
           <ModalBody>
             <form onSubmit={handleSubmit(onSubmit)}>
+              <FormControl visibility={"hidden"} isInvalid={!!errors.id}>
+                <FormLabel> Id</FormLabel>
+                <Input
+                  defaultValue={generateRandomUniqueUri()}
+                  type="hidden"
+                  {...register("id")}
+                />
+                <FormErrorMessage>
+                  {errors?.image && (
+                    <Text color="red">{errors.image.message}</Text>
+                  )}
+                </FormErrorMessage>
+              </FormControl>
               <FormControl isInvalid={!!errors.title}>
                 <FormLabel>Product</FormLabel>
                 <Input type="text" {...register("title", { required: true })} />

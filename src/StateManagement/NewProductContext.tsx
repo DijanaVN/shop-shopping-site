@@ -3,9 +3,8 @@ import { NewProduct } from "../hooks/useCreateNewProduct";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 type NewProductContext = {
-  newProduct: NewProduct | null;
-  setNewProduct: React.Dispatch<React.SetStateAction<NewProduct | null>>;
-  // onClick: (Product: NewProduct | null) => void;
+  newProduct: NewProduct[];
+  setNewProduct: React.Dispatch<React.SetStateAction<NewProduct[]>>;
 };
 
 type ProductContextProps = {
@@ -13,9 +12,8 @@ type ProductContextProps = {
 };
 
 const NewProductContext = createContext<NewProductContext>({
-  newProduct: null,
+  newProduct: [],
   setNewProduct: () => {},
-  // onClick: () => {},
 });
 
 export function useNewProductContext() {
@@ -23,14 +21,10 @@ export function useNewProductContext() {
 }
 
 export function NewProductProvider({ children }: ProductContextProps) {
-  const [newProduct, setNewProduct] = useLocalStorage<NewProduct | null>(
+  const [newProduct, setNewProduct] = useLocalStorage<NewProduct[]>(
     "NewProductStorage",
-    null
+    []
   );
-
-  // const onClick = (Product: NewProduct| null) => {
-  //   setNewProduct(Product);
-  // };
 
   console.log(newProduct);
 
@@ -39,7 +33,6 @@ export function NewProductProvider({ children }: ProductContextProps) {
       value={{
         newProduct,
         setNewProduct,
-        // onClick,
       }}
     >
       {children}

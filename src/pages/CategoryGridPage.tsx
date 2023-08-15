@@ -14,7 +14,6 @@ import {
 } from "@chakra-ui/react";
 import { useSelectedCategoryContext } from "../StateManagement/SelectedCategoryContext";
 import usePoductsByCategory from "../hooks/useProductsByCategory";
-import DeleteCategoryButton from "../components/DeleteProduct";
 
 const CategoryGridPage = () => {
   const { selectedCategory } = useSelectedCategoryContext();
@@ -31,19 +30,11 @@ const CategoryGridPage = () => {
             </Text>
           </Center>
         ) : (
-          <Flex
-            flexWrap="wrap" // Use flexWrap to wrap the cards in a row when there's enough space
-            justifyContent="space-between" // Adjust the space between cards
-            margin={2} // Adjust the margin for better spacing
-          >
+          <Flex flexWrap="wrap" justifyContent="space-between" margin={2}>
             {searchQuery.data?.map((m) => (
               <Card key={m.id} bg={"primary.500"} maxW="sm" marginBottom={5}>
                 <CardBody>
-                  <Image
-                    src={m.image} // Assuming the third image is the main image
-                    alt={m.title}
-                    borderRadius="lg"
-                  />
+                  <Image src={m.image} alt={m.title} borderRadius="lg" />
                   <Stack mt="6" spacing="3">
                     <Heading size="md">{m.title}</Heading>
                     <Text fontWeight={"bold"}>Category: {m.category}</Text>

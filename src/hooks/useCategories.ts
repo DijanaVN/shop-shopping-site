@@ -3,7 +3,7 @@ import apiClientDetails from "../services/api-client-details";
 import { Category } from "./useProducts";
 
 const useCategories = () => {
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
   const fetchCategories = () =>
     apiClientDetails.get<Category[]>(`categories`).then((res) => res.data);
 

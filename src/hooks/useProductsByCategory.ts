@@ -1,8 +1,10 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import apiClientDetails from "./../services/api-client-details";
 import { Category, Product } from "./useProducts";
+import { useNewProductContext } from "./../StateManagement/NewProductContext";
 
 const usePoductsByCategory = (category: Category) => {
+  const { newProduct } = useNewProductContext();
   const fetchProducts = () =>
     apiClientDetails
       .get<Product[]>(`category/${category}`)
@@ -14,8 +16,21 @@ const usePoductsByCategory = (category: Category) => {
   });
   console.log(searchQuery.data);
 
+  const updatedProductsInCategory: Product[] = searchQuery.data
+    ? newProduct
+      ? ([...searchQuery.data, newProduct] as Product[])
+      : searchQuery.data
+    : newProduct
+    ? ([newProduct] as unknown as Product[])
+    : [];
+
+  console.log(updatedProductsInCategory);
+
   return {
-    searchQuery,
+    searchQuery: {
+      ...searchQuery,
+      data: updatedProductsInCategory,
+    },
   };
 };
 

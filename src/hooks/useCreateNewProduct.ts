@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import apiClientDetails from "../services/api-client-details";
-import { Product } from "./useProducts";
 
 export interface NewProduct {
+  id: number;
   title: string;
   price: number;
   description: string;
@@ -13,7 +13,7 @@ export interface NewProduct {
 const useCreateNewProduct = () => {
   const queryClient = useQueryClient();
   const createNewProduct = useMutation(
-    (product: NewProduct) => {
+    (product: NewProduct[]) => {
       return apiClientDetails.post(`/`, product);
     },
     {

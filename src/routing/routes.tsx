@@ -4,6 +4,7 @@ import CategoryGrid from "../pages/CategoryGridPage";
 import Layout from "./../pages/Layout";
 import ErrorPage from "./../pages/ErrorPage";
 import NewProductPage from "../pages/NewProductPage";
+import CategoryGridPage from "../pages/CategoryGridPage";
 
 const router = createBrowserRouter([
   {
@@ -12,7 +13,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: "/category", element: <CategoryGrid /> },
+      { path: "/category", element: <CategoryGridPage /> },
       { path: "/newProduct", element: <NewProductPage /> },
     ],
   },
