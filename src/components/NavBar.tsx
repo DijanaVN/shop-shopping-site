@@ -5,11 +5,12 @@ import { FcSearch } from "react-icons/fc";
 import logoImage from "../../src/images/best prices.png"; // Import the logo image
 import { Link } from "react-router-dom";
 import ProductCategories from "./ProductCategories";
+import { FaRegUser } from "react-icons/fa";
 
 const NavBar = () => {
   return (
     <Flex
-      backgroundColor="rgba(250, 247, 250, 0.9)" // 30% transparent white
+      backgroundColor="rgba(250, 247, 250, 0.5)" // 30% transparent white
       padding={2}
       justifyContent={"space-between"}
       alignItems="center"
@@ -26,13 +27,15 @@ const NavBar = () => {
       >
         <Link to={"/"}>Home</Link>
         <ProductCategories />
-        <Link to={"/signIn"}>Sign In </Link>
         <Link to={"/footer"}>Contact </Link>
         <Link to={"/aboutUs"}> About Us</Link>
       </HStack>
       <HStack fontSize={"40"} spacing={8}>
         <Link to={"/search"}>
           <FcSearch />
+        </Link>
+        <Link to={"/signIn"}>
+          <FaRegUser />
         </Link>
         <Link to={"/shoppingCart"}>
           <FiShoppingCart />

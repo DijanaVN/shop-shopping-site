@@ -45,8 +45,7 @@ type FormData = z.infer<typeof productSchema>;
 const CreateNewProductForm: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const { createNewProduct } = useCreateNewProduct();
-  const { setNewProduct, newProduct, addNewProduct } = useNewProductContext();
+  const { newProduct, addNewProduct } = useNewProductContext();
   const { searchQuery } = useCategories();
   const generateRandomUniqueUri = (): number => {
     const timestamp = Date.now(); // Get the current timestamp in milliseconds
@@ -83,7 +82,7 @@ const CreateNewProductForm: React.FC = () => {
 
       console.log("Product created successfully");
       console.log(data);
-      navigate("/newProduct");
+      navigate(`/Product/${data.id}`);
       onClose();
       reset();
     } catch (error) {

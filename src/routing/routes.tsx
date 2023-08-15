@@ -1,10 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomePage from "../pages/HomePage";
-import CategoryGrid from "../pages/CategoryGridPage";
 import Layout from "./../pages/Layout";
 import ErrorPage from "./../pages/ErrorPage";
-import NewProductPage from "../pages/NewProductPage";
 import CategoryGridPage from "../pages/CategoryGridPage";
+import ProductDetailedPage from "../pages/ProductDeatiledPage";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +13,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "/category", element: <CategoryGridPage /> },
-      { path: "/newProduct", element: <NewProductPage /> },
+      { path: "/product/:id", element: <ProductDetailedPage /> },
     ],
   },
 ]);

@@ -9,6 +9,10 @@ import customTheme from "./components/customeTheme";
 import { RouterProvider } from "react-router-dom";
 import router from "./routing/routes";
 import { NewProductProvider } from "./StateManagement/NewProductContext";
+import {
+  SelectedProductProvider,
+  useSelectedProductContext,
+} from "./StateManagement/SelectedProductContext";
 
 const queryClient = new QueryClient();
 
@@ -16,12 +20,14 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={customTheme}>
-        <NewProductProvider>
-          <SelectedCategoryProvider>
-            <RouterProvider router={router} />
-            <ReactQueryDevtools />
-          </SelectedCategoryProvider>
-        </NewProductProvider>
+        <SelectedProductProvider>
+          <NewProductProvider>
+            <SelectedCategoryProvider>
+              <RouterProvider router={router} />
+              <ReactQueryDevtools />
+            </SelectedCategoryProvider>
+          </NewProductProvider>
+        </SelectedProductProvider>
       </ChakraProvider>
     </QueryClientProvider>
   </React.StrictMode>

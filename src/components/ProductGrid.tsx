@@ -15,10 +15,13 @@ import {
 import usePoducts, { Product } from "../hooks/useProducts";
 import React from "react";
 import { useNewProductContext } from "../StateManagement/NewProductContext";
+import { Link } from "react-router-dom";
+import { useSelectedProductContext } from "../StateManagement/SelectedProductContext";
 
 const ProductGrid = () => {
   const { searchQuery } = usePoducts();
-  const { newProduct } = useNewProductContext();
+  const { newProduct, deleteProduct, updateProduct } = useNewProductContext();
+  const { onClick } = useSelectedProductContext();
 
   if (!searchQuery) {
     return <Text>Loading...</Text>;
@@ -29,45 +32,75 @@ const ProductGrid = () => {
   return (
     <>
       <Flex flexWrap="wrap" justifyContent="space-between" margin={2}>
-        {(searchQuery as Product[]).map((product) => (
-          <React.Fragment key={product.id}>
-            <Card
-              bg={"primary.500"}
+        {(searchQuery as Product[]).map((product) => {
+          const isProductInNewProduct = newProduct.some(
+            (newProd) => newProd.id === product.id
+          );
+
+          return (
+            <Link
+              to={`/product/${product.id}`}
+              onClick={() => onClick(product)}
               key={product.id}
-              maxW="sm"
-              marginBottom={5}
             >
-              <CardBody>
-                <Box h="300px" overflow="hidden">
-                  <Image
-                    src={product.image}
-                    alt={product.title}
-                    borderRadius="lg"
-                  />
-                </Box>
-                <Stack mt="6" spacing="3">
-                  <Heading size="md">{product.title}</Heading>
-                  <Text>Category: {product.category}</Text>
-                  <Text>{product.description}</Text>
-                  <Text color="yellow.400" fontSize="2xl">
-                    ${product.price}
-                  </Text>
-                </Stack>
-              </CardBody>
-              <Divider />
-              <CardFooter>
-                <ButtonGroup spacing="2">
-                  <Button variant="solid" colorScheme="blue">
-                    Buy now
-                  </Button>
-                  <Button variant="ghost" colorScheme="blue">
-                    Add to cart
-                  </Button>
-                </ButtonGroup>
-              </CardFooter>
-            </Card>
-          </React.Fragment>
-        ))}
+              <Card
+                bg={"primary.500"}
+                key={product.id}
+                maxW="lg"
+                marginBottom={5}
+              >
+                <CardBody>
+                  <Box h="300px" overflow="hidden">
+                    <Image
+                      src={product.image}
+                      alt={product.title}
+                      borderRadius="lg"
+                    />
+                  </Box>
+                  <Stack mt="6" spacing="3">
+                    <Heading size="md">{product.title}</Heading>
+                    <Text>Category: {product.category}</Text>
+
+                    <Text color="yellow.400" fontSize="2xl">
+                      ${product.price}
+                    </Text>
+                  </Stack>
+                </CardBody>
+                <Divider />
+                <CardFooter flexWrap="wrap">
+                  <Flex justifyContent="space-between" alignItems="center">
+                    <ButtonGroup flex="1" mr="3">
+                      <Button variant="solid" colorScheme="blue">
+                        Buy now
+                      </Button>
+                      <Button variant="solid" colorScheme="yellow">
+                        Add to cart
+                      </Button>
+                    </ButtonGroup>
+                    {isProductInNewProduct && (
+                      <ButtonGroup flex="2" spacing="2">
+                        <Button
+                          onClick={() => deleteProduct(product.id)}
+                          variant="solid"
+                          colorScheme="red"
+                        >
+                          Delete
+                        </Button>
+                        <Button
+                          onClick={() => updateProduct(product.id, product)}
+                          variant="solid"
+                          colorScheme="teal"
+                        >
+                          Update
+                        </Button>
+                      </ButtonGroup>
+                    )}
+                  </Flex>
+                </CardFooter>
+              </Card>
+            </Link>
+          );
+        })}
       </Flex>
     </>
   );

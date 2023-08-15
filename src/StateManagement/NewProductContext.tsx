@@ -5,7 +5,9 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 type NewProductContext = {
   newProduct: NewProduct[];
   setNewProduct: React.Dispatch<React.SetStateAction<NewProduct[]>>;
-  addNewProduct: (n: NewProduct) => void;
+  addNewProduct: (newProductData: NewProduct) => void;
+  updateProduct: (productId: number, updatedData: NewProduct) => void;
+  deleteProduct: (productId: number) => void;
 };
 
 type ProductContextProps = {
@@ -16,6 +18,8 @@ const NewProductContext = createContext<NewProductContext>({
   newProduct: [],
   setNewProduct: () => {},
   addNewProduct: () => {},
+  updateProduct: () => {},
+  deleteProduct: () => {},
 });
 
 export function useNewProductContext() {
@@ -29,11 +33,22 @@ export function NewProductProvider({ children }: ProductContextProps) {
   );
 
   const addNewProduct = (newProductData: NewProduct) => {
-    console.log(newProduct); // Check the initial value
     setNewProduct((prevProducts) => [...prevProducts, newProductData]);
   };
 
-  console.log(newProduct);
+  const updateProduct = (productId: number, updatedData: NewProduct) => {
+    setNewProduct((prevProducts) =>
+      prevProducts.map((product) =>
+        product.id === productId ? { ...product, ...updatedData } : product
+      )
+    );
+  };
+
+  const deleteProduct = (productId: number) => {
+    setNewProduct((prevProducts) =>
+      prevProducts.filter((product) => product.id !== productId)
+    );
+  };
 
   return (
     <NewProductContext.Provider
@@ -41,6 +56,8 @@ export function NewProductProvider({ children }: ProductContextProps) {
         newProduct,
         setNewProduct,
         addNewProduct,
+        updateProduct,
+        deleteProduct,
       }}
     >
       {children}
