@@ -19,19 +19,14 @@ const CategoryGridPage = () => {
   const { selectedCategory } = useSelectedCategoryContext();
 
   if (selectedCategory) {
-    const { searchQuery } = usePoductsByCategory(selectedCategory);
+    const { updatedProductsInCategory } =
+      usePoductsByCategory(selectedCategory);
 
     return (
       <>
-        {searchQuery.data?.length === 0 ? (
-          <Center paddingTop={10}>
-            <Text color={"primary.600"} fontSize={18} fontWeight={"bold"}>
-              No items in this category.
-            </Text>
-          </Center>
-        ) : (
-          <Flex flexWrap="wrap" justifyContent="space-between" margin={2}>
-            {searchQuery.data?.map((m) => (
+        <Flex flexWrap="wrap" justifyContent="space-between" margin={2}>
+          {updatedProductsInCategory?.map((m) =>
+            selectedCategory === m.category ? (
               <Card key={m.id} bg={"primary.500"} maxW="sm" marginBottom={5}>
                 <CardBody>
                   <Image src={m.image} alt={m.title} borderRadius="lg" />
@@ -56,9 +51,11 @@ const CategoryGridPage = () => {
                   </ButtonGroup>
                 </CardFooter>
               </Card>
-            ))}
-          </Flex>
-        )}
+            ) : (
+              ""
+            )
+          )}
+        </Flex>
       </>
     );
   }

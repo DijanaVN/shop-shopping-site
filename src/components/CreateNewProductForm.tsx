@@ -20,7 +20,7 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { FieldValues, useForm } from "react-hook-form";
-import useCreateNewProduct from "../hooks/useCreateNewProduct";
+import useCreateNewProduct, { NewProduct } from "../hooks/useCreateNewProduct";
 import shoes from "../images/alexandra-gorn-CJ6SJO_yR5w-unsplash.webp";
 import { useNewProductContext } from "../StateManagement/NewProductContext";
 import useCategories from "../hooks/useCategories";
@@ -46,7 +46,7 @@ const CreateNewProductForm: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { createNewProduct } = useCreateNewProduct();
-  const { setNewProduct, newProduct } = useNewProductContext();
+  const { setNewProduct, newProduct, addNewProduct } = useNewProductContext();
   const { searchQuery } = useCategories();
   const generateRandomUniqueUri = (): number => {
     const timestamp = Date.now(); // Get the current timestamp in milliseconds
@@ -69,7 +69,7 @@ const CreateNewProductForm: React.FC = () => {
 
   const onSubmit = async (data: FieldValues) => {
     try {
-      const newProduct = {
+      const newProductData = {
         id: generateRandomUniqueUri(),
         title: data.title,
         price: data.price,
@@ -77,12 +77,10 @@ const CreateNewProductForm: React.FC = () => {
         image: data.image || shoes, // Use the form data or a default image
         category: data.category,
       };
-
+      addNewProduct(newProductData);
       // Mutate the category data
-      createNewProduct([newProduct]);
-      setNewProduct((prevProducts) => [...prevProducts, newProduct]);
+      // createNewProduct([newProductData]);
 
-      // Optionally, you can handle success or navigate to another page
       console.log("Product created successfully");
       console.log(data);
       navigate("/newProduct");

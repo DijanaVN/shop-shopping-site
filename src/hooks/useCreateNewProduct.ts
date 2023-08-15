@@ -4,7 +4,7 @@ import apiClientDetails from "../services/api-client-details";
 export interface NewProduct {
   id: number;
   title: string;
-  price: number;
+  price: string;
   description: string;
   image: string;
   category: string;

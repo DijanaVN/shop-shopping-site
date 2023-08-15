@@ -2,7 +2,7 @@ import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import apiClientDetails from "./../services/api-client-details";
 import { useNewProductContext } from "../StateManagement/NewProductContext";
 
-export type Category = string[];
+export type Category = string;
 
 export interface Product {
   id: number;
@@ -24,21 +24,15 @@ const usePoducts = () => {
   });
   console.log(searchQuery.data);
 
-  const updatedProducts = searchQuery.data
-    ? newProduct
-      ? [...searchQuery.data, newProduct]
-      : searchQuery.data
-    : newProduct
-    ? [newProduct]
-    : [];
+  const combinedProducts: Product[] = [
+    ...(searchQuery.data || []), // Spread the searchQuery data if available
+    ...(newProduct || []), // Spread the newProduct data if available
+  ];
 
-  console.log(updatedProducts);
+  console.log(combinedProducts);
 
   return {
-    searchQuery: {
-      ...searchQuery,
-      data: updatedProducts,
-    },
+    searchQuery: combinedProducts,
   };
 };
 

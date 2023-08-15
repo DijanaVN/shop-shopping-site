@@ -5,6 +5,7 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 type NewProductContext = {
   newProduct: NewProduct[];
   setNewProduct: React.Dispatch<React.SetStateAction<NewProduct[]>>;
+  addNewProduct: (n: NewProduct) => void;
 };
 
 type ProductContextProps = {
@@ -14,6 +15,7 @@ type ProductContextProps = {
 const NewProductContext = createContext<NewProductContext>({
   newProduct: [],
   setNewProduct: () => {},
+  addNewProduct: () => {},
 });
 
 export function useNewProductContext() {
@@ -26,6 +28,11 @@ export function NewProductProvider({ children }: ProductContextProps) {
     []
   );
 
+  const addNewProduct = (newProductData: NewProduct) => {
+    console.log(newProduct); // Check the initial value
+    setNewProduct((prevProducts) => [...prevProducts, newProductData]);
+  };
+
   console.log(newProduct);
 
   return (
@@ -33,6 +40,7 @@ export function NewProductProvider({ children }: ProductContextProps) {
       value={{
         newProduct,
         setNewProduct,
+        addNewProduct,
       }}
     >
       {children}

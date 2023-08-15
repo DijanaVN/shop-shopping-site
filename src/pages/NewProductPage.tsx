@@ -14,22 +14,20 @@ import { useNewProductContext } from "./../StateManagement/NewProductContext";
 
 const NewProductPage = () => {
   const { newProduct } = useNewProductContext();
+
+  console.log(newProduct);
   return (
     <>
-      {newProduct && (
-        <Card bg={"primary.400"} key="newProduct" maxW="sm" marginBottom={5}>
+      {newProduct.map((product, index) => (
+        <Card bg={"primary.400"} key={index} maxW="sm" marginBottom={5}>
           <CardBody>
-            <Image
-              src={newProduct.image}
-              alt={newProduct.title}
-              borderRadius="lg"
-            />
+            <Image src={product.image} alt={product.title} borderRadius="lg" />
             <Stack mt="6" spacing="3">
-              <Heading size="md">{newProduct.title}</Heading>
-              <Text>Category: {newProduct.category}</Text>
-              <Text>{newProduct.description}</Text>
+              <Heading size="md">{product.title}</Heading>
+              <Text>Category: {product.category}</Text>
+              <Text>{product.description}</Text>
               <Text color="yellow.400" fontSize="2xl">
-                ${newProduct.price}
+                ${product.price}
               </Text>
             </Stack>
           </CardBody>
@@ -45,7 +43,7 @@ const NewProductPage = () => {
             </ButtonGroup>
           </CardFooter>
         </Card>
-      )}
+      ))}
     </>
   );
 };

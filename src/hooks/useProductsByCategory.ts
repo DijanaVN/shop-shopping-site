@@ -16,21 +16,15 @@ const usePoductsByCategory = (category: Category) => {
   });
   console.log(searchQuery.data);
 
-  const updatedProductsInCategory: Product[] = searchQuery.data
-    ? newProduct
-      ? ([...searchQuery.data, newProduct] as Product[])
-      : searchQuery.data
-    : newProduct
-    ? ([newProduct] as unknown as Product[])
-    : [];
+  const combinedProducts: Product[] = [
+    ...(searchQuery.data || []), // Spread the searchQuery data if available
+    ...(newProduct || []), // Spread the newProduct data if available
+  ];
 
-  console.log(updatedProductsInCategory);
+  console.log(combinedProducts);
 
   return {
-    searchQuery: {
-      ...searchQuery,
-      data: updatedProductsInCategory,
-    },
+    updatedProductsInCategory: combinedProducts,
   };
 };
 
