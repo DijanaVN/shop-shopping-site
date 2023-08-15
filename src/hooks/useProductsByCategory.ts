@@ -17,8 +17,8 @@ const usePoductsByCategory = (category: Category) => {
   console.log(searchQuery.data);
 
   const combinedProducts: Product[] = [
-    ...(searchQuery.data || []), // Spread the searchQuery data if available
-    ...(newProduct || []), // Spread the newProduct data if available
+    ...(searchQuery.data || []),
+    ...(newProduct || []),
   ];
 
   console.log(combinedProducts);

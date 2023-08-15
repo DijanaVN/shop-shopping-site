@@ -5,7 +5,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ChakraProvider } from "@chakra-ui/react";
 // import App from "./App";
 import { SelectedCategoryProvider } from "./StateManagement/SelectedCategoryContext";
-import customTheme from "./components/customeTheme";
+import customTheme from "./customeTheme";
 import { RouterProvider } from "react-router-dom";
 import router from "./routing/routes";
 import { NewProductProvider } from "./StateManagement/NewProductContext";

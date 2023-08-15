@@ -11,6 +11,7 @@ import {
   Image,
   Flex,
   Box,
+  Grid,
 } from "@chakra-ui/react";
 import usePoducts, { Product } from "../hooks/useProducts";
 import React from "react";
@@ -44,24 +45,27 @@ const ProductGrid = () => {
               key={product.id}
             >
               <Card
-                bg={"primary.500"}
+                bg={`rgba(247, 215, 238, 0.8)`}
                 key={product.id}
                 maxW="lg"
                 marginBottom={5}
               >
                 <CardBody>
-                  <Box h="300px" overflow="hidden">
-                    <Image
-                      src={product.image}
-                      alt={product.title}
-                      borderRadius="lg"
-                    />
-                  </Box>
+                  <Image
+                    src={product.image}
+                    alt={product.title}
+                    borderRadius="lg"
+                  />
+
                   <Stack mt="6" spacing="3">
                     <Heading size="md">{product.title}</Heading>
                     <Text>Category: {product.category}</Text>
 
-                    <Text color="yellow.400" fontSize="2xl">
+                    <Text
+                      fontWeight={"extrabold"}
+                      color="primary.300"
+                      fontSize="2xl"
+                    >
                       ${product.price}
                     </Text>
                   </Stack>

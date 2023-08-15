@@ -1,9 +1,6 @@
 import { Box, Grid, GridItem, HStack, Image } from "@chakra-ui/react";
-import NavBar from "../components/NavBar";
 import ProductGrid from "../components/ProductGrid";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
-
 import CreateNewCategoryForm from "../components/CreateNewProductForm";
 import treatyourself from "../images/freestocks-_3Q3tsJ01nc-unsplash.webp";
 

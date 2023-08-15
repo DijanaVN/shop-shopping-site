@@ -34,11 +34,15 @@ const ProductDetailedPage = () => {
     >
       <Card
         direction={{ base: "column", sm: "row" }}
+        bg={`rgba(247, 215, 238, 0.4)`}
         overflow="hidden"
         variant="outline"
         key={selectedProduct?.id}
         minW="xl"
+        minH={"xl"}
         marginBottom={5}
+        justifyContent="center"
+        alignItems="center"
       >
         <CardBody
           justifyContent="center"
@@ -47,16 +51,21 @@ const ProductDetailedPage = () => {
         >
           <Image
             objectFit="cover"
-            maxW={{ base: "100%", sm: "200px" }}
+            maxW={{ base: "100%", sm: "500px" }}
             src={selectedProduct?.image}
             alt={selectedProduct?.title}
+            margin={5}
           />
         </CardBody>
         <Stack>
-          <Heading size="lg">{selectedProduct?.title}</Heading>
-          <Text py="2">Category: {selectedProduct?.category}</Text>
-          <Text>{selectedProduct?.description}</Text>
-          <Text color="yellow.400" fontSize="2xl">
+          <Heading size="xl">{selectedProduct?.title}</Heading>
+          <Text fontWeight={"extrabold"} fontSize={"2xl"}>
+            Category: {selectedProduct?.category}
+          </Text>
+          <Text fontWeight={"bold"} fontSize={"2xl"}>
+            {selectedProduct?.description}
+          </Text>
+          <Text fontWeight={"extrabold"} fontSize="2xl" color={""}>
             ${selectedProduct?.price}
           </Text>
           <Divider />
@@ -65,7 +74,7 @@ const ProductDetailedPage = () => {
               <Button variant="solid" colorScheme="blue">
                 Buy now
               </Button>
-              <Button variant="ghost" colorScheme="blue">
+              <Button variant="solid" colorScheme="yellow">
                 Add to cart
               </Button>
               {isProductInNewProduct && (
