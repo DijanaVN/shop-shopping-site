@@ -5,6 +5,7 @@ import ErrorPage from "./../pages/ErrorPage";
 import CategoryGridPage from "../pages/CategoryGridPage";
 import ProductDetailedPage from "../pages/ProductDeatiledPage";
 import AboutUsPage from "./../pages/AboutUsPage";
+import ContactUs from "./../pages/ContactUsPage";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       { path: "/category", element: <CategoryGridPage /> },
       { path: "/product/:id", element: <ProductDetailedPage /> },
       { path: "/aboutus", element: <AboutUsPage /> },
+      { path: "/contactus", element: <ContactUs /> },
     ],
   },
 ]);
