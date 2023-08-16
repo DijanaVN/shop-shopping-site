@@ -28,7 +28,7 @@ const NavBar = () => {
         <Link to={"/"}>Home</Link>
         <ProductCategories />
         <Link to={"/footer"}>Contact </Link>
-        <Link to={"/aboutUs"}> About Us</Link>
+        <Link to={"/aboutus"}> About Us</Link>
       </HStack>
       <HStack fontSize={"40"} spacing={8}>
         <Link to={"/search"}>

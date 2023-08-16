@@ -1,6 +1,14 @@
-import { Text } from "@chakra-ui/react";
+import { Divider, Text } from "@chakra-ui/react";
+import CreateNewCategoryForm from "../components/CreateNewProductForm";
 const Footer = () => {
-  return <Text>Footer</Text>;
+  return (
+    <>
+      <Divider />
+      <Text>
+        <CreateNewCategoryForm />
+      </Text>
+    </>
+  );
 };
 
 export default Footer;

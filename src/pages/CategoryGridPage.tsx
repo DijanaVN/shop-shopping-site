@@ -1,17 +1,4 @@
-import {
-  Button,
-  ButtonGroup,
-  Card,
-  CardBody,
-  CardFooter,
-  Divider,
-  Heading,
-  Stack,
-  Text,
-  Image,
-  Flex,
-  Center,
-} from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { useSelectedCategoryContext } from "../StateManagement/SelectedCategoryContext";
 import usePoductsByCategory from "../hooks/useProductsByCategory";
 import image from "../images/milad-fakurian-HE1_K4_-QT8-unsplash.webp";

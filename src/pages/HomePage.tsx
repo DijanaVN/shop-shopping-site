@@ -1,7 +1,6 @@
 import { Box, Grid, GridItem, HStack, Image } from "@chakra-ui/react";
 import ProductGrid from "../components/ProductGrid";
 import Footer from "../components/Footer";
-import CreateNewCategoryForm from "../components/CreateNewProductForm";
 import treatyourself from "../images/freestocks-_3Q3tsJ01nc-unsplash.webp";
 
 function HomePage() {
@@ -33,10 +32,6 @@ function HomePage() {
         position="relative"
         zIndex="1"
       >
-        <GridItem pl="2" area={"header"}>
-          <CreateNewCategoryForm />
-        </GridItem>
-
         <GridItem pl="2" area={"main"}>
           <ProductGrid />
         </GridItem>

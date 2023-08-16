@@ -13,13 +13,19 @@ import {
 
 const CardFunction = ({ m }: any) => {
   return (
-    <Card key={m.id} bg={"primary.50"} maxW="sm" marginBottom={5}>
+    <Card
+      height="720px"
+      key={m.id}
+      bg={`rgba(247, 215, 238, 0.5)`}
+      maxW="sm"
+      marginBottom={5}
+    >
       <CardBody>
-        <Image src={m.image} alt={m.title} borderRadius="lg" />
+        <Image boxSize="sm" src={m.image} alt={m.title} borderRadius="lg" />
         <Stack mt="6" spacing="3">
           <Heading size="md">{m.title}</Heading>
           <Text fontWeight={"bold"}>Category: {m.category}</Text>
-          <Text>{m.title}</Text>
+
           <Text fontWeight={"extrabold"} color="primary.300" fontSize="2xl">
             ${m.price}
           </Text>
@@ -27,11 +33,11 @@ const CardFunction = ({ m }: any) => {
       </CardBody>
       <Divider />
       <CardFooter>
-        <ButtonGroup spacing="2">
+        <ButtonGroup justifyContent={"center"} spacing="2">
           <Button variant="solid" colorScheme="blue">
             Buy now
           </Button>
-          <Button variant="ghost" colorScheme="blue">
+          <Button variant="solid" colorScheme="yellow">
             Add to cart
           </Button>
         </ButtonGroup>
