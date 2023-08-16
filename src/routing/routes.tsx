@@ -6,6 +6,7 @@ import CategoryGridPage from "../pages/CategoryGridPage";
 import ProductDetailedPage from "../pages/ProductDeatiledPage";
 import AboutUsPage from "./../pages/AboutUsPage";
 import ContactUs from "./../pages/ContactUsPage";
+import SignInPage from "./../pages/SignInPage";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       { path: "/product/:id", element: <ProductDetailedPage /> },
       { path: "/aboutus", element: <AboutUsPage /> },
       { path: "/contactus", element: <ContactUs /> },
+      { path: "/signin", element: <SignInPage /> },
     ],
   },
 ]);

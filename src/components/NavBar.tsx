@@ -34,7 +34,7 @@ const NavBar = () => {
         <Link to={"/search"}>
           <FcSearch />
         </Link>
-        <Link to={"/signIn"}>
+        <Link to={"/signin"}>
           <FaRegUser />
         </Link>
         <Link to={"/shoppingCart"}>
