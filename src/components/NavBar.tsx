@@ -1,16 +1,20 @@
-import { Text, Flex, HStack, Image } from "@chakra-ui/react";
-// import ColorModeSwitch from "./ColorModeSwitch";
-import { FiShoppingCart } from "react-icons/fi";
+import { Button, Flex, HStack, useDisclosure, Image } from "@chakra-ui/react";
+import React, { useRef } from "react";
 import { FcSearch } from "react-icons/fc";
-import logoImage from "../../src/images/best prices.png"; // Import the logo image
 import { Link } from "react-router-dom";
-import ProductCategories from "./ProductCategories";
 import { FaRegUser } from "react-icons/fa";
+import { FiShoppingCart } from "react-icons/fi";
+import logoImage from "../../src/images/best prices.png"; // Import the logo image
+import SearchDrawer from "../pages/SearchPage";
+import ProductCategories from "./ProductCategories";
 
 const NavBar = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const drawerBtnRef = useRef<HTMLButtonElement | null>(null);
+
   return (
     <Flex
-      backgroundColor="rgba(250, 247, 250, 0.5)" // 30% transparent white
+      backgroundColor="rgba(250, 247, 250, 0.5)"
       padding={2}
       justifyContent={"space-between"}
       alignItems="center"
@@ -31,9 +35,15 @@ const NavBar = () => {
         <Link to={"/aboutus"}> About Us</Link>
       </HStack>
       <HStack fontSize={"40"} spacing={8}>
-        <Link to={"/search"}>
+        {/* Open the drawer when the search icon is clicked */}
+        <Button
+          fontSize={"40"}
+          ref={drawerBtnRef}
+          variant="ghost"
+          onClick={onOpen}
+        >
           <FcSearch />
-        </Link>
+        </Button>
         <Link to={"/signin"}>
           <FaRegUser />
         </Link>
@@ -42,7 +52,12 @@ const NavBar = () => {
         </Link>
       </HStack>
 
-      {/* Use the imported logo image */}
+      {/* Use the SearchDrawer component */}
+      <SearchDrawer
+        isOpen={isOpen}
+        onClose={onClose}
+        finalFocusRef={drawerBtnRef}
+      />
     </Flex>
   );
 };

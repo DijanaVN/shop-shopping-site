@@ -7,6 +7,7 @@ import ProductDetailedPage from "../pages/ProductDeatiledPage";
 import AboutUsPage from "./../pages/AboutUsPage";
 import ContactUs from "./../pages/ContactUsPage";
 import SignInPage from "./../pages/SignInPage";
+import SearchPage from "./../pages/SearchPage";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       { path: "/aboutus", element: <AboutUsPage /> },
       { path: "/contactus", element: <ContactUs /> },
       { path: "/signin", element: <SignInPage /> },
+      { path: "/search", element: <SearchPage /> },
     ],
   },
 ]);
