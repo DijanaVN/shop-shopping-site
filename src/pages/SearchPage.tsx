@@ -7,6 +7,7 @@ import {
   InputLeftElement,
   Box,
   Flex,
+  Center,
 } from "@chakra-ui/react";
 import { useSearchText } from "../StateManagement/SearchTextContext";
 import { FieldValues, useForm } from "react-hook-form";
@@ -19,6 +20,7 @@ import CardFunction from "./../components/CardFunction";
 import img from "../images/milad-fakurian-HE1_K4_-QT8-unsplash.webp";
 import { FcSearch } from "react-icons/fc";
 import { useSelectedProductContext } from "./../StateManagement/SelectedProductContext";
+import { useState } from "react";
 
 const schema = z.object({
   searchText: z
@@ -42,6 +44,7 @@ const SearchDrawer = () => {
   const { allProducts } = useAllProductsContext();
   const { setFilteredProduct, filteredProduct } = useFilteredProductContext();
   const { onClick } = useSelectedProductContext();
+  const [searchButtonPressed, setSearchButtonPressed] = useState(false);
 
   const onSubmit = (data: FieldValues) => {
     setSearchText(data.searchText);
@@ -51,13 +54,14 @@ const SearchDrawer = () => {
 
     console.log(filteredProducts);
     setFilteredProduct(filteredProducts);
+    setSearchButtonPressed(true);
 
     reset();
   };
 
   return (
     <>
-      <Box backgroundImage={img} height={"100vh"}>
+      <Box backgroundImage={img}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputGroup>
             <InputLeftElement pointerEvents="none" />
@@ -87,8 +91,8 @@ const SearchDrawer = () => {
           )}
         </form>
         <Flex flexWrap="wrap" justifyContent="space-between" margin={2}>
-          {filteredProduct.length === 0 ? (
-            <Text>No results for that search.</Text>
+          {searchButtonPressed && filteredProduct.length === 0 ? (
+            <Text height={"100vh"}>No results for that search.</Text>
           ) : (
             filteredProduct.map((n) => (
               <Link
