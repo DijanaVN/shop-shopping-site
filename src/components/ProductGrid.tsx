@@ -3,6 +3,7 @@ import usePoducts, { Product } from "../hooks/useProducts";
 import { Link } from "react-router-dom";
 import { useSelectedProductContext } from "../StateManagement/SelectedProductContext";
 import CardFunction from "./CardFunction";
+import { useAllProductsContext } from "../StateManagement/AllProductsContexts";
 
 const ProductGrid = () => {
   const { searchQuery } = usePoducts();
@@ -11,8 +12,6 @@ const ProductGrid = () => {
   if (!searchQuery) {
     return <Text>Loading...</Text>;
   }
-
-  console.log(searchQuery);
 
   return (
     <>

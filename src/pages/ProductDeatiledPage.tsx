@@ -13,7 +13,6 @@ import {
 } from "@chakra-ui/react";
 import { useSelectedProductContext } from "../StateManagement/SelectedProductContext";
 import { useNewProductContext } from "../StateManagement/NewProductContext";
-import { useState } from "react";
 import treatyourself from "../images/jean-philippe-delberghe-75xPHEQBmvA-unsplash.webp";
 
 const ProductDetailedPage = () => {
@@ -100,4 +99,5 @@ const ProductDetailedPage = () => {
     </Flex>
   );
 };
+
 export default ProductDetailedPage;

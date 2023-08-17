@@ -1,16 +1,14 @@
-import { Button, Flex, HStack, useDisclosure, Image } from "@chakra-ui/react";
-import React, { useRef } from "react";
+import { Flex, HStack, useDisclosure, Image } from "@chakra-ui/react";
+
 import { FcSearch } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
-import logoImage from "../../src/images/best prices.png"; // Import the logo image
-import SearchDrawer from "../pages/SearchPage";
+import logoImage from "../../src/images/Shop-Shopping-_2_ (1).webp";
 import ProductCategories from "./ProductCategories";
 
 const NavBar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const drawerBtnRef = useRef<HTMLButtonElement | null>(null);
+  const { onOpen } = useDisclosure();
 
   return (
     <Flex
@@ -20,7 +18,7 @@ const NavBar = () => {
       alignItems="center"
     >
       <Link to={"/"}>
-        <Image boxSize="20" src={logoImage} alt="Logo" />
+        <Image boxSize="20" src={logoImage} alt="Logo" borderRadius="full" />
       </Link>
       {/* <ColorModeSwitch /> */}
       <HStack
@@ -35,7 +33,6 @@ const NavBar = () => {
         <Link to={"/aboutus"}> About Us</Link>
       </HStack>
       <HStack fontSize={"40"} spacing={8}>
-        {/* Open the drawer when the search icon is clicked */}
         <Link to={"/search"} onClick={onOpen}>
           <FcSearch />
         </Link>

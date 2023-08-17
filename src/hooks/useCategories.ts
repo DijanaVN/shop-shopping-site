@@ -26,7 +26,6 @@ const useCategories = () => {
   //   }
   // );
 
-  console.log(searchQuery.data);
   return {
     searchQuery,
     // updateCategory: updateCategoryMutation.mutate,

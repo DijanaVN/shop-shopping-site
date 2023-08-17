@@ -73,12 +73,10 @@ const CreateNewProductForm: React.FC = () => {
         title: data.title,
         price: data.price,
         description: data.description,
-        image: data.image || shoes, // Use the form data or a default image
+        image: data.image || shoes,
         category: data.category,
       };
       addNewProduct(newProductData);
-      // Mutate the category data
-      // createNewProduct([newProductData]);
 
       console.log("Product created successfully");
       console.log(data);
@@ -89,7 +87,6 @@ const CreateNewProductForm: React.FC = () => {
       console.error("Error creating new product:", error);
     }
   };
-  console.log(newProduct);
 
   return (
     <>

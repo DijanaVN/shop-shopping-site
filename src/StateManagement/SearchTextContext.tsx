@@ -21,6 +21,7 @@ export function useSearchText() {
 export function SearchTextProvider({ children }: searchTextProps) {
   const [searchText, setSearchText] = useState("");
   console.log(searchText);
+
   return (
     <SearchTextContext.Provider
       value={{

@@ -14,6 +14,8 @@ import {
   useSelectedProductContext,
 } from "./StateManagement/SelectedProductContext";
 import { SearchTextProvider } from "./StateManagement/SearchTextContext";
+import { AllProductsProvider } from "./StateManagement/AllProductsContexts";
+import { FilteredProductProvider } from "./StateManagement/FilteredProducts";
 
 const queryClient = new QueryClient();
 
@@ -23,12 +25,16 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <ChakraProvider theme={customTheme}>
         <SelectedProductProvider>
           <SearchTextProvider>
-            <NewProductProvider>
-              <SelectedCategoryProvider>
-                <RouterProvider router={router} />
-                <ReactQueryDevtools />
-              </SelectedCategoryProvider>
-            </NewProductProvider>
+            <FilteredProductProvider>
+              <AllProductsProvider>
+                <NewProductProvider>
+                  <SelectedCategoryProvider>
+                    <RouterProvider router={router} />
+                    <ReactQueryDevtools />
+                  </SelectedCategoryProvider>
+                </NewProductProvider>
+              </AllProductsProvider>
+            </FilteredProductProvider>
           </SearchTextProvider>
         </SelectedProductProvider>
       </ChakraProvider>
