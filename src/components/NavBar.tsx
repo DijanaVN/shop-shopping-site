@@ -36,14 +36,9 @@ const NavBar = () => {
       </HStack>
       <HStack fontSize={"40"} spacing={8}>
         {/* Open the drawer when the search icon is clicked */}
-        <Button
-          fontSize={"40"}
-          ref={drawerBtnRef}
-          variant="ghost"
-          onClick={onOpen}
-        >
+        <Link to={"/search"} onClick={onOpen}>
           <FcSearch />
-        </Button>
+        </Link>
         <Link to={"/signin"}>
           <FaRegUser />
         </Link>
@@ -51,13 +46,6 @@ const NavBar = () => {
           <FiShoppingCart />
         </Link>
       </HStack>
-
-      {/* Use the SearchDrawer component */}
-      <SearchDrawer
-        isOpen={isOpen}
-        onClose={onClose}
-        finalFocusRef={drawerBtnRef}
-      />
     </Flex>
   );
 };

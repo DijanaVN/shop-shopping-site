@@ -13,6 +13,7 @@ import {
   SelectedProductProvider,
   useSelectedProductContext,
 } from "./StateManagement/SelectedProductContext";
+import { SearchTextProvider } from "./StateManagement/SearchTextContext";
 
 const queryClient = new QueryClient();
 
@@ -21,12 +22,14 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={customTheme}>
         <SelectedProductProvider>
-          <NewProductProvider>
-            <SelectedCategoryProvider>
-              <RouterProvider router={router} />
-              <ReactQueryDevtools />
-            </SelectedCategoryProvider>
-          </NewProductProvider>
+          <SearchTextProvider>
+            <NewProductProvider>
+              <SelectedCategoryProvider>
+                <RouterProvider router={router} />
+                <ReactQueryDevtools />
+              </SelectedCategoryProvider>
+            </NewProductProvider>
+          </SearchTextProvider>
         </SelectedProductProvider>
       </ChakraProvider>
     </QueryClientProvider>
