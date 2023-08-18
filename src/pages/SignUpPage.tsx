@@ -1,5 +1,5 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import {
   Box,
@@ -10,30 +10,10 @@ import {
   VStack,
   Text,
   Center,
+  useDisclosure,
 } from "@chakra-ui/react";
-import img from "../images/jungwoo-hong-cYUMaCqMYvI-unsplash.webp";
-
-interface User {
-  id: number;
-  email: string;
-  username: string;
-  password: string;
-  name: {
-    firstname: string;
-    lastname: string;
-  };
-  address: {
-    city: string;
-    street: string;
-    number: number;
-    zipcode: string;
-    geolocation: {
-      lat: string;
-      long: string;
-    };
-  };
-  phone: string;
-}
+import { User, useUserContext } from "../StateManagement/UserInfoContext";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const userSchema = z.object({
   id: z.number(),
@@ -48,23 +28,58 @@ const userSchema = z.object({
     city: z.string(),
     street: z.string(),
     number: z.string(),
-    zipcode: z.string(),
+    zipcode: z.number({ invalid_type_error: "Zipcode field is required." }),
   }),
-  phone: z.string(),
 });
 
 type FormData = z.infer<typeof userSchema>;
 
-const SignInPage: React.FC = () => {
+const SignUpPage: React.FC = () => {
+  const generateRandomUniqueUri = (): number => {
+    const timestamp = Date.now(); // Get the current timestamp in milliseconds
+    const randomNum = Math.floor(Math.random() * 1000); // Generate a random number between 0 and 999
+    const id = `${timestamp}${randomNum}`; // Concatenate the timestamp and random number
+    return Number(id);
+  };
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<FormData>();
+    reset,
+  } = useForm<FormData>({
+    resolver: zodResolver(userSchema),
+    defaultValues: { id: generateRandomUniqueUri() },
+  });
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { addNewUser } = useUserContext();
 
-  const onSubmit = (data: FormData) => {
-    console.log(data);
-    // You can perform further actions with the user data here
+  const onSubmit = async (data: FieldValues) => {
+    console.log("Submit button clicked");
+    try {
+      const newUserData: User = {
+        id: generateRandomUniqueUri(),
+        email: data.email,
+        username: data.username,
+        password: data.password,
+        name: {
+          firstname: data.name.firstname,
+          lastname: data.name.lastname,
+        },
+        address: {
+          city: data.address.city,
+          street: data.address.street,
+          number: data.address.number,
+          zipcode: String(data.address.zipcode),
+        },
+      };
+      addNewUser(newUserData);
+      console.log("User created successfully");
+      console.log(newUserData);
+      onClose();
+      reset();
+    } catch (error) {
+      console.error("Error creating new user:", error);
+    }
   };
 
   return (
@@ -161,7 +176,7 @@ const SignInPage: React.FC = () => {
               <FormLabel>Zipcode</FormLabel>
               <Input
                 type="number"
-                {...register("address.zipcode", { required: true })}
+                {...register("address.zipcode", { valueAsNumber: true })}
               />
               {errors.address?.zipcode && (
                 <Text color={"red"}>This field is required</Text>
@@ -171,7 +186,7 @@ const SignInPage: React.FC = () => {
         </VStack>
         <Center mt={2}>
           <Button type="submit" colorScheme="blue">
-            Sign In
+            Sign Up
           </Button>
         </Center>
       </form>
@@ -179,4 +194,4 @@ const SignInPage: React.FC = () => {
   );
 };
 
-export default SignInPage;
+export default SignUpPage;

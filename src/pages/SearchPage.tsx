@@ -4,10 +4,8 @@ import {
   Text,
   InputGroup,
   InputRightElement,
-  InputLeftElement,
   Box,
   Flex,
-  Center,
 } from "@chakra-ui/react";
 import { useSearchText } from "../StateManagement/SearchTextContext";
 import { FieldValues, useForm } from "react-hook-form";
@@ -34,7 +32,7 @@ interface FormData {
 }
 
 const SearchDrawer = () => {
-  const { setSearchText, searchText } = useSearchText();
+  const { setSearchText } = useSearchText();
   const {
     register,
     handleSubmit,
@@ -46,6 +44,7 @@ const SearchDrawer = () => {
   const { setFilteredProduct, filteredProduct } = useFilteredProductContext();
   const { onClick } = useSelectedProductContext();
   const [searchButtonPressed, setSearchButtonPressed] = useState(false);
+  const { selectedProduct } = useSelectedProductContext();
 
   const onSubmit = (data: FieldValues) => {
     setSearchText(data.searchText);

@@ -9,13 +9,11 @@ import customTheme from "./customeTheme";
 import { RouterProvider } from "react-router-dom";
 import router from "./routing/routes";
 import { NewProductProvider } from "./StateManagement/NewProductContext";
-import {
-  SelectedProductProvider,
-  useSelectedProductContext,
-} from "./StateManagement/SelectedProductContext";
+import { SelectedProductProvider } from "./StateManagement/SelectedProductContext";
 import { SearchTextProvider } from "./StateManagement/SearchTextContext";
 import { AllProductsProvider } from "./StateManagement/AllProductsContexts";
 import { FilteredProductProvider } from "./StateManagement/FilteredProducts";
+import { UserProvider } from "./StateManagement/UserInfoContext";
 
 const queryClient = new QueryClient();
 
@@ -26,14 +24,16 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <SelectedProductProvider>
           <SearchTextProvider>
             <FilteredProductProvider>
-              <AllProductsProvider>
-                <NewProductProvider>
-                  <SelectedCategoryProvider>
-                    <RouterProvider router={router} />
-                    <ReactQueryDevtools />
-                  </SelectedCategoryProvider>
-                </NewProductProvider>
-              </AllProductsProvider>
+              <UserProvider>
+                <AllProductsProvider>
+                  <NewProductProvider>
+                    <SelectedCategoryProvider>
+                      <RouterProvider router={router} />
+                      <ReactQueryDevtools />
+                    </SelectedCategoryProvider>
+                  </NewProductProvider>
+                </AllProductsProvider>
+              </UserProvider>
             </FilteredProductProvider>
           </SearchTextProvider>
         </SelectedProductProvider>

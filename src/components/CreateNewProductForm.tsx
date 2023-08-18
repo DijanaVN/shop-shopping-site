@@ -20,14 +20,13 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { FieldValues, useForm } from "react-hook-form";
-import useCreateNewProduct, { NewProduct } from "../hooks/useCreateNewProduct";
 import shoes from "../images/alexandra-gorn-CJ6SJO_yR5w-unsplash.webp";
 import { useNewProductContext } from "../StateManagement/NewProductContext";
 import useCategories from "../hooks/useCategories";
 import { useNavigate } from "react-router-dom";
 
 const productSchema = z.object({
-  id: z.number({ invalid_type_error: "Price field is required." }),
+  id: z.number({ invalid_type_error: "Field is required." }),
   title: z.string().min(3, "Product name must be at least 3 characters"),
   price: z.number({ invalid_type_error: "Price field is required." }),
   description: z.string(),
@@ -45,7 +44,7 @@ type FormData = z.infer<typeof productSchema>;
 const CreateNewProductForm: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const { newProduct, addNewProduct } = useNewProductContext();
+  const { addNewProduct } = useNewProductContext();
   const { searchQuery } = useCategories();
   const generateRandomUniqueUri = (): number => {
     const timestamp = Date.now(); // Get the current timestamp in milliseconds

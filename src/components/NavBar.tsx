@@ -20,7 +20,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import logoImage from "../../src/images/Shop-Shopping-_2_ (1).webp";
 import ProductCategories from "./ProductCategories";
 import SearchDrawer from "../pages/SearchPage";
-import SignInPage from "./../pages/SignInPage";
+import SignInPage from "../pages/SignUpPage";
 
 const NavBar = () => {
   const {

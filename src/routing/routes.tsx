@@ -6,7 +6,7 @@ import CategoryGridPage from "../pages/CategoryGridPage";
 import ProductDetailedPage from "../pages/ProductDeatiledPage";
 import AboutUsPage from "./../pages/AboutUsPage";
 import ContactUs from "./../pages/ContactUsPage";
-import SignInPage from "./../pages/SignInPage";
+import SignInPage from "../pages/SignUpPage";
 import SearchPage from "./../pages/SearchPage";
 
 const router = createBrowserRouter([
