@@ -20,7 +20,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import logoImage from "../../src/images/Shop-Shopping-_2_ (1).webp";
 import ProductCategories from "./ProductCategories";
 import SearchDrawer from "../pages/SearchPage";
-import SignInPage from "../pages/SignUpPage";
+import UserDropdown from "./UserDropdown";
 
 const NavBar = () => {
   const {
@@ -56,7 +56,7 @@ const NavBar = () => {
         <Link to={"/contactus"}>Contact </Link>
         <Link to={"/aboutus"}> About Us</Link>
       </HStack>
-      <HStack fontSize={"40"} spacing={8}>
+      <HStack spacing={8}>
         <Button
           variant={"ghost"}
           fontSize={"40"}
@@ -79,34 +79,9 @@ const NavBar = () => {
             </DrawerContent>
           </Drawer>
         </Button>
-        <Button
-          variant={"ghost"}
-          fontSize={"40"}
-          onClick={onSignInOpen}
-          _hover={{}}
-        >
-          <FaRegUser />
-          <Drawer
-            placement="right"
-            onClose={onSignInClose}
-            isOpen={isSignInOpen}
-          >
-            <DrawerOverlay />
-            <DrawerContent>
-              <DrawerCloseButton />
-              <DrawerHeader bgColor={"primary.50"} paddingBottom={8}>
-                Sign In
-              </DrawerHeader>
-              <Divider />
-              <DrawerBody>
-                <SignInPage />
-              </DrawerBody>
-            </DrawerContent>
-          </Drawer>
-        </Button>
-
+        <UserDropdown />
         <Link to={"/shoppingCart"}>
-          <FiShoppingCart />
+          <FiShoppingCart fontSize={"40"} />
         </Link>
       </HStack>
     </Flex>

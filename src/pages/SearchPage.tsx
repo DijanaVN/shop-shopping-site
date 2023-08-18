@@ -44,7 +44,6 @@ const SearchDrawer = () => {
   const { setFilteredProduct, filteredProduct } = useFilteredProductContext();
   const { onClick } = useSelectedProductContext();
   const [searchButtonPressed, setSearchButtonPressed] = useState(false);
-  const { selectedProduct } = useSelectedProductContext();
 
   const onSubmit = (data: FieldValues) => {
     setSearchText(data.searchText);
