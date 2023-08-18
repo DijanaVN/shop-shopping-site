@@ -14,7 +14,7 @@ import {
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import img from "../images/etienne-girardet-Ai6WKLEakak-unsplash.webp";
+import img from "../images/jungwoo-hong-cYUMaCqMYvI-unsplash.webp";
 
 const schema = z.object({
   email: z.string().email("Invalid email address").min(1),

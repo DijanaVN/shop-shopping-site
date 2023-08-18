@@ -1,4 +1,16 @@
-import { Flex, HStack, useDisclosure, Image } from "@chakra-ui/react";
+import {
+  Flex,
+  HStack,
+  useDisclosure,
+  Image,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
+  Button,
+} from "@chakra-ui/react";
 
 import { FcSearch } from "react-icons/fc";
 import { Link } from "react-router-dom";
@@ -6,9 +18,10 @@ import { FaRegUser } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import logoImage from "../../src/images/Shop-Shopping-_2_ (1).webp";
 import ProductCategories from "./ProductCategories";
+import SearchDrawer from "../pages/SearchPage";
 
 const NavBar = () => {
-  const { onOpen } = useDisclosure();
+  const { onOpen, onClose, isOpen } = useDisclosure();
 
   return (
     <Flex
@@ -33,9 +46,19 @@ const NavBar = () => {
         <Link to={"/aboutus"}> About Us</Link>
       </HStack>
       <HStack fontSize={"40"} spacing={8}>
-        <Link to={"/search"} onClick={onOpen}>
+        <Button variant={"ghost"} fontSize={"40"} onClick={onOpen} _hover={{}}>
           <FcSearch />
-        </Link>
+          <Drawer placement="bottom" onClose={onClose} isOpen={isOpen}>
+            <DrawerOverlay />
+            <DrawerContent>
+              <DrawerCloseButton />
+              <DrawerHeader>Search</DrawerHeader>
+              <DrawerBody>
+                <SearchDrawer />
+              </DrawerBody>
+            </DrawerContent>
+          </Drawer>
+        </Button>
         <Link to={"/signin"}>
           <FaRegUser />
         </Link>

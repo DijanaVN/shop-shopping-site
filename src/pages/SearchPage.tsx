@@ -13,7 +13,7 @@ import { useSearchText } from "../StateManagement/SearchTextContext";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAllProductsContext } from "../StateManagement/AllProductsContexts";
 import { useFilteredProductContext } from "./../StateManagement/FilteredProducts";
 import CardFunction from "./../components/CardFunction";
@@ -21,6 +21,7 @@ import img from "../images/milad-fakurian-HE1_K4_-QT8-unsplash.webp";
 import { FcSearch } from "react-icons/fc";
 import { useSelectedProductContext } from "./../StateManagement/SelectedProductContext";
 import { useState } from "react";
+import NavBar from "./../components/NavBar";
 
 const schema = z.object({
   searchText: z
@@ -63,20 +64,28 @@ const SearchDrawer = () => {
     <>
       <Box backgroundImage={img}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <InputGroup>
-            <InputLeftElement pointerEvents="none" />
-
+          <InputGroup backgroundImage={img} padding={10} position="relative">
             <Input
-              paddingLeft={10}
+              paddingLeft={6}
+              paddingRight="2.5rem"
               {...register("searchText")}
               borderRadius={5}
               placeholder="Search..."
               variant={"filled"}
               backgroundColor={"primary.50"}
+              _hover={{ paddingRight: "2.5rem" }}
             />
-            <InputRightElement width="2.5rem">
+            <InputRightElement
+              width="2.5rem"
+              position="absolute"
+              top="50%" // Vertically center the icon
+              right={10} // Adjust the horizontal position
+              transform="translateY(-50%)" // Vertically center the icon
+            >
               <Button
+                _hover={{}}
                 rightIcon={<FcSearch />}
+                variant={"ghost"}
                 type="submit"
                 h="100%"
                 size="sm"
@@ -90,7 +99,13 @@ const SearchDrawer = () => {
             </Text>
           )}
         </form>
-        <Flex flexWrap="wrap" justifyContent="space-between" margin={2}>
+        <Flex
+          fontSize={"lg"}
+          flexWrap="wrap"
+          margin={2}
+          alignItems="center" // Center align vertically
+          flexDirection="column"
+        >
           {searchButtonPressed && filteredProduct.length === 0 ? (
             <Text height={"100vh"}>No results for that search.</Text>
           ) : (
