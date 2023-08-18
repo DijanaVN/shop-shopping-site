@@ -10,6 +10,7 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Button,
+  Divider,
 } from "@chakra-ui/react";
 
 import { FcSearch } from "react-icons/fc";
@@ -19,9 +20,19 @@ import { FiShoppingCart } from "react-icons/fi";
 import logoImage from "../../src/images/Shop-Shopping-_2_ (1).webp";
 import ProductCategories from "./ProductCategories";
 import SearchDrawer from "../pages/SearchPage";
+import SignInPage from "./../pages/SignInPage";
 
 const NavBar = () => {
-  const { onOpen, onClose, isOpen } = useDisclosure();
+  const {
+    onOpen: onSearchOpen,
+    onClose: onSearchClose,
+    isOpen: isSearchOpen,
+  } = useDisclosure();
+  const {
+    onOpen: onSignInOpen,
+    onClose: onSignInClose,
+    isOpen: isSignInOpen,
+  } = useDisclosure();
 
   return (
     <Flex
@@ -46,9 +57,18 @@ const NavBar = () => {
         <Link to={"/aboutus"}> About Us</Link>
       </HStack>
       <HStack fontSize={"40"} spacing={8}>
-        <Button variant={"ghost"} fontSize={"40"} onClick={onOpen} _hover={{}}>
+        <Button
+          variant={"ghost"}
+          fontSize={"40"}
+          onClick={onSearchOpen}
+          _hover={{}}
+        >
           <FcSearch />
-          <Drawer placement="bottom" onClose={onClose} isOpen={isOpen}>
+          <Drawer
+            placement="bottom"
+            onClose={onSearchClose}
+            isOpen={isSearchOpen}
+          >
             <DrawerOverlay />
             <DrawerContent>
               <DrawerCloseButton />
@@ -59,9 +79,32 @@ const NavBar = () => {
             </DrawerContent>
           </Drawer>
         </Button>
-        <Link to={"/signin"}>
+        <Button
+          variant={"ghost"}
+          fontSize={"40"}
+          onClick={onSignInOpen}
+          _hover={{}}
+        >
           <FaRegUser />
-        </Link>
+          <Drawer
+            placement="right"
+            onClose={onSignInClose}
+            isOpen={isSignInOpen}
+          >
+            <DrawerOverlay />
+            <DrawerContent>
+              <DrawerCloseButton />
+              <DrawerHeader bgColor={"primary.50"} paddingBottom={8}>
+                Sign In
+              </DrawerHeader>
+              <Divider />
+              <DrawerBody>
+                <SignInPage />
+              </DrawerBody>
+            </DrawerContent>
+          </Drawer>
+        </Button>
+
         <Link to={"/shoppingCart"}>
           <FiShoppingCart />
         </Link>
