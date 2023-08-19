@@ -9,8 +9,9 @@ import {
   Text,
   Center,
 } from "@chakra-ui/react";
-import { User } from "../StateManagement/UserInfoContext";
+import { User, useUserContext } from "../StateManagement/UserInfoContext";
 import { z } from "zod";
+import { useUserSignInContext } from "../StateManagement/SignInUserContext";
 const schema = z.object({
   emailOrUsername: z.string().min(1),
   password: z.string().min(1),
@@ -24,6 +25,7 @@ const SignInPage: React.FC = () => {
     formState: { errors },
     reset,
   } = useForm<FormData>();
+  const { userSignIn, setUserSignIn } = useUserSignInContext();
 
   const users: User[] = JSON.parse(localStorage.getItem("UserStorage") || "[]");
 
@@ -37,12 +39,14 @@ const SignInPage: React.FC = () => {
             user.username === data.emailOrUsername) &&
           user.password === data.password
       );
+      console.log(matchedUser);
 
       if (!matchedUser) {
         setErrorMessage("Wrong email address/username or password.");
       } else if (matchedUser.password === data.password) {
         console.log("User exists:", matchedUser);
         setErrorMessage("");
+        setUserSignIn(matchedUser);
       }
       reset();
     } catch (error) {

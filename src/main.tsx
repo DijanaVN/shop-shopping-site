@@ -14,6 +14,7 @@ import { SearchTextProvider } from "./StateManagement/SearchTextContext";
 import { AllProductsProvider } from "./StateManagement/AllProductsContexts";
 import { FilteredProductProvider } from "./StateManagement/FilteredProducts";
 import { UserProvider } from "./StateManagement/UserInfoContext";
+import { UserSignInProvider } from "./StateManagement/SignInUserContext";
 
 const queryClient = new QueryClient();
 
@@ -27,10 +28,12 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
               <UserProvider>
                 <AllProductsProvider>
                   <NewProductProvider>
-                    <SelectedCategoryProvider>
-                      <RouterProvider router={router} />
-                      <ReactQueryDevtools />
-                    </SelectedCategoryProvider>
+                    <UserSignInProvider>
+                      <SelectedCategoryProvider>
+                        <RouterProvider router={router} />
+                        <ReactQueryDevtools />
+                      </SelectedCategoryProvider>
+                    </UserSignInProvider>
                   </NewProductProvider>
                 </AllProductsProvider>
               </UserProvider>

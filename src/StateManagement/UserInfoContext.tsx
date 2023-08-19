@@ -22,8 +22,6 @@ type userContext = {
   user: User[];
   setUser: React.Dispatch<React.SetStateAction<User[]>>;
   addNewUser: (newUserData: User) => void;
-  updateUser: (UserId: number, updatedData: User) => void;
-  deleteUser: (UserId: number) => void;
 };
 
 type UserContextProps = {
@@ -34,8 +32,6 @@ const userContext = createContext<userContext>({
   user: [],
   setUser: () => {},
   addNewUser: () => {},
-  updateUser: () => {},
-  deleteUser: () => {},
 });
 
 export function useUserContext() {
@@ -52,17 +48,6 @@ export function UserProvider({ children }: UserContextProps) {
   const addNewUser = (newUserData: User) => {
     setUser((prevUsers) => [...prevUsers, newUserData]);
   };
-  const updateUser = (UserId: number, updatedData: User) => {
-    setUser((prevUsers) =>
-      prevUsers.map((User) =>
-        User.id === UserId ? { ...User, ...updatedData } : User
-      )
-    );
-  };
-
-  const deleteUser = (UserId: number) => {
-    setUser((prevUsers) => prevUsers.filter((User) => User.id !== UserId));
-  };
 
   return (
     <userContext.Provider
@@ -70,8 +55,6 @@ export function UserProvider({ children }: UserContextProps) {
         user,
         setUser,
         addNewUser,
-        updateUser,
-        deleteUser,
       }}
     >
       {children}
