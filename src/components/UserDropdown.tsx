@@ -19,6 +19,7 @@ import {
 } from "@chakra-ui/react";
 import { FaRegUser } from "react-icons/fa";
 import SignUpPage from "../pages/SignUpPage";
+import SignInPage from "../pages/SignInPage";
 
 const UserDropdown: React.FC = () => {
   const {
@@ -57,7 +58,7 @@ const UserDropdown: React.FC = () => {
           </DrawerHeader>
           <Divider />
           <DrawerBody>
-            <Text>Soon SignIn</Text>
+            <SignInPage />
           </DrawerBody>
         </DrawerContent>
       </Drawer>

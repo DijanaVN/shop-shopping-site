@@ -19,7 +19,7 @@ const userSchema = z.object({
   id: z.number(),
   email: z.string().email(),
   username: z.string(),
-  password: z.string(),
+  password: z.string().min(6),
   name: z.object({
     firstname: z.string(),
     lastname: z.string(),
