@@ -15,13 +15,12 @@ import {
 
 import { FcSearch } from "react-icons/fc";
 import { Link } from "react-router-dom";
-import { FaRegUser } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import logoImage from "../../src/images/Shop-Shopping-_2_ (1).webp";
 import ProductCategories from "./ProductCategories";
-import SearchDrawer from "../pages/SearchPage";
 import UserDropdown from "./UserDropdown";
 import { useUserSignInContext } from "./../StateManagement/SignInUserContext";
+import SearchPage from "./../pages/SearchPage";
 
 const NavBar = () => {
   const {
@@ -71,7 +70,7 @@ const NavBar = () => {
               <DrawerCloseButton />
               <DrawerHeader>Search</DrawerHeader>
               <DrawerBody>
-                <SearchDrawer />
+                <SearchPage onClose={onSearchClose} />
               </DrawerBody>
             </DrawerContent>
           </Drawer>

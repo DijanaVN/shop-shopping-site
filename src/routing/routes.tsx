@@ -31,7 +31,16 @@ const router = createBrowserRouter([
           />
         ),
       },
-      { path: "/search", element: <SearchPage /> },
+      {
+        path: "/search",
+        element: (
+          <SearchPage
+            onClose={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+          />
+        ),
+      },
       { path: "/userPage", element: <UserPage /> },
     ],
   },

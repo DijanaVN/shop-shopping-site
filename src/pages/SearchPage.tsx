@@ -11,7 +11,7 @@ import { useSearchText } from "../StateManagement/SearchTextContext";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAllProductsContext } from "../StateManagement/AllProductsContexts";
 import { useFilteredProductContext } from "./../StateManagement/FilteredProducts";
 import CardFunction from "./../components/CardFunction";
@@ -31,8 +31,9 @@ interface FormData {
   searchText: string;
 }
 
-const SearchDrawer = () => {
+const SearchPage = ({ onClose }: { onClose: () => void }) => {
   const { setSearchText } = useSearchText();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -54,7 +55,6 @@ const SearchDrawer = () => {
     console.log(filteredProducts);
     setFilteredProduct(filteredProducts);
     setSearchButtonPressed(true);
-
     reset();
   };
 
@@ -108,13 +108,16 @@ const SearchDrawer = () => {
             <Text height={"100vh"}>No results for that search.</Text>
           ) : (
             filteredProduct.map((n) => (
-              <Link
-                to={`/product/${n.id}`}
+              <div
                 key={n.id}
-                onClick={() => onClick(n)}
+                onClick={() => {
+                  onClick(n);
+                  onClose();
+                  navigate(`/product/${n.id}`);
+                }}
               >
                 <CardFunction m={n} />
-              </Link>
+              </div>
             ))
           )}
         </Flex>
@@ -123,4 +126,4 @@ const SearchDrawer = () => {
   );
 };
 
-export default SearchDrawer;
+export default SearchPage;
