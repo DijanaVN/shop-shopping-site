@@ -38,7 +38,7 @@ const ProfilePage = () => {
           fontSize="lg"
           fontWeight="bold"
           cursor="pointer"
-          onClick={() => navigate("/email")}
+          onClick={() => navigate("/emailPage")}
         >
           EMAIL
         </Text>{" "}

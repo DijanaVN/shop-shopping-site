@@ -2,7 +2,7 @@ import { VStack, Text, Box, Flex, Image, Divider } from "@chakra-ui/react";
 import { useUserSignInContext } from "../StateManagement/SignInUserContext";
 import img from "../images/jason-leung-7bpCPMOZ1rs-unsplash.webp";
 
-const AdressesPage = () => {
+const EmailPage = () => {
   const { userSignIn } = useUserSignInContext();
 
   if (!userSignIn) {
@@ -30,14 +30,9 @@ const AdressesPage = () => {
             {userSignIn?.name.firstname + " " + userSignIn?.name.lastname}
           </Text>
           <Divider />
-          <Text>street: {userSignIn.address.street}</Text>
+          <Text>email: {userSignIn.email}</Text>
           <Divider />
-          <Text>number: {userSignIn.address.number}</Text>
-          <Divider />
-          <Text>
-            city:
-            {userSignIn?.address.zipcode + " " + userSignIn?.address.city}
-          </Text>
+
           <Divider />
         </Box>
       </VStack>
@@ -48,4 +43,4 @@ const AdressesPage = () => {
   );
 };
 
-export default AdressesPage;
+export default EmailPage;

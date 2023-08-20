@@ -11,6 +11,7 @@ import SearchPage from "./../pages/SearchPage";
 import UserPage from "../pages/UserPage";
 import ProfilePage from "./../pages/ProfilePage";
 import AdressesPage from "../pages/adressesPage";
+import EmailPage from "../pages/EmailPage";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
       { path: "/contactus", element: <ContactUs /> },
       { path: "/profilePage", element: <ProfilePage /> },
       { path: "/adressPage", element: <AdressesPage /> },
+      { path: "/emailPage", element: <EmailPage /> },
       {
         path: "/signin",
         element: (
