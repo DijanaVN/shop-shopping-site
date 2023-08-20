@@ -1,7 +1,13 @@
 import React from "react";
 import {
   Box,
+  Button,
   Container,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerOverlay,
   Flex,
   Grid,
   GridItem,
@@ -10,6 +16,8 @@ import {
   Image,
   Spacer,
   Text,
+  VStack,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { BiSolidPurchaseTag } from "react-icons/bi";
 import { BiHelpCircle } from "react-icons/bi";
@@ -17,9 +25,13 @@ import { ImProfile } from "react-icons/im";
 import img1 from "../images/pascal-brauer-ttdio_nOPjQ-unsplash.webp";
 import img2 from "../images/molly-mears-4_90zmmdo_4-unsplash.webp";
 import { useUserSignInContext } from "../StateManagement/SignInUserContext";
+import ProfilePage from "./ProfilePage";
+import { useNavigate } from "react-router-dom";
 
 const UserPage: React.FC = () => {
   const { userSignIn } = useUserSignInContext();
+  const navigate = useNavigate();
+
   return (
     <Box>
       {/* Body */}
@@ -53,6 +65,7 @@ const UserPage: React.FC = () => {
                     aria-label="Profile"
                     icon={<ImProfile />}
                     colorScheme="green"
+                    onClick={() => navigate("/profilePage")}
                   />
                   <Text mt={2}>Profile</Text>
                 </GridItem>
@@ -89,7 +102,7 @@ const UserPage: React.FC = () => {
             </GridItem>
           </Grid>
         </Flex>
-      </Container>
+      </Container>{" "}
     </Box>
   );
 };

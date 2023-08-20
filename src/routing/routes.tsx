@@ -9,6 +9,8 @@ import ContactUs from "./../pages/ContactUsPage";
 import SignInPage from "../pages/SignUpPage";
 import SearchPage from "./../pages/SearchPage";
 import UserPage from "../pages/UserPage";
+import ProfilePage from "./../pages/ProfilePage";
+import AdressesPage from "../pages/adressesPage";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,8 @@ const router = createBrowserRouter([
       { path: "/product/:id", element: <ProductDetailedPage /> },
       { path: "/aboutus", element: <AboutUsPage /> },
       { path: "/contactus", element: <ContactUs /> },
+      { path: "/profilePage", element: <ProfilePage /> },
+      { path: "/adressPage", element: <AdressesPage /> },
       {
         path: "/signin",
         element: (
