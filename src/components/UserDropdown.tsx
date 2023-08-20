@@ -72,7 +72,7 @@ const UserDropdown: React.FC = () => {
           </DrawerHeader>
           <Divider />
           <DrawerBody>
-            <SignUpPage />
+            <SignUpPage onClose={onSignUpClose} />
           </DrawerBody>
         </DrawerContent>
       </Drawer>

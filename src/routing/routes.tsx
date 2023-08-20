@@ -21,7 +21,16 @@ const router = createBrowserRouter([
       { path: "/product/:id", element: <ProductDetailedPage /> },
       { path: "/aboutus", element: <AboutUsPage /> },
       { path: "/contactus", element: <ContactUs /> },
-      { path: "/signin", element: <SignInPage /> },
+      {
+        path: "/signin",
+        element: (
+          <SignInPage
+            onClose={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+          />
+        ),
+      },
       { path: "/search", element: <SearchPage /> },
       { path: "/userPage", element: <UserPage /> },
     ],

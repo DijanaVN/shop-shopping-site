@@ -34,7 +34,7 @@ const userSchema = z.object({
 
 type FormData = z.infer<typeof userSchema>;
 
-const SignUpPage: React.FC = () => {
+const SignUpPage: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const generateRandomUniqueUri = (): number => {
     const timestamp = Date.now(); // Get the current timestamp in milliseconds
     const randomNum = Math.floor(Math.random() * 1000); // Generate a random number between 0 and 999
@@ -50,7 +50,7 @@ const SignUpPage: React.FC = () => {
     resolver: zodResolver(userSchema),
     defaultValues: { id: generateRandomUniqueUri() },
   });
-  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const { addNewUser } = useUserContext();
 
   const onSubmit = async (data: FieldValues) => {
