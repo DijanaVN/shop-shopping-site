@@ -8,6 +8,7 @@ import {
   Button,
   Text,
   Center,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { User, useUserContext } from "../StateManagement/UserInfoContext";
 import { z } from "zod";
@@ -18,8 +19,10 @@ const schema = z.object({
   password: z.string().min(1),
 });
 type FormData = z.infer<typeof schema>;
-const SignInPage: React.FC = () => {
+
+const SignInPage: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [errorMessage, setErrorMessage] = useState("");
+
   const {
     handleSubmit,
     register,
@@ -49,6 +52,7 @@ const SignInPage: React.FC = () => {
         console.log("User exists:", matchedUser);
         setErrorMessage("");
         setUserSignIn(matchedUser);
+        onClose();
         navigate("/userPage");
       }
       reset();

@@ -58,7 +58,7 @@ const UserDropdown: React.FC = () => {
           </DrawerHeader>
           <Divider />
           <DrawerBody>
-            <SignInPage />
+            <SignInPage onClose={onSignInClose} />
           </DrawerBody>
         </DrawerContent>
       </Drawer>

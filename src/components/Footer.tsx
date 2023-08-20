@@ -4,9 +4,7 @@ const Footer = () => {
   return (
     <>
       <Divider />
-      <Text>
-        <CreateNewCategoryForm />
-      </Text>
+      <Text>Footer</Text>
     </>
   );
 };

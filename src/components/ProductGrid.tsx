@@ -3,7 +3,7 @@ import usePoducts, { Product } from "../hooks/useProducts";
 import { Link } from "react-router-dom";
 import { useSelectedProductContext } from "../StateManagement/SelectedProductContext";
 import CardFunction from "./CardFunction";
-import { useAllProductsContext } from "../StateManagement/AllProductsContexts";
+import CreateNewProductForm from "./CreateNewProductForm";
 
 const ProductGrid = () => {
   const { searchQuery } = usePoducts();
@@ -15,6 +15,7 @@ const ProductGrid = () => {
 
   return (
     <>
+      <CreateNewProductForm />
       <Flex flexWrap="wrap" justifyContent="space-between" margin={2}>
         {(searchQuery as Product[]).map((product) => {
           return (
