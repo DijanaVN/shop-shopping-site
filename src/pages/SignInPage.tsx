@@ -12,6 +12,7 @@ import {
 import { User, useUserContext } from "../StateManagement/UserInfoContext";
 import { z } from "zod";
 import { useUserSignInContext } from "../StateManagement/SignInUserContext";
+import { useNavigate } from "react-router-dom";
 const schema = z.object({
   emailOrUsername: z.string().min(1),
   password: z.string().min(1),
@@ -25,7 +26,8 @@ const SignInPage: React.FC = () => {
     formState: { errors },
     reset,
   } = useForm<FormData>();
-  const { userSignIn, setUserSignIn } = useUserSignInContext();
+  const { setUserSignIn } = useUserSignInContext();
+  const navigate = useNavigate();
 
   const users: User[] = JSON.parse(localStorage.getItem("UserStorage") || "[]");
 
@@ -47,6 +49,7 @@ const SignInPage: React.FC = () => {
         console.log("User exists:", matchedUser);
         setErrorMessage("");
         setUserSignIn(matchedUser);
+        navigate("/userPage");
       }
       reset();
     } catch (error) {

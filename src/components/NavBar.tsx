@@ -10,7 +10,7 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Button,
-  Divider,
+  Text,
 } from "@chakra-ui/react";
 
 import { FcSearch } from "react-icons/fc";
@@ -21,6 +21,7 @@ import logoImage from "../../src/images/Shop-Shopping-_2_ (1).webp";
 import ProductCategories from "./ProductCategories";
 import SearchDrawer from "../pages/SearchPage";
 import UserDropdown from "./UserDropdown";
+import { useUserSignInContext } from "./../StateManagement/SignInUserContext";
 
 const NavBar = () => {
   const {
@@ -28,11 +29,7 @@ const NavBar = () => {
     onClose: onSearchClose,
     isOpen: isSearchOpen,
   } = useDisclosure();
-  const {
-    onOpen: onSignInOpen,
-    onClose: onSignInClose,
-    isOpen: isSignInOpen,
-  } = useDisclosure();
+  const { userSignIn } = useUserSignInContext();
 
   return (
     <Flex
@@ -79,6 +76,18 @@ const NavBar = () => {
             </DrawerContent>
           </Drawer>
         </Button>
+        {userSignIn && (
+          <Text
+            as={Link}
+            to="/userPage"
+            fontWeight="bold"
+            fontSize="20"
+            fontFamily={"heading"}
+            textTransform="uppercase"
+          >
+            {userSignIn.name.firstname}
+          </Text>
+        )}
         <UserDropdown />
         <Link to={"/shoppingCart"}>
           <FiShoppingCart fontSize={"40"} />
