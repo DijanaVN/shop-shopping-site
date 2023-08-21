@@ -13,6 +13,7 @@ import ProfilePage from "./../pages/ProfilePage";
 import AdressesPage from "../pages/adressesPage";
 
 import PasswordPage from "../pages/PasswordPage";
+import EmailPage from "../pages/EmailPage";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
       { path: "/contactus", element: <ContactUs /> },
       { path: "/profilePage", element: <ProfilePage /> },
       { path: "/adressPage", element: <AdressesPage /> },
-      // { path: "/emailPage", element: <EmailPage /> },
+      { path: "/emailPage", element: <EmailPage /> },
       { path: "/passwordPage", element: <PasswordPage /> },
       {
         path: "/signin",

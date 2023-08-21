@@ -145,9 +145,6 @@ const PasswordPage = () => {
           </Flex>
         </Box>
       </VStack>
-      <VStack spacing={4} padding={5}>
-        <Text fontWeight="bold">INVOICING</Text> <Divider />
-      </VStack>
     </Flex>
   );
 };
