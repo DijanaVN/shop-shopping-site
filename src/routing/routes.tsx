@@ -10,10 +10,9 @@ import SignInPage from "../pages/SignUpPage";
 import SearchPage from "./../pages/SearchPage";
 import UserPage from "../pages/UserPage";
 import ProfilePage from "./../pages/ProfilePage";
-import AdressesPage from "../pages/adressesPage";
-
 import PasswordPage from "../pages/PasswordPage";
 import EmailPage from "../pages/EmailPage";
+import AdressesPage from "../pages/AdressesPage";
 
 const router = createBrowserRouter([
   {
