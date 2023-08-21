@@ -22,6 +22,7 @@ type userContext = {
   user: User[];
   setUser: React.Dispatch<React.SetStateAction<User[]>>;
   addNewUser: (newUserData: User) => void;
+  deleteUser: (userId: number) => void;
 };
 
 type UserContextProps = {
@@ -32,6 +33,7 @@ const userContext = createContext<userContext>({
   user: [],
   setUser: () => {},
   addNewUser: () => {},
+  deleteUser: () => {},
 });
 
 export function useUserContext() {
@@ -49,12 +51,17 @@ export function UserProvider({ children }: UserContextProps) {
     setUser((prevUsers) => [...prevUsers, newUserData]);
   };
 
+  const deleteUser = (userId: number) => {
+    setUser((prevUsers) => prevUsers.filter((u) => u.id !== userId));
+  };
+
   return (
     <userContext.Provider
       value={{
         user,
         setUser,
         addNewUser,
+        deleteUser,
       }}
     >
       {children}

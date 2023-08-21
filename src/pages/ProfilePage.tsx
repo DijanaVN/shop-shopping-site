@@ -1,16 +1,47 @@
-import { VStack, Divider, Text, Box, Flex, Image } from "@chakra-ui/react";
+import {
+  Divider,
+  Text,
+  Box,
+  Flex,
+  Image,
+  AlertDialogOverlay,
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  Button,
+} from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import img from "../images/jason-leung-7bpCPMOZ1rs-unsplash.webp";
+import { useUserSignInContext } from "../StateManagement/SignInUserContext";
+import { useUserContext } from "../StateManagement/UserInfoContext";
+import { useRef, useState } from "react";
 
 const ProfilePage = () => {
+  const { userSignIn, setUserSignIn } = useUserSignInContext();
+  const { deleteUser } = useUserContext();
   const navigate = useNavigate();
+  const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
+  const onCloseConfirmation = () => setIsConfirmationOpen(false);
+  const cancelRef = useRef<HTMLButtonElement | null>(null);
 
   const handleSignOut = () => {
-    // Implement your sign out logic here
+    window.location.reload();
+    navigate("/");
   };
 
   const handleDeleteAccount = () => {
-    // Implement your delete account logic here
+    setIsConfirmationOpen(true);
+  };
+
+  const confirmDeleteAccount = () => {
+    if (userSignIn) {
+      deleteUser(userSignIn.id);
+      setUserSignIn(undefined);
+      onCloseConfirmation();
+      navigate("/");
+    }
   };
   return (
     <Flex
@@ -64,7 +95,29 @@ const ProfilePage = () => {
           Delete your account
         </Text>{" "}
         <Divider />
-      </Box>
+      </Box>{" "}
+      <AlertDialog
+        isOpen={isConfirmationOpen}
+        leastDestructiveRef={cancelRef}
+        onClose={onCloseConfirmation}
+      >
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <AlertDialogHeader>Delete Account</AlertDialogHeader>
+            <AlertDialogBody>
+              Are you sure you want to delete your account?
+            </AlertDialogBody>
+            <AlertDialogFooter>
+              <Button ref={cancelRef} onClick={onCloseConfirmation}>
+                No
+              </Button>
+              <Button colorScheme="red" onClick={confirmDeleteAccount} ml={3}>
+                Yes
+              </Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
     </Flex>
   );
 };
