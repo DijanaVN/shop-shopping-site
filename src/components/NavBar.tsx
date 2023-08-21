@@ -40,7 +40,7 @@ const NavBar = () => {
       <Link to={"/"}>
         <Image boxSize="20" src={logoImage} alt="Logo" borderRadius="full" />
       </Link>
-      {/* <ColorModeSwitch /> */}
+
       <HStack
         spacing={10}
         fontSize={20}

@@ -48,7 +48,7 @@ const ProfilePage = () => {
           fontSize="lg"
           fontWeight="bold"
           cursor="pointer"
-          onClick={() => navigate("/change-password")}
+          onClick={() => navigate("/passwordPage")}
         >
           CHANGE PASSWORD
         </Text>

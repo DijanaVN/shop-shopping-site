@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Box,
-  Button,
   Menu,
   MenuButton,
   MenuList,
@@ -15,7 +14,6 @@ import {
   DrawerBody,
   DrawerCloseButton,
   useDisclosure,
-  Text,
 } from "@chakra-ui/react";
 import { FaRegUser } from "react-icons/fa";
 import SignUpPage from "../pages/SignUpPage";
