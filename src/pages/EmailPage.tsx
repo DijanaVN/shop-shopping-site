@@ -6,18 +6,27 @@ import {
   Image,
   Divider,
   Button,
+  AlertDialog,
+  AlertDialogOverlay,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogBody,
+  AlertDialogFooter,
 } from "@chakra-ui/react";
 import { useUserSignInContext } from "../StateManagement/SignInUserContext";
 import img from "../images/jason-leung-7bpCPMOZ1rs-unsplash.webp";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { User, useUserContext } from "../StateManagement/UserInfoContext";
+import PopupWindow from "./../components/Popupwindow";
 
 const EmailPage = () => {
   const { userSignIn, updateSignInUser } = useUserSignInContext();
   const [newEmail, setNewEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
   const [emailMatchError, setEmailMatchError] = useState(false);
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const [wrongOldEmail, setWrongOldEmail] = useState(false);
+  const cancelRef = useRef<HTMLButtonElement | null>(null);
   const { user, setUser } = useUserContext();
 
   const handleEmailChange = () => {
@@ -45,6 +54,7 @@ const EmailPage = () => {
     setConfirmEmail("");
     setEmailMatchError(false);
     setWrongOldEmail(false);
+    setIsSuccessOpen(true);
   };
 
   if (!userSignIn) {
@@ -76,7 +86,6 @@ const EmailPage = () => {
             <b>email:</b> {userSignIn.email}
           </Text>
           <Divider />
-
           <Divider />
           <Flex direction={"column"} alignItems="center" gap="3">
             <input
@@ -117,10 +126,18 @@ const EmailPage = () => {
               variant="solid"
               colorScheme="blue"
               onClick={handleEmailChange}
+              ref={cancelRef}
             >
               Change Email
             </Button>
-          </Flex>
+          </Flex>{" "}
+          <PopupWindow
+            isOpen={isSuccessOpen}
+            onClose={() => setIsSuccessOpen(false)}
+            state={"email"}
+            action={"update"}
+            cancelRef={cancelRef}
+          />
         </Box>
       </VStack>
     </Flex>
