@@ -1,6 +1,6 @@
 import React, { ReactNode, createContext, useContext, useState } from "react";
 
-interface ContactForm {
+export interface ContactForm {
   name: string;
   email: string;
   message: string;
@@ -15,16 +15,18 @@ type ContactFormContextProps = {
   children: ReactNode;
 };
 
-const ContactFormContext = createContext<ContactFormContext | undefined>(
-  undefined
-);
+const ContactFormContext = createContext<ContactFormContext>({
+  contactForm: [],
+  setContactForm: () => {},
+});
 
 export function useContactFormContext() {
-  const context = useContext(ContactFormContext);
+  return useContext(ContactFormContext);
 }
 
 export function ContactFormProvider({ children }: ContactFormContextProps) {
   const [contactForm, setContactForm] = useState<ContactForm[]>([]);
+  console.log(contactForm);
 
   return (
     <ContactFormContext.Provider

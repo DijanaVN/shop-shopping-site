@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import {
   Box,
   Heading,
@@ -16,8 +16,42 @@ import {
   Grid,
 } from "@chakra-ui/react";
 import img from "../images/andrew-neel-ute2XAFQU2I-unsplash.webp";
+import { FieldElement, FieldValues, useForm } from "react-hook-form";
+import {
+  ContactForm,
+  useContactFormContext,
+} from "../StateManagement/ContactFormContext";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import PopupWindow from "../components/Popupwindow";
+
+const schema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters").max(50),
+  email: z.string().email("Invalid email"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+});
 
 const ContactUs = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ContactForm>({
+    resolver: zodResolver(schema),
+  });
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
+  const cancelRef = useRef<HTMLButtonElement | null>(null);
+
+  const { contactForm, setContactForm } = useContactFormContext();
+
+  const onSubmit = (data: ContactForm) => {
+    setContactForm([...contactForm, data]);
+    console.log(data);
+    reset();
+    setIsSuccessOpen(true);
+  };
+
   return (
     <Box bg="gray.100" p={12}>
       <Grid templateColumns="repeat(2, 1fr)" gap={12}>
@@ -52,27 +86,50 @@ const ContactUs = () => {
             <Heading size="md">Contact Form</Heading>
             <br />
             <Text>You can also reach us by filling out the form below:</Text>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <VStack spacing={4} mt={4} align="start">
                 <FormControl>
                   <FormLabel htmlFor="name">Name:</FormLabel>
-                  <Input type="text" id="name" name="name" required />
+                  <Input type="text" {...register("name")} />
+                  {errors.name && (
+                    <Text fontSize={"xs"} color="red">
+                      {errors.name.message}
+                    </Text>
+                  )}
                 </FormControl>
                 <FormControl>
                   <FormLabel htmlFor="email">Email:</FormLabel>
-                  <Input type="email" id="email" name="email" required />
+                  <Input type="email" {...register("email")} />
+                  {errors.email && (
+                    <Text fontSize={"xs"} color="red">
+                      {errors.email.message}
+                    </Text>
+                  )}
                 </FormControl>
                 <FormControl>
                   <FormLabel htmlFor="message">Message:</FormLabel>
                   <Textarea
-                    id="message"
-                    name="message"
                     rows={4}
                     resize="vertical"
                     required
+                    {...register("message")}
                   />
+                  {errors.message && (
+                    <Text fontSize={"xs"} color="red">
+                      {errors.message.message}
+                    </Text>
+                  )}
                 </FormControl>
-                <Button type="submit">Submit</Button>
+                <Button ref={cancelRef} variant={"outline"} type="submit">
+                  Submit
+                </Button>{" "}
+                <PopupWindow
+                  isOpen={isSuccessOpen}
+                  onClose={() => setIsSuccessOpen(false)}
+                  state={"contact form"}
+                  action={"send"}
+                  cancelRef={cancelRef}
+                />
               </VStack>
             </form>
           </Box>
