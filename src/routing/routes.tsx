@@ -16,6 +16,7 @@ import AdressesPage from "../pages/SignInSingUp/AdressesPage";
 import HelpPage from "./../pages/SignInSingUp/HelpPage";
 import PrivacyPolicy from "./../pages/Footer/PrivacyPolicy";
 import PurchaseConditions from "../pages/Footer/PurchaseCondition";
+import CookiesSettings from "./../pages/Footer/CookiesSetting";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
       { path: "/helpPage", element: <HelpPage /> },
       { path: "/policy", element: <PrivacyPolicy /> },
       { path: "/purchase", element: <PurchaseConditions /> },
+      { path: "/cookies", element: <CookiesSettings /> },
       {
         path: "/signin",
         element: (

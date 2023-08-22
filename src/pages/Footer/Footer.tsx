@@ -40,7 +40,7 @@ const Footer = () => {
                 PURCHASE CONDITIONS
               </Link>
 
-              <Link href="#" isExternal>
+              <Link href="/cookies" isExternal>
                 COOKIES SETTINGS
               </Link>
             </SimpleGrid>
