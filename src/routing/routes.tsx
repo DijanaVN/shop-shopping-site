@@ -18,6 +18,7 @@ import PrivacyPolicy from "./../pages/Footer/PrivacyPolicy";
 import PurchaseConditions from "../pages/Footer/PurchaseCondition";
 import CookiesSettings from "./../pages/Footer/CookiesSetting";
 import Shipping from "./../pages/Footer/Shipping";
+import Exchanges from "./../pages/Footer/Exchanges";
 
 const router = createBrowserRouter([
   {
@@ -38,7 +39,8 @@ const router = createBrowserRouter([
       { path: "/policy", element: <PrivacyPolicy /> },
       { path: "/purchase", element: <PurchaseConditions /> },
       { path: "/cookies", element: <CookiesSettings /> },
-      { path: "/SHIPPING", element: <Shipping /> },
+      { path: "/shipping", element: <Shipping /> },
+      { path: "/exchanges", element: <Exchanges /> },
 
       {
         path: "/signin",

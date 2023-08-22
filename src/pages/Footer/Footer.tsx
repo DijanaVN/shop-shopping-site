@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Box,
+  Center,
   Container,
   Divider,
   Flex,
@@ -9,6 +10,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { BsFacebook, BsInstagram } from "react-icons/bs";
 
 const Footer = () => {
   return (
@@ -19,6 +21,7 @@ const Footer = () => {
             <Text fontSize="xl" fontWeight="bold" mb={4}>
               HELP
             </Text>
+            <Divider mb={3} borderColor="gray.600" />
             <SimpleGrid columns={1} spacing={2}>
               <Link to="/userPage">MY ACCOUNT</Link>
               <Link to="/shipping">SHIPPING</Link>
@@ -31,6 +34,7 @@ const Footer = () => {
             <Text fontSize="xl" fontWeight="bold" mb={4}>
               POLICIES
             </Text>
+            <Divider mb={3} borderColor="gray.600" />
             <SimpleGrid columns={1} spacing={2}>
               <Link to="/policy">PRIVACY POLICY</Link>
               <Link to="/purchase">PURCHASE CONDITIONS</Link>
@@ -43,10 +47,21 @@ const Footer = () => {
             <Text fontSize="xl" fontWeight="bold" mb={4}>
               FOLLOW US
             </Text>
+            <Divider mb={3} borderColor="gray.600" />
 
             <SimpleGrid columns={2} spacing={2}>
-              <Link to="/">INSTAGRAM</Link>
-              <Link to="#">FACEBOOK</Link>
+              <Link to="https://www.instagram.com/">
+                INSTAGRAM{" "}
+                <Center>
+                  <BsInstagram />{" "}
+                </Center>
+              </Link>
+              <Link to="https://www.facebook.com">
+                FACEBOOK{" "}
+                <Center>
+                  <BsFacebook />
+                </Center>
+              </Link>
             </SimpleGrid>
           </Box>
         </Grid>

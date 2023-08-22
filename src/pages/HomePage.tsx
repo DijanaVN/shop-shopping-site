@@ -1,6 +1,5 @@
 import { Box, Grid, GridItem, HStack, Image } from "@chakra-ui/react";
 import ProductGrid from "../components/ProductGrid";
-import Footer from "./Footer/Footer";
 import treatyourself from "../images/freestocks-_3Q3tsJ01nc-unsplash.webp";
 
 function HomePage() {
