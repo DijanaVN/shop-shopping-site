@@ -18,24 +18,24 @@ const Footer = () => {
       <Container maxW="container.lg">
         <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap={8}>
           <Box>
-            <Text fontSize="xl" fontWeight="bold" mb={4}>
+            <Text fontSize="lg" fontWeight="bold" mb={4}>
               HELP
             </Text>
             <Divider mb={3} borderColor="gray.600" />
-            <SimpleGrid columns={1} spacing={2}>
+            <SimpleGrid fontSize={"sm"} columns={1} spacing={2}>
               <Link to="/userPage">MY ACCOUNT</Link>
               <Link to="/shipping">SHIPPING</Link>
               <Link to="/exchanges">EXCHANGES</Link>
-              <Link to="/refunds">RETURNS AND REFUNDS</Link>{" "}
+              <Link to="/returns">RETURNS AND REFUNDS</Link>{" "}
             </SimpleGrid>
           </Box>
 
           <Box>
-            <Text fontSize="xl" fontWeight="bold" mb={4}>
+            <Text fontSize="lg" fontWeight="bold" mb={4}>
               POLICIES
             </Text>
             <Divider mb={3} borderColor="gray.600" />
-            <SimpleGrid columns={1} spacing={2}>
+            <SimpleGrid fontSize={"sm"} columns={1} spacing={2}>
               <Link to="/policy">PRIVACY POLICY</Link>
               <Link to="/purchase">PURCHASE CONDITIONS</Link>
 
@@ -43,8 +43,8 @@ const Footer = () => {
             </SimpleGrid>
           </Box>
 
-          <Box>
-            <Text fontSize="xl" fontWeight="bold" mb={4}>
+          <Box fontSize={"sm"}>
+            <Text fontSize="lg" fontWeight="bold" mb={4}>
               FOLLOW US
             </Text>
             <Divider mb={3} borderColor="gray.600" />
@@ -68,7 +68,12 @@ const Footer = () => {
 
         <Divider mt={8} borderColor="gray.600" />
 
-        <Flex justifyContent="space-between" alignItems="center" mt={8}>
+        <Flex
+          fontSize={"xs"}
+          justifyContent="space-between"
+          alignItems="center"
+          mt={8}
+        >
           <Text>&copy; 2023 Shop-Shopping. All rights reserved.</Text>
         </Flex>
       </Container>

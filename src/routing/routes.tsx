@@ -19,6 +19,7 @@ import PurchaseConditions from "../pages/Footer/PurchaseCondition";
 import CookiesSettings from "./../pages/Footer/CookiesSetting";
 import Shipping from "./../pages/Footer/Shipping";
 import Exchanges from "./../pages/Footer/Exchanges";
+import ReturnsRefunds from "./../pages/Footer/ReturnsRefunds";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,7 @@ const router = createBrowserRouter([
       { path: "/cookies", element: <CookiesSettings /> },
       { path: "/shipping", element: <Shipping /> },
       { path: "/exchanges", element: <Exchanges /> },
+      { path: "/returns", element: <ReturnsRefunds /> },
 
       {
         path: "/signin",

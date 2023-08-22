@@ -18,7 +18,7 @@ const CookiesSettings = () => {
         cookies as described in this Cookies Settings section.
       </Text>
       <Text padding={5}>
-        <strong>What are Cookies?</strong>
+        <strong>What are Cookies?</strong> <br />
         <br />
         Cookies are small text files that are stored on your device when you
         visit our website. They help us recognize you and provide a better
@@ -26,7 +26,7 @@ const CookiesSettings = () => {
         preferences, and activities on our website.
       </Text>{" "}
       <Text padding={5}>
-        <strong>Types of Cookies We Use:</strong>
+        <strong>Types of Cookies We Use:</strong> <br />
         <br />
         <em>Essential Cookies:</em> These cookies are necessary for the basic
         functionality of our website. They enable features like secure logins

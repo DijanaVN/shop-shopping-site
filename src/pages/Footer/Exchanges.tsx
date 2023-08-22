@@ -39,7 +39,7 @@ const Exchanges = () => {
         To request an exchange, please follow these steps:
         <ol style={{ marginLeft: "3rem" }}>
           <li>
-            Contact our customer support team within 14 days of receiving your
+            Contact our customer support team within 30 days of receiving your
             order.
           </li>
           <li>Provide your order number and a description of the issue.</li>
