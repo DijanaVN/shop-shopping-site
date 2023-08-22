@@ -15,6 +15,7 @@ import { AllProductsProvider } from "./StateManagement/AllProductsContexts";
 import { FilteredProductProvider } from "./StateManagement/FilteredProducts";
 import { UserProvider } from "./StateManagement/UserInfoContext";
 import { UserSignInProvider } from "./StateManagement/SignInUserContext";
+import { ContactFormProvider } from "./StateManagement/ContactFormContext";
 
 const queryClient = new QueryClient();
 
@@ -29,10 +30,12 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
                 <AllProductsProvider>
                   <NewProductProvider>
                     <UserSignInProvider>
-                      <SelectedCategoryProvider>
-                        <RouterProvider router={router} />
-                        <ReactQueryDevtools />
-                      </SelectedCategoryProvider>
+                      <ContactFormProvider>
+                        <SelectedCategoryProvider>
+                          <RouterProvider router={router} />
+                          <ReactQueryDevtools />
+                        </SelectedCategoryProvider>
+                      </ContactFormProvider>
                     </UserSignInProvider>
                   </NewProductProvider>
                 </AllProductsProvider>
