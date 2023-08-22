@@ -1,6 +1,7 @@
 import { GridItem } from "@chakra-ui/react";
 import NavBar from "../components/NavBar";
 import { Outlet } from "react-router-dom";
+import Footer from "./Footer/Footer";
 
 const Layout = () => {
   return (
@@ -16,6 +17,7 @@ const Layout = () => {
         <NavBar />
       </GridItem>
       <Outlet />
+      <Footer />
     </>
   );
 };

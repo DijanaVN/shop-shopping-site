@@ -10,10 +10,11 @@ import SignInPage from "../pages/SignInSingUp/SignUpPage";
 import SearchPage from "./../pages/SearchPage";
 import UserPage from "../pages/SignInSingUp/UserPage";
 import ProfilePage from "../pages/SignInSingUp/ProfilePage";
-import PasswordPage from "../pages/PasswordPage";
+import PasswordPage from "../pages/SignInSingUp/PasswordPage";
 import EmailPage from "../pages/SignInSingUp/EmailPage";
 import AdressesPage from "../pages/SignInSingUp/AdressesPage";
 import HelpPage from "./../pages/SignInSingUp/HelpPage";
+import PrivacyPolicy from "./../pages/Footer/PrivacyPolicy";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
       { path: "/emailPage", element: <EmailPage /> },
       { path: "/passwordPage", element: <PasswordPage /> },
       { path: "/helpPage", element: <HelpPage /> },
+      { path: "/policy", element: <PrivacyPolicy /> },
       {
         path: "/signin",
         element: (

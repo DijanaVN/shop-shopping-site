@@ -7,11 +7,11 @@ import {
   Divider,
   Button,
 } from "@chakra-ui/react";
-import { useUserSignInContext } from "../StateManagement/SignInUserContext";
-import img from "../images/jason-leung-7bpCPMOZ1rs-unsplash.webp";
+import { useUserSignInContext } from "../../StateManagement/SignInUserContext";
+import img from "../../images/jason-leung-7bpCPMOZ1rs-unsplash.webp";
 import { useRef, useState } from "react";
-import { useUserContext } from "../StateManagement/UserInfoContext";
-import PopupWindow from "../components/Popupwindow";
+import { useUserContext } from "../../StateManagement/UserInfoContext";
+import PopupWindow from "../../components/Popupwindow";
 
 const PasswordPage = () => {
   const { userSignIn, updateSignInUser } = useUserSignInContext();
