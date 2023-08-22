@@ -16,8 +16,8 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { FaRegUser } from "react-icons/fa";
-import SignUpPage from "../pages/SignUpPage";
-import SignInPage from "../pages/SignInPage";
+import SignUpPage from "../pages/SignInSingUp/SignUpPage";
+import SignInPage from "../pages/SignInSingUp/SignInPage";
 
 const UserDropdown: React.FC = () => {
   const {

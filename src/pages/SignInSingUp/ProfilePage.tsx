@@ -13,9 +13,9 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import img from "../images/jason-leung-7bpCPMOZ1rs-unsplash.webp";
-import { useUserSignInContext } from "../StateManagement/SignInUserContext";
-import { useUserContext } from "../StateManagement/UserInfoContext";
+import img from "../../images/jason-leung-7bpCPMOZ1rs-unsplash.webp";
+import { useUserSignInContext } from "../../StateManagement/SignInUserContext";
+import { useUserContext } from "../../StateManagement/UserInfoContext";
 import { useRef, useState } from "react";
 
 const ProfilePage = () => {

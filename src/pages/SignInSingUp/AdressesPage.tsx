@@ -1,6 +1,6 @@
 import { VStack, Text, Box, Flex, Image, Divider } from "@chakra-ui/react";
-import { useUserSignInContext } from "../StateManagement/SignInUserContext";
-import img from "../images/jason-leung-7bpCPMOZ1rs-unsplash.webp";
+import { useUserSignInContext } from "../../StateManagement/SignInUserContext";
+import img from "../../images/jason-leung-7bpCPMOZ1rs-unsplash.webp";
 
 const AdressesPage = () => {
   const { userSignIn } = useUserSignInContext();

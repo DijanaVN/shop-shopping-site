@@ -12,7 +12,7 @@ import {
   Center,
   useDisclosure,
 } from "@chakra-ui/react";
-import { User, useUserContext } from "../StateManagement/UserInfoContext";
+import { User, useUserContext } from "../../StateManagement/UserInfoContext";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const userSchema = z.object({
