@@ -15,6 +15,7 @@ import EmailPage from "../pages/SignInSingUp/EmailPage";
 import AdressesPage from "../pages/SignInSingUp/AdressesPage";
 import HelpPage from "./../pages/SignInSingUp/HelpPage";
 import PrivacyPolicy from "./../pages/Footer/PrivacyPolicy";
+import PurchaseConditions from "../pages/Footer/PurchaseCondition";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
       { path: "/passwordPage", element: <PasswordPage /> },
       { path: "/helpPage", element: <HelpPage /> },
       { path: "/policy", element: <PrivacyPolicy /> },
+      { path: "/purchase", element: <PurchaseConditions /> },
       {
         path: "/signin",
         element: (

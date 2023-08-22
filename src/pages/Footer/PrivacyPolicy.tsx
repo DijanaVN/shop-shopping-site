@@ -49,11 +49,6 @@ const PrivacyPolicy = () => {
         data, please contact our Privacy Team.
       </Text>{" "}
       <Text padding={5}>
-        **Your Rights:** You have the right to access, correct, update, or
-        delete your personal information. If you have any concerns about your
-        data, please contact our Privacy Team.
-      </Text>{" "}
-      <Text padding={5}>
         **Changes to this Policy:** Our Privacy Policy may be updated
         periodically to reflect changes in our practices. We encourage you to
         review the policy whenever you visit our website to stay informed about

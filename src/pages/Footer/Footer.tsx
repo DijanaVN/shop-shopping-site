@@ -22,12 +22,9 @@ const Footer = () => {
             </Text>
             {/* List of links */}
             <Text>MY ACCOUNT</Text>
-            <Text>ITEMS AND SIZES</Text>
             <Text>SHIPPING</Text>
             <Text>EXCHANGES</Text>
             <Text>RETURNS AND REFUNDS</Text>
-            <Text>SHIPPING</Text>
-            {/* ... Other links ... */}
           </Box>
 
           {/* Column 2 */}
@@ -39,7 +36,7 @@ const Footer = () => {
               <Link href="/policy" isExternal>
                 PRIVACY POLICY
               </Link>
-              <Link href="#" isExternal>
+              <Link href="/purchase" isExternal>
                 PURCHASE CONDITIONS
               </Link>
 
