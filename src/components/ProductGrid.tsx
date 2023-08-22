@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useSelectedProductContext } from "../StateManagement/SelectedProductContext";
 import CardFunction from "./CardFunction";
 import CreateNewProductForm from "./CreateNewProductForm";
+import ScrollToTopButton from "./ScrollToTheTopButton";
 
 const ProductGrid = () => {
   const { searchQuery } = usePoducts();
@@ -29,6 +30,7 @@ const ProductGrid = () => {
           );
         })}
       </Flex>
+      <ScrollToTopButton />
     </>
   );
 };

@@ -1,23 +1,14 @@
 import React from "react";
 import {
   Box,
-  Button,
   Container,
-  Drawer,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerOverlay,
   Flex,
   Grid,
   GridItem,
   Heading,
   IconButton,
   Image,
-  Spacer,
   Text,
-  VStack,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { BiSolidPurchaseTag } from "react-icons/bi";
 import { BiHelpCircle } from "react-icons/bi";
@@ -35,11 +26,17 @@ const UserPage: React.FC = () => {
     <Box>
       {/* Body */}
       <Container mt={8}>
-        <Flex direction="column" align="start">
+        <Flex direction="column" align="center">
           <Grid templateColumns="1fr 1fr" gap={10}>
             <GridItem colSpan={1} rowSpan={1}>
-              <Heading mb={10}>
-                Welcome -{" "}
+              <Heading
+                padding={5}
+                marginTop={5}
+                textAlign={"center"}
+                backgroundColor={"primary.50"}
+                mb={10}
+              >
+                Welcome{" "}
                 {
                   <Text
                     fontStyle={"italic"}
@@ -50,14 +47,16 @@ const UserPage: React.FC = () => {
                   </Text>
                 }
               </Heading>
-              <Grid templateColumns="repeat(3, 1fr)" gap={10} mb={8}>
+              <Grid templateColumns="repeat(3, 1fr)" gap={10} mb={5}>
                 <GridItem>
                   <IconButton
                     aria-label="Purchases"
                     icon={<BiSolidPurchaseTag />}
                     colorScheme="blue"
                   />
-                  <Text mt={2}>Purchases</Text>
+                  <Text fontSize={"sm"} mt={2}>
+                    Purchases
+                  </Text>
                 </GridItem>
                 <GridItem>
                   <IconButton
@@ -66,7 +65,9 @@ const UserPage: React.FC = () => {
                     colorScheme="green"
                     onClick={() => navigate("/profilePage")}
                   />
-                  <Text mt={2}>Profile</Text>
+                  <Text fontSize={"sm"} mt={2}>
+                    Profile
+                  </Text>
                 </GridItem>
                 <GridItem>
                   <IconButton
@@ -75,7 +76,9 @@ const UserPage: React.FC = () => {
                     colorScheme="purple"
                     onClick={() => navigate("/helpPage")}
                   />
-                  <Text mt={2}>Help</Text>
+                  <Text fontSize={"sm"} mt={2}>
+                    Help
+                  </Text>
                 </GridItem>
               </Grid>
             </GridItem>
