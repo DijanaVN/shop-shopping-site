@@ -9,8 +9,9 @@ import {
 } from "@chakra-ui/react";
 import { useUserSignInContext } from "../StateManagement/SignInUserContext";
 import img from "../images/jason-leung-7bpCPMOZ1rs-unsplash.webp";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useUserContext } from "../StateManagement/UserInfoContext";
+import PopupWindow from "../components/Popupwindow";
 
 const PasswordPage = () => {
   const { userSignIn, updateSignInUser } = useUserSignInContext();
@@ -20,6 +21,8 @@ const PasswordPage = () => {
   const [passwordMatchError, setPasswordMatchError] = useState(false);
   const [wrongOldPassword, setWrongOldPassword] = useState(false);
   const { user, setUser } = useUserContext();
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
+  const cancelRef = useRef<HTMLButtonElement | null>(null);
 
   const handlePasswordChange = () => {
     if (!oldPassword || !newPassword || !confirmPassword) {
@@ -51,6 +54,7 @@ const PasswordPage = () => {
     setConfirmPassword("");
     setPasswordMatchError(false);
     setWrongOldPassword(false);
+    setIsSuccessOpen(true);
   };
 
   if (!userSignIn) {
@@ -138,10 +142,18 @@ const PasswordPage = () => {
             <Button
               variant="solid"
               colorScheme="blue"
+              ref={cancelRef}
               onClick={handlePasswordChange}
             >
               Change Password
-            </Button>
+            </Button>{" "}
+            <PopupWindow
+              isOpen={isSuccessOpen}
+              onClose={() => setIsSuccessOpen(false)}
+              state={"password"}
+              action={"update"}
+              cancelRef={cancelRef}
+            />
           </Flex>
         </Box>
       </VStack>
