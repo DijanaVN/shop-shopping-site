@@ -1,7 +1,7 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import apiClientCarts from "../services/api-client-cart";
 
-interface Cart {
+export interface Cart {
   id: number;
   userId: number;
   date: string;
@@ -19,7 +19,7 @@ const useCarts = () => {
   console.log(searchQuery.data);
 
   return {
-    searchQuery: searchQuery.data,
+    searchQuery,
   };
 };
 

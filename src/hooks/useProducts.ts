@@ -34,8 +34,6 @@ const usePoducts = () => {
     setAllProducts(combinedProducts);
   }, [searchQuery.data, newProduct, setAllProducts]);
 
-  console.log(allProducts);
-
   return {
     searchQuery: allProducts,
   };

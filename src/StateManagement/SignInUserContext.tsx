@@ -27,7 +27,6 @@ export function UserSignInProvider({ children }: UserSignInContextProps) {
   const updateSignInUser = (updatedData: User) => {
     setUserSignIn(updatedData);
   };
-  console.log(userSignIn);
 
   return (
     <userSignInContext.Provider

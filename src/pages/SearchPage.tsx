@@ -14,7 +14,7 @@ import { z } from "zod";
 import { Link, useNavigate } from "react-router-dom";
 import { useAllProductsContext } from "../StateManagement/AllProductsContexts";
 import { useFilteredProductContext } from "./../StateManagement/FilteredProducts";
-import CardFunction from "../components/CardFunction";
+import CardFunction from "../components/ProductCard";
 import img from "../images/milad-fakurian-HE1_K4_-QT8-unsplash.webp";
 import { FcSearch } from "react-icons/fc";
 import { useSelectedProductContext } from "./../StateManagement/SelectedProductContext";

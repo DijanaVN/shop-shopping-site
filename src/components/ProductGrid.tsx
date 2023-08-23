@@ -2,9 +2,9 @@ import { Text, Flex } from "@chakra-ui/react";
 import usePoducts, { Product } from "../hooks/useProducts";
 import { Link } from "react-router-dom";
 import { useSelectedProductContext } from "../StateManagement/SelectedProductContext";
-import CardFunction from "./CardFunction";
 import CreateNewProductForm from "./CreateNewProductForm";
 import ScrollToTopButton from "./ScrollToTheTopButton";
+import ProductCard from "./ProductCard";
 
 const ProductGrid = () => {
   const { searchQuery } = usePoducts();
@@ -25,7 +25,7 @@ const ProductGrid = () => {
               onClick={() => onClick(product)}
               key={product.id}
             >
-              <CardFunction m={product} />
+              <ProductCard m={product} />
             </Link>
           );
         })}

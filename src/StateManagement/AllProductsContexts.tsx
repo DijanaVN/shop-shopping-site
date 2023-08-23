@@ -28,7 +28,6 @@ export function AllProductsProvider({ children }: ProductContextProps) {
   useEffect(() => {
     localStorage.setItem("AllProductsStorage", JSON.stringify(allProducts));
   }, [allProducts]);
-  console.log(allProducts);
 
   return (
     <AllProductsContext.Provider

@@ -45,7 +45,6 @@ export function UserProvider({ children }: UserContextProps) {
   useEffect(() => {
     localStorage.setItem("UserStorage", JSON.stringify(user));
   }, [user]);
-  console.log(user);
 
   const addNewUser = (newUserData: User) => {
     setUser((prevUsers) => [...prevUsers, newUserData]);

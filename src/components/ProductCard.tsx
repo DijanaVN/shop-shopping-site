@@ -1,4 +1,4 @@
-import { formatCurrency } from "./../utilities/formatCurrency";
+import { formatCurrency } from "../utilities/formatCurrency";
 import {
   Card,
   CardBody,
@@ -12,7 +12,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-const CardFunction = ({ m }: any) => {
+const ProductCard = ({ m }: any) => {
   return (
     <Card
       height="720px"
@@ -47,4 +47,4 @@ const CardFunction = ({ m }: any) => {
   );
 };
 
-export default CardFunction;
+export default ProductCard;

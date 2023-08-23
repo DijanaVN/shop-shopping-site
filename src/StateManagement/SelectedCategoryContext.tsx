@@ -31,8 +31,6 @@ export function SelectedCategoryProvider({ children }: CategoryContextProps) {
     setSelectedCategory(category);
   };
 
-  console.log(selectedCategory);
-
   return (
     <SelectedCategoryContext.Provider
       value={{
