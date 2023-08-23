@@ -1,3 +1,4 @@
+import { formatCurrency } from "./../utilities/formatCurrency";
 import {
   Card,
   CardBody,
@@ -27,7 +28,7 @@ const CardFunction = ({ m }: any) => {
           <Text fontWeight={"bold"}>Category: {m.category}</Text>
 
           <Text fontWeight={"extrabold"} color="primary.300" fontSize="2xl">
-            ${m.price}
+            {formatCurrency(m.price)}
           </Text>
         </Stack>
       </CardBody>

@@ -3,8 +3,6 @@ import NavBar from "./components/NavBar";
 import ProductGrid from "./components/ProductGrid";
 import ProductCategories from "./components/ProductCategories";
 import Footer from "./pages/Footer/Footer";
-import Header from "./components/Header";
-import CategoryUpdateForm from "./components/CategoryUpdateForm";
 
 function App() {
   return (
@@ -19,10 +17,6 @@ function App() {
       color="red.700"
       fontWeight="bold"
     >
-      <GridItem pl="2" area={"header"}>
-        <Header />
-        <CategoryUpdateForm />
-      </GridItem>
       <GridItem pl="2" area={"nav"}>
         <NavBar />
       </GridItem>

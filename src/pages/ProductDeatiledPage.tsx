@@ -14,6 +14,7 @@ import {
 import { useSelectedProductContext } from "../StateManagement/SelectedProductContext";
 import { useNewProductContext } from "../StateManagement/NewProductContext";
 import treatyourself from "../images/jean-philippe-delberghe-75xPHEQBmvA-unsplash.webp";
+import { formatCurrency } from "./../utilities/formatCurrency";
 
 const ProductDetailedPage = () => {
   const { selectedProduct } = useSelectedProductContext();
@@ -65,7 +66,7 @@ const ProductDetailedPage = () => {
             {selectedProduct?.description}
           </Text>
           <Text fontWeight={"extrabold"} fontSize="2xl" color={""}>
-            ${selectedProduct?.price}
+            {formatCurrency(Number(selectedProduct?.price))}
           </Text>
           <Divider />
           <CardFooter>

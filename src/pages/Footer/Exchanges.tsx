@@ -35,23 +35,21 @@ const Exchanges = () => {
       </Text>{" "}
       <Text padding={5}>
         <strong>Exchange Process:</strong>
-        <br />
-        To request an exchange, please follow these steps:
-        <ol style={{ marginLeft: "3rem" }}>
-          <li>
-            Contact our customer support team within 30 days of receiving your
-            order.
-          </li>
-          <li>Provide your order number and a description of the issue.</li>
-          <li>Our team will guide you through the exchange process.</li>
-          <li>
-            Once approved, we will provide instructions for returning the item.
-          </li>
-          <li>
-            Upon receiving the returned item, we will process the exchange.
-          </li>
-        </ol>
+        <br />{" "}
       </Text>{" "}
+      To request an exchange, please follow these steps:
+      <ol style={{ marginLeft: "3rem" }}>
+        <li>
+          Contact our customer support team within 30 days of receiving your
+          order.
+        </li>
+        <li>Provide your order number and a description of the issue.</li>
+        <li>Our team will guide you through the exchange process.</li>
+        <li>
+          Once approved, we will provide instructions for returning the item.
+        </li>
+        <li>Upon receiving the returned item, we will process the exchange.</li>
+      </ol>
       <Text padding={5}>
         <strong>Conditions:</strong>
         <br />
