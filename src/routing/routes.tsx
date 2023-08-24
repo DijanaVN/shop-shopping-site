@@ -21,6 +21,7 @@ import Shipping from "./../pages/Footer/Shipping";
 import Exchanges from "./../pages/Footer/Exchanges";
 import ReturnsRefunds from "./../pages/Footer/ReturnsRefunds";
 import AllShoppingCarts from "../pages/AllShoppingCarts";
+import ShoppingCartGrid from "./../pages/ShoppingCart";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,7 @@ const router = createBrowserRouter([
       { path: "/exchanges", element: <Exchanges /> },
       { path: "/returns", element: <ReturnsRefunds /> },
       { path: "/shoppingCart", element: <AllShoppingCarts /> },
+      { path: "/shoppingCartGrid", element: <ShoppingCartGrid /> },
 
       {
         path: "/signin",

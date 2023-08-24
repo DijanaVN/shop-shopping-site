@@ -15,10 +15,12 @@ import { useSelectedProductContext } from "../StateManagement/SelectedProductCon
 import { useNewProductContext } from "../StateManagement/NewProductContext";
 import treatyourself from "../images/jean-philippe-delberghe-75xPHEQBmvA-unsplash.webp";
 import { formatCurrency } from "./../utilities/formatCurrency";
+import { useNavigate } from "react-router-dom";
 
 const ProductDetailedPage = () => {
   const { selectedProduct } = useSelectedProductContext();
   const { newProduct, deleteProduct, updateProduct } = useNewProductContext();
+  const navigate = useNavigate();
 
   const isProductInNewProduct = newProduct.some(
     (newProd) => newProd.id === selectedProduct?.id
@@ -71,10 +73,13 @@ const ProductDetailedPage = () => {
           <Divider />
           <CardFooter>
             <ButtonGroup spacing="2">
-              <Button variant="solid" colorScheme="blue">
-                Buy now
-              </Button>
-              <Button variant="solid" colorScheme="yellow">
+              <Button
+                onClick={() => {
+                  navigate("/shoppingCartGrid");
+                }}
+                variant="solid"
+                colorScheme="yellow"
+              >
                 Add to cart
               </Button>
               {isProductInNewProduct && (

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { formatCurrency } from "../utilities/formatCurrency";
 import {
   Card,
@@ -6,13 +7,13 @@ import {
   Heading,
   Divider,
   CardFooter,
-  ButtonGroup,
   Button,
   Image,
   Text,
 } from "@chakra-ui/react";
 
 const ProductCard = ({ m }: any) => {
+  const navigate = useNavigate();
   return (
     <Card
       height="720px"
@@ -32,17 +33,6 @@ const ProductCard = ({ m }: any) => {
           </Text>
         </Stack>
       </CardBody>
-      <Divider />
-      <CardFooter>
-        <ButtonGroup justifyContent={"center"} spacing="2">
-          <Button variant="solid" colorScheme="blue">
-            Buy now
-          </Button>
-          <Button variant="solid" colorScheme="yellow">
-            Add to cart
-          </Button>
-        </ButtonGroup>
-      </CardFooter>
     </Card>
   );
 };
