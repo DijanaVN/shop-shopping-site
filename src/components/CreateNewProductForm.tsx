@@ -24,6 +24,7 @@ import shoes from "../images/alexandra-gorn-CJ6SJO_yR5w-unsplash.webp";
 import { useNewProductContext } from "../StateManagement/NewProductContext";
 import useCategories from "../hooks/useCategories";
 import { useNavigate } from "react-router-dom";
+import { generateRandomUniqueUri } from "./GenerateRandomNumberForId";
 
 const productSchema = z.object({
   id: z.number({ invalid_type_error: "Field is required." }),
@@ -45,13 +46,6 @@ const CreateNewProductForm: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { addNewProduct } = useNewProductContext();
   const { searchQuery } = useCategories();
-
-  const generateRandomUniqueUri = (): number => {
-    const timestamp = Date.now(); // Get the current timestamp in milliseconds
-    const randomNum = Math.floor(Math.random() * 1000); // Generate a random number between 0 and 999
-    const id = `${timestamp}${randomNum}`; // Concatenate the timestamp and random number
-    return Number(id);
-  };
 
   const {
     handleSubmit,

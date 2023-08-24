@@ -27,7 +27,7 @@ const EmailPage = () => {
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const [wrongOldEmail, setWrongOldEmail] = useState(false);
   const cancelRef = useRef<HTMLButtonElement | null>(null);
-  const { user, setUser } = useUserContext();
+  const { users, setUsers } = useUserContext();
 
   const handleEmailChange = () => {
     if (!newEmail || !confirmEmail) {
@@ -43,10 +43,10 @@ const EmailPage = () => {
       email: newEmail,
     });
 
-    const updatedUsers = user.map((u) =>
+    const updatedUsers = users.map((u) =>
       u.id === userSignIn?.id ? { ...u, email: newEmail } : u
     );
-    setUser(updatedUsers);
+    setUsers(updatedUsers);
     console.log(userSignIn);
     console.log(updatedUsers);
 

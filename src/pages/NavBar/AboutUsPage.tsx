@@ -35,30 +35,32 @@ const AboutUsPage = () => {
             made it our mission to provide you with an exceptional level of
             service. At Shop-Shopping, you can expect:
             <br />
-            <br />
-            <UnorderedList>
-              <ListItem>
-                <Text fontWeight="bold">Reliable Deliveries:</Text> We believe
-                in keeping our promises. With us, your orders are more than just
-                packages – they are a commitment. Count on us to deliver your
-                purchases promptly and as agreed, so you can enjoy your new
-                finds without delay.
-              </ListItem>
-              <ListItem>
-                <Text fontWeight="bold">Quality and Quantity Assurance:</Text>{" "}
-                We know that your satisfaction depends on the quality and
-                quantity of your purchases. Our meticulous attention to detail
-                ensures that each product meets the highest standards, leaving
-                no room for compromise.
-              </ListItem>
-              <ListItem>
-                <Text fontWeight="bold"> A Seamless Online Experience:</Text>{" "}
-                Navigating our website is designed to be as effortless as your
-                shopping spree. Our user-friendly interface ensures that you
-                have a smooth and enjoyable experience, making your online
-                shopping journey as memorable as the products themselves.
-              </ListItem>
-            </UnorderedList>
+            <br />{" "}
+          </Text>
+          <UnorderedList>
+            <ListItem>
+              <Text fontWeight="bold">Reliable Deliveries:</Text> We believe in
+              keeping our promises. With us, your orders are more than just
+              packages – they are a commitment. Count on us to deliver your
+              purchases promptly and as agreed, so you can enjoy your new finds
+              without delay.
+            </ListItem>
+            <ListItem>
+              <Text fontWeight="bold">Quality and Quantity Assurance:</Text> We
+              know that your satisfaction depends on the quality and quantity of
+              your purchases. Our meticulous attention to detail ensures that
+              each product meets the highest standards, leaving no room for
+              compromise.
+            </ListItem>
+            <ListItem>
+              <Text fontWeight="bold"> A Seamless Online Experience:</Text>{" "}
+              Navigating our website is designed to be as effortless as your
+              shopping spree. Our user-friendly interface ensures that you have
+              a smooth and enjoyable experience, making your online shopping
+              journey as memorable as the products themselves.
+            </ListItem>
+          </UnorderedList>
+          <Text>
             <br />
             <br />
             At Shop-Shopping, we stand for much more than just retail – we stand

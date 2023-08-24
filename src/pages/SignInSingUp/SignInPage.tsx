@@ -10,7 +10,7 @@ import {
   Center,
   useDisclosure,
 } from "@chakra-ui/react";
-import { User, useUserContext } from "../../StateManagement/UserInfoContext";
+import { User } from "../../StateManagement/UserInfoContext";
 import { z } from "zod";
 import { useUserSignInContext } from "../../StateManagement/SignInUserContext";
 import { useNavigate } from "react-router-dom";

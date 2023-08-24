@@ -20,7 +20,7 @@ const PasswordPage = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordMatchError, setPasswordMatchError] = useState(false);
   const [wrongOldPassword, setWrongOldPassword] = useState(false);
-  const { user, setUser } = useUserContext();
+  const { users, setUsers } = useUserContext();
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const cancelRef = useRef<HTMLButtonElement | null>(null);
 
@@ -43,10 +43,10 @@ const PasswordPage = () => {
       ...userSignIn,
       password: newPassword,
     });
-    const updatedUsers = user.map((u) =>
+    const updatedUsers = users.map((u) =>
       u.id === userSignIn.id ? { ...u, password: newPassword } : u
     );
-    setUser(updatedUsers);
+    setUsers(updatedUsers);
     console.log(userSignIn);
     console.log(updatedUsers);
     setOldPassword("");

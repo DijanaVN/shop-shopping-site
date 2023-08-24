@@ -36,8 +36,9 @@ const AllShoppingCart = () => {
             <Text>
               <strong>Date:</strong> {cart.date}
             </Text>
-            <Text>
-              <strong>Products:</strong>
+
+            <strong>Products:</strong>
+            <Box>
               <UnorderedList>
                 {cart.products.map((product) => (
                   <ListItem key={product.productId}>
@@ -46,7 +47,7 @@ const AllShoppingCart = () => {
                   </ListItem>
                 ))}
               </UnorderedList>
-            </Text>
+            </Box>
           </Box>
         ))}
       </Box>

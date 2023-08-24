@@ -1,13 +1,15 @@
 import React, { ReactNode, createContext, useContext, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { Cart } from "../hooks/useCarts";
+import { Product } from "../hooks/useProducts";
+import { useUserSignInContext } from "./SignInUserContext";
+import { useAllCartsContext } from "./AllCartsContext";
+import { generateRandomUniqueUri } from "../components/GenerateRandomNumberForId";
 
 type NewCartContext = {
   newCart: Cart[];
   setNewCart: React.Dispatch<React.SetStateAction<Cart[]>>;
-  addNewCart: (newCartData: Cart) => void;
-  updateCart: (CartId: number, updatedData: Cart) => void;
-  deleteCart: (CartId: number) => void;
+  handleAddToCart: (selectedProduct: Product, quantity: number) => void;
 };
 
 type CartContextProps = {
@@ -17,9 +19,7 @@ type CartContextProps = {
 const NewCartContext = createContext<NewCartContext>({
   newCart: [],
   setNewCart: () => {},
-  addNewCart: () => {},
-  updateCart: () => {},
-  deleteCart: () => {},
+  handleAddToCart: () => {},
 });
 
 export function useNewCartContext() {
@@ -27,22 +27,22 @@ export function useNewCartContext() {
 }
 
 export function NewCartProvider({ children }: CartContextProps) {
+  const { addNewCart } = useAllCartsContext();
   const [newCart, setNewCart] = useLocalStorage<Cart[]>("NewCartStorage", []);
 
-  const addNewCart = (newCartData: Cart) => {
-    setNewCart((prevCarts) => [...prevCarts, newCartData]);
-  };
-
-  const updateCart = (CartId: number, updatedData: Cart) => {
-    setNewCart((prevCarts) =>
-      prevCarts.map((Cart) =>
-        Cart.id === CartId ? { ...Cart, ...updatedData } : Cart
-      )
-    );
-  };
-
-  const deleteCart = (CartId: number) => {
-    setNewCart((prevCarts) => prevCarts.filter((Cart) => Cart.id !== CartId));
+  const handleAddToCart = (selectedProduct: Product, quantity: number) => {
+    const { userSignIn } = useUserSignInContext();
+    if (userSignIn) {
+      const cartItem = {
+        id: generateRandomUniqueUri(),
+        userId: userSignIn.id,
+        date: new Date().toISOString(),
+        products: [{ productId: selectedProduct.id, quantity }],
+      };
+      addNewCart(cartItem);
+    } else {
+      // Handle case when user is not signed in
+    }
   };
 
   return (
@@ -50,9 +50,7 @@ export function NewCartProvider({ children }: CartContextProps) {
       value={{
         newCart,
         setNewCart,
-        addNewCart,
-        updateCart,
-        deleteCart,
+        handleAddToCart,
       }}
     >
       {children}

@@ -19,8 +19,8 @@ export interface User {
 }
 
 type userContext = {
-  user: User[];
-  setUser: React.Dispatch<React.SetStateAction<User[]>>;
+  users: User[];
+  setUsers: React.Dispatch<React.SetStateAction<User[]>>;
   addNewUser: (newUserData: User) => void;
   deleteUser: (userId: number) => void;
 };
@@ -30,8 +30,8 @@ type UserContextProps = {
 };
 
 const userContext = createContext<userContext>({
-  user: [],
-  setUser: () => {},
+  users: [],
+  setUsers: () => {},
   addNewUser: () => {},
   deleteUser: () => {},
 });
@@ -41,24 +41,24 @@ export function useUserContext() {
 }
 
 export function UserProvider({ children }: UserContextProps) {
-  const [user, setUser] = useLocalStorage<User[]>("UserStorage", []);
+  const [users, setUsers] = useLocalStorage<User[]>("UserStorage", []);
   useEffect(() => {
-    localStorage.setItem("UserStorage", JSON.stringify(user));
-  }, [user]);
+    localStorage.setItem("UserStorage", JSON.stringify(users));
+  }, [users]);
 
   const addNewUser = (newUserData: User) => {
-    setUser((prevUsers) => [...prevUsers, newUserData]);
+    setUsers((prevUsers) => [...prevUsers, newUserData]);
   };
 
   const deleteUser = (userId: number) => {
-    setUser((prevUsers) => prevUsers.filter((u) => u.id !== userId));
+    setUsers((prevUsers) => prevUsers.filter((u) => u.id !== userId));
   };
 
   return (
     <userContext.Provider
       value={{
-        user,
-        setUser,
+        users,
+        setUsers,
         addNewUser,
         deleteUser,
       }}
