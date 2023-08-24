@@ -15,15 +15,15 @@ import {
   FormLabel,
   Grid,
 } from "@chakra-ui/react";
-import img from "../images/andrew-neel-ute2XAFQU2I-unsplash.webp";
+import img from "../../images/andrew-neel-ute2XAFQU2I-unsplash.webp";
 import { FieldElement, FieldValues, useForm } from "react-hook-form";
 import {
   ContactForm,
   useContactFormContext,
-} from "../StateManagement/ContactFormContext";
+} from "../../StateManagement/ContactFormContext";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import PopupWindow from "../components/Popupwindow";
+import PopupWindow from "../../components/Popupwindow";
 
 const schema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters").max(50),

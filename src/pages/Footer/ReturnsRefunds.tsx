@@ -1,4 +1,4 @@
-import { Box, Center, Text } from "@chakra-ui/react";
+import { Box, Center, ListItem, OrderedList, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 const ReturnsRefunds = () => {
@@ -36,18 +36,24 @@ const ReturnsRefunds = () => {
         <br />
         To request a return and refund, please follow these steps:
       </Text>{" "}
-      <ol style={{ marginLeft: "3rem" }}>
-        <li>
+      <OrderedList style={{ marginLeft: "3rem" }}>
+        <ListItem>
           Contact our customer support team within 30 days of receiving your
           order.
-        </li>
-        <li>Provide your order number and a description of the issue.</li>
-        <li>Our team will guide you through the return and refund process.</li>
-        <li>
+        </ListItem>
+        <ListItem>
+          Provide your order number and a description of the issue.
+        </ListItem>
+        <ListItem>
+          Our team will guide you through the return and refund process.
+        </ListItem>
+        <ListItem>
           Once approved, we will provide instructions for returning the item.
-        </li>
-        <li>Upon receiving the returned item, we will process the refund.</li>
-      </ol>
+        </ListItem>
+        <ListItem>
+          Upon receiving the returned item, we will process the refund.
+        </ListItem>
+      </OrderedList>
       <Text padding={5}>
         <strong>Conditions:</strong>
         <br />

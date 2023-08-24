@@ -7,19 +7,18 @@ import {
   Box,
   Flex,
 } from "@chakra-ui/react";
-import { useSearchText } from "../StateManagement/SearchTextContext";
+import { useSearchText } from "../../StateManagement/SearchTextContext";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Link, useNavigate } from "react-router-dom";
-import { useAllProductsContext } from "../StateManagement/AllProductsContexts";
-import { useFilteredProductContext } from "./../StateManagement/FilteredProducts";
-import CardFunction from "../components/ProductCard";
-import img from "../images/milad-fakurian-HE1_K4_-QT8-unsplash.webp";
+import { useNavigate } from "react-router-dom";
+import { useAllProductsContext } from "../../StateManagement/AllProductsContexts";
+import { useFilteredProductContext } from "../../StateManagement/FilteredProducts";
+import CardFunction from "../../components/ProductCard";
+import img from "../../images/milad-fakurian-HE1_K4_-QT8-unsplash.webp";
 import { FcSearch } from "react-icons/fc";
-import { useSelectedProductContext } from "./../StateManagement/SelectedProductContext";
+import { useSelectedProductContext } from "../../StateManagement/SelectedProductContext";
 import { useState } from "react";
-import NavBar from "./../components/NavBar";
 
 const schema = z.object({
   searchText: z

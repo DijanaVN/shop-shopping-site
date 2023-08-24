@@ -6,7 +6,7 @@ import {
   ListItem,
   UnorderedList,
 } from "@chakra-ui/react";
-import img from "../images/ahmed-carter-tiWcNvpQF4E-unsplash (1).webp";
+import img from "../../images/ahmed-carter-tiWcNvpQF4E-unsplash (1).webp";
 const AboutUsPage = () => {
   return (
     <Box bg="gray.100" p={12}>

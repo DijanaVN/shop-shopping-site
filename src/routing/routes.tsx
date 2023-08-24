@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import HomePage from "../pages/HomePage";
+import HomePage from "../pages/NavBar/HomePage";
 import Layout from "./../pages/Layout";
 import ErrorPage from "./../pages/ErrorPage";
 import CategoryGridPage from "../pages/CategoryGridPage";
 import ProductDetailedPage from "../pages/ProductDeatiledPage";
-import AboutUsPage from "./../pages/AboutUsPage";
-import ContactUs from "./../pages/ContactUsPage";
+import AboutUsPage from "../pages/NavBar/AboutUsPage";
+import ContactUs from "../pages/NavBar/ContactUsPage";
 import SignInPage from "../pages/SignInSingUp/SignUpPage";
-import SearchPage from "./../pages/SearchPage";
+import SearchPage from "../pages/NavBar/SearchPage";
 import UserPage from "../pages/SignInSingUp/UserPage";
 import ProfilePage from "../pages/SignInSingUp/ProfilePage";
 import PasswordPage from "../pages/SignInSingUp/PasswordPage";
@@ -20,7 +20,7 @@ import CookiesSettings from "./../pages/Footer/CookiesSetting";
 import Shipping from "./../pages/Footer/Shipping";
 import Exchanges from "./../pages/Footer/Exchanges";
 import ReturnsRefunds from "./../pages/Footer/ReturnsRefunds";
-import ShoppingCart from "../pages/ShoppingCart";
+import AllShoppingCarts from "../pages/AllShoppingCarts";
 
 const router = createBrowserRouter([
   {
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       { path: "/shipping", element: <Shipping /> },
       { path: "/exchanges", element: <Exchanges /> },
       { path: "/returns", element: <ReturnsRefunds /> },
-      { path: "/shoppingCart", element: <ShoppingCart /> },
+      { path: "/shoppingCart", element: <AllShoppingCarts /> },
 
       {
         path: "/signin",
