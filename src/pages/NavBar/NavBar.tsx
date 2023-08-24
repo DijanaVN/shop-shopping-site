@@ -88,7 +88,7 @@ const NavBar = () => {
           </Text>
         )}
         <UserDropdown />
-        <Link to={"/shoppingCart"}>
+        <Link to={"/shoppingCartGrid"}>
           <FiShoppingCart fontSize={"40"} />
         </Link>
       </HStack>

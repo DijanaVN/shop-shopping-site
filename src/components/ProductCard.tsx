@@ -13,7 +13,6 @@ import {
 } from "@chakra-ui/react";
 
 const ProductCard = ({ m }: any) => {
-  const navigate = useNavigate();
   return (
     <Card
       height="720px"

@@ -1,6 +1,6 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./pages/NavBar/NavBar";
-import ProductGrid from "./pages/ProductGridPage";
+import ProductGridPage from "./pages/ProductGridPage";
 import ProductCategories from "./pages/NavBar/ProductCategories";
 import Footer from "./pages/Footer/Footer";
 
@@ -26,7 +26,7 @@ function App() {
         </GridItem>
       </Show>
       <GridItem pl="2" area={"main"}>
-        <ProductGrid />
+        <ProductGridPage />
       </GridItem>
       <GridItem pl="2" area={"footer"}>
         <Footer />

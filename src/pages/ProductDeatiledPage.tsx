@@ -10,6 +10,7 @@ import {
   Text,
   Image,
   Flex,
+  Box,
 } from "@chakra-ui/react";
 import { useSelectedProductContext } from "../StateManagement/SelectedProductContext";
 import { useNewProductContext } from "../StateManagement/NewProductContext";
@@ -26,13 +27,14 @@ const ProductDetailedPage = () => {
     (newProd) => newProd.id === selectedProduct?.id
   );
 
+  if (!selectedProduct) return "";
+
   return (
-    <Flex
-      height="100vh"
+    <Box
+      margin={5}
       alignItems="center"
       justifyContent="center"
       bgImg={treatyourself}
-      objectFit="fill"
     >
       <Card
         direction={{ base: "column", sm: "row" }}
@@ -40,9 +42,8 @@ const ProductDetailedPage = () => {
         overflow="hidden"
         variant="outline"
         key={selectedProduct?.id}
-        minW="xl"
-        minH={"xl"}
-        marginBottom={5}
+        minW="md"
+        minH={"md"}
         justifyContent="center"
         alignItems="center"
       >
@@ -53,24 +54,24 @@ const ProductDetailedPage = () => {
         >
           <Image
             objectFit="cover"
-            maxW={{ base: "100%", sm: "500px" }}
+            maxW={{ base: "40%", sm: "200px" }}
             src={selectedProduct?.image}
             alt={selectedProduct?.title}
-            margin={5}
+            margin={2}
           />
         </CardBody>
         <Stack>
           <Heading size="xl">{selectedProduct?.title}</Heading>
-          <Text fontWeight={"extrabold"} fontSize={"2xl"}>
+          <Text fontWeight={"extrabold"} fontSize={"xl"}>
             Category: {selectedProduct?.category}
           </Text>
-          <Text fontWeight={"bold"} fontSize={"2xl"}>
+          <Text fontWeight="bold" fontSize="lg">
             {selectedProduct?.description}
           </Text>
-          <Text fontWeight={"extrabold"} fontSize="2xl" color={""}>
+          <Text fontWeight={"extrabold"} fontSize="xl" color={""}>
             {formatCurrency(Number(selectedProduct?.price))}
           </Text>
-          <Divider />
+          <Divider borderColor="gray" />
           <CardFooter>
             <ButtonGroup spacing="2">
               <Button
@@ -102,7 +103,7 @@ const ProductDetailedPage = () => {
           </CardFooter>
         </Stack>
       </Card>
-    </Flex>
+    </Box>
   );
 };
 
