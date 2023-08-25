@@ -13,13 +13,16 @@ export interface Product {
   description: string;
   category: string;
   image: string;
+  quantity: number;
 }
 
 const usePoducts = () => {
   const { newProduct } = useNewProductContext();
   const { allProducts, setAllProducts } = useAllProductsContext();
   const fetchProducts = () =>
-    apiClientDetails.get<Product[]>(`/`).then((res) => res.data);
+    apiClientDetails
+      .get<Product[]>(`/`)
+      .then((res) => res.data.map((product) => ({ ...product, quantity: 0 })));
 
   const searchQuery = useQuery<Product[]>({
     queryKey: ["products"],

@@ -38,6 +38,7 @@ const productSchema = z.object({
     "men's clothing",
     "women's clothing",
   ]),
+  quantity: z.number(),
 });
 
 type FormData = z.infer<typeof productSchema>;
@@ -54,7 +55,7 @@ const CreateNewProductForm: React.FC = () => {
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(productSchema),
-    defaultValues: { image: shoes, id: generateRandomUniqueUri() },
+    defaultValues: { image: shoes, id: generateRandomUniqueUri(), quantity: 0 },
   });
 
   const navigate = useNavigate();
@@ -68,6 +69,7 @@ const CreateNewProductForm: React.FC = () => {
         description: data.description,
         image: data.image || shoes,
         category: data.category,
+        quantity: 0,
       };
       addNewProduct(newProductData);
 

@@ -8,22 +8,22 @@ export interface NewProduct {
   description: string;
   image: string;
   category: string;
+  quantity: number;
 }
 
 const useCreateNewProduct = () => {
-  const queryClient = useQueryClient();
-  const createNewProduct = useMutation(
-    (product: NewProduct[]) => {
-      return apiClientDetails.post(`/`, product);
-    },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries(["products"]);
-      },
-    }
-  );
-
-  return { createNewProduct: createNewProduct.mutate };
+  //   const queryClient = useQueryClient();
+  //   const createNewProduct = useMutation(
+  //     (product: NewProduct[]) => {
+  //       return apiClientDetails.post(`/`, product);
+  //     },
+  //     {
+  //       onSuccess: () => {
+  //         queryClient.invalidateQueries(["products"]);
+  //       },
+  //     }
+  //   );
+  //   return { createNewProduct: createNewProduct.mutate };
 };
 
 export default useCreateNewProduct;

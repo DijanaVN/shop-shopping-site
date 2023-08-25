@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -17,9 +17,17 @@ import { SiAmericanexpress } from "react-icons/si";
 import { useSelectedProductContext } from "../StateManagement/SelectedProductContext";
 import ProductDetailedPage from "./ProductDeatiledPage";
 import ProductGridPage from "./ProductGridPage";
+import { useNewCartContext } from "./../StateManagement/ShoppingCartContext";
 
 const ShoppingCartGrid = () => {
   const { selectedProduct } = useSelectedProductContext();
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = useNewCartContext();
+
   return (
     <Box m={15}>
       <Grid
@@ -52,7 +60,8 @@ const ShoppingCartGrid = () => {
             >
               <ProductDetailedPage />
             </Box>
-            <Box
+            <HStack
+              justifyContent={"space-evenly"}
               bgColor={"primary.50"}
               w={"100%"}
               p={4}
@@ -60,10 +69,13 @@ const ShoppingCartGrid = () => {
               borderRadius="md"
               boxShadow="md"
             >
-              <Text fontSize="xl" fontWeight="bold">
+              <Text fontSize="2xl" fontWeight="bold">
                 Total:
               </Text>
-            </Box>
+              <Text fontSize="2xl" fontWeight="bold">
+                money
+              </Text>
+            </HStack>
           </VStack>
         </GridItem>
         <GridItem rowSpan={2} colSpan={1}>
@@ -87,30 +99,38 @@ const ShoppingCartGrid = () => {
               borderRadius="md"
               boxShadow="md"
             >
-              <Text fontSize="xl" mb={4}>
-                Sub-total:
-              </Text>
+              <HStack justifyContent={"space-between"}>
+                <Text fontSize="xl" mb={4}>
+                  Sub-total:
+                </Text>
+                <Text fontWeight={"bold"} fontSize="xl" mb={4}>
+                  money
+                </Text>
+              </HStack>
               <Box fontSize="xl">
-                <HStack>
+                <HStack justifyContent={"space-between"}>
                   <Text>Delivery:</Text>
-                  <Button
-                    boxShadow="md"
-                    marginBottom={1}
-                    bgColor="rgba(160, 242, 237, 0.4)"
-                  >
-                    Yes
-                  </Button>
-                  <Button
-                    boxShadow="md"
-                    marginBottom={1}
-                    bgColor="rgba(214, 26, 82, 0.4)"
-                  >
-                    No
-                  </Button>
+                  <Box>
+                    <Button
+                      marginRight={2}
+                      boxShadow="md"
+                      marginBottom={1}
+                      bgColor="rgba(160, 242, 237, 0.4)"
+                    >
+                      Yes
+                    </Button>
+                    <Button
+                      boxShadow="md"
+                      marginBottom={1}
+                      bgColor="rgba(214, 26, 82, 0.4)"
+                    >
+                      No
+                    </Button>
+                  </Box>
                 </HStack>
                 <Divider borderColor="gray" />
                 <Text mt={2} fontSize="sm">
-                  Standard Delivery(5.00 euro)
+                  Standard Delivery (5.00 euro)
                 </Text>
               </Box>
             </Box>
@@ -160,7 +180,7 @@ const ShoppingCartGrid = () => {
               borderWidth="1px"
               m={3}
               p={3}
-              fontSize="xl"
+              fontSize="lg"
               fontWeight={"bold"}
               bgColor={"lightcyan"}
             >

@@ -16,7 +16,7 @@ const ProductGridPage = () => {
 
   return (
     <Box>
-      <Flex flexWrap="wrap" justifyContent="space-between" margin={2}>
+      <Flex flexWrap="wrap" justifyContent="space-between" margin={3}>
         {(searchQuery as Product[]).map((product) => {
           return (
             <Link

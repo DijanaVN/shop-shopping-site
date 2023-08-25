@@ -17,6 +17,7 @@ import { UserProvider } from "./StateManagement/UserInfoContext";
 import { UserSignInProvider } from "./StateManagement/SignInUserContext";
 import { ContactFormProvider } from "./StateManagement/ContactFormContext";
 import { AllCartsProvider } from "./StateManagement/AllCartsContext";
+import { ShoppingCartProvider } from "./StateManagement/ShoppingCartContext";
 
 const queryClient = new QueryClient();
 
@@ -33,10 +34,13 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
                     <UserSignInProvider>
                       <ContactFormProvider>
                         <AllCartsProvider>
-                          <SelectedCategoryProvider>
-                            <RouterProvider router={router} />
-                            <ReactQueryDevtools />
-                          </SelectedCategoryProvider>
+                          {" "}
+                          <ShoppingCartProvider>
+                            <SelectedCategoryProvider>
+                              <RouterProvider router={router} />
+                              <ReactQueryDevtools />
+                            </SelectedCategoryProvider>
+                          </ShoppingCartProvider>
                         </AllCartsProvider>
                       </ContactFormProvider>
                     </UserSignInProvider>

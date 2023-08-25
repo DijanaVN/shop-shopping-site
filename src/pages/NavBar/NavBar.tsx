@@ -21,6 +21,8 @@ import ProductCategories from "./ProductCategories";
 import UserDropdown from "../../components/UserDropdown";
 import { useUserSignInContext } from "../../StateManagement/SignInUserContext";
 import SearchPage from "./SearchPage";
+import { useNewCartContext } from "../../StateManagement/ShoppingCartContext";
+import { useSelectedProductContext } from "../../StateManagement/SelectedProductContext";
 
 const NavBar = () => {
   const {
@@ -29,11 +31,21 @@ const NavBar = () => {
     isOpen: isSearchOpen,
   } = useDisclosure();
   const { userSignIn } = useUserSignInContext();
+  const { selectedProduct } = useSelectedProductContext();
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = useNewCartContext();
+
+  const quantity = getItemQuantity(selectedProduct?.id ?? 0);
 
   return (
     <Flex
       backgroundColor="rgba(250, 247, 250, 0.5)"
       padding={2}
+      paddingRight={5}
       justifyContent={"space-between"}
       alignItems="center"
     >
@@ -90,6 +102,23 @@ const NavBar = () => {
         <UserDropdown />
         <Link to={"/shoppingCartGrid"}>
           <FiShoppingCart fontSize={"40"} />
+          {quantity > 0 && (
+            <Button
+              bg="red"
+              color="white"
+              borderRadius="full"
+              width="2rem"
+              height="2.5rem"
+              fontSize="xl"
+              fontWeight="bold"
+              position="fixed"
+              top="55px"
+              right="2px"
+              zIndex="1"
+            >
+              {quantity}
+            </Button>
+          )}
         </Link>
       </HStack>
     </Flex>

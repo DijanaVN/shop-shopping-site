@@ -9,19 +9,37 @@ import {
   Button,
   Text,
   Image,
-  Flex,
   Box,
+  HStack,
+  VStack,
 } from "@chakra-ui/react";
 import { useSelectedProductContext } from "../StateManagement/SelectedProductContext";
 import { useNewProductContext } from "../StateManagement/NewProductContext";
 import treatyourself from "../images/jean-philippe-delberghe-75xPHEQBmvA-unsplash.webp";
 import { formatCurrency } from "./../utilities/formatCurrency";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNewCartContext } from "../StateManagement/ShoppingCartContext";
+import { Product } from "../hooks/useProducts";
 
 const ProductDetailedPage = () => {
   const { selectedProduct } = useSelectedProductContext();
   const { newProduct, deleteProduct, updateProduct } = useNewProductContext();
   const navigate = useNavigate();
+  const [inCartView, setInCartView] = useState(false); // Add state for cart view
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = useNewCartContext();
+
+  const quantity = getItemQuantity(selectedProduct?.id ?? 0);
+
+  // const handleAddToCart = () => {
+  //   navigate("/shoppingCartGrid");
+  //   setInCartView(true); // Set the cart view state when navigating to cart
+  // };
 
   const isProductInNewProduct = newProduct.some(
     (newProd) => newProd.id === selectedProduct?.id
@@ -54,7 +72,7 @@ const ProductDetailedPage = () => {
         >
           <Image
             objectFit="cover"
-            maxW={{ base: "40%", sm: "200px" }}
+            maxW={{ base: "40%", sm: "300px" }}
             src={selectedProduct?.image}
             alt={selectedProduct?.title}
             margin={2}
@@ -74,20 +92,45 @@ const ProductDetailedPage = () => {
           <Divider borderColor="gray" />
           <CardFooter>
             <ButtonGroup spacing="2">
-              <Button
-                onClick={() => {
-                  navigate("/shoppingCartGrid");
-                }}
-                variant="solid"
-                colorScheme="yellow"
-              >
-                Add to cart
-              </Button>
+              {" "}
+              {quantity === 0 ? (
+                <Button
+                  onClick={() => increaseCartQuantity(selectedProduct?.id)}
+                  variant="solid"
+                  colorScheme="yellow"
+                >
+                  Add to cart
+                </Button>
+              ) : (
+                <VStack>
+                  <HStack>
+                    <Button
+                      onClick={() => increaseCartQuantity(selectedProduct?.id)}
+                      bgColor={"green.200"}
+                    >
+                      +
+                    </Button>
+                    <Text>{quantity} in cart</Text>
+                    <Button
+                      onClick={() => decreaseCartQuantity(selectedProduct?.id)}
+                      bgColor={"orange.300"}
+                    >
+                      -
+                    </Button>
+                  </HStack>
+                  <Button
+                    onClick={() => removeFromCart(selectedProduct?.id)}
+                    bgColor={"red"}
+                  >
+                    Remove
+                  </Button>
+                </VStack>
+              )}
               {isProductInNewProduct && (
                 <>
                   <Button
                     onClick={() =>
-                      selectedProduct?.id && deleteProduct(selectedProduct.id)
+                      selectedProduct?.id && deleteProduct(selectedProduct?.id)
                     }
                     variant="solid"
                     colorScheme="red"
