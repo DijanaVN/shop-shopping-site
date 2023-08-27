@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -14,19 +13,15 @@ import { RiVisaFill } from "react-icons/ri";
 import { FaCcMastercard } from "react-icons/fa";
 import { FaCcPaypal } from "react-icons/fa";
 import { SiAmericanexpress } from "react-icons/si";
-import { useSelectedProductContext } from "../StateManagement/SelectedProductContext";
-import ProductDetailedPage from "./ProductDeatiledPage";
+
 import ProductGridPage from "./ProductGridPage";
 import { useNewCartContext } from "./../StateManagement/ShoppingCartContext";
 
+import SingleCart from "../components/SingleCart";
+import { formatCurrency } from "./../utilities/formatCurrency";
+
 const ShoppingCartGrid = () => {
-  const { selectedProduct } = useSelectedProductContext();
-  const {
-    getItemQuantity,
-    increaseCartQuantity,
-    decreaseCartQuantity,
-    removeFromCart,
-  } = useNewCartContext();
+  const { cartTotal, cartItems } = useNewCartContext();
 
   return (
     <Box m={15}>
@@ -52,13 +47,14 @@ const ShoppingCartGrid = () => {
             </Box>
             <Box
               bgColor={"primary.50"}
-              w={"100%"}
               p={4}
               borderWidth="1px"
               borderRadius="md"
               boxShadow="md"
             >
-              <ProductDetailedPage />
+              {cartItems.map((product) => (
+                <SingleCart key={product.id} {...product} />
+              ))}
             </Box>
             <HStack
               justifyContent={"space-evenly"}
@@ -72,9 +68,10 @@ const ShoppingCartGrid = () => {
               <Text fontSize="2xl" fontWeight="bold">
                 Total:
               </Text>
-              <Text fontSize="2xl" fontWeight="bold">
-                money
+              <Text fontWeight={"bold"} fontSize="xl" mb={4}>
+                {formatCurrency(cartTotal)}
               </Text>
+              <Text fontSize="2xl" fontWeight="bold"></Text>
             </HStack>
           </VStack>
         </GridItem>
@@ -104,7 +101,7 @@ const ShoppingCartGrid = () => {
                   Sub-total:
                 </Text>
                 <Text fontWeight={"bold"} fontSize="xl" mb={4}>
-                  money
+                  {formatCurrency(cartTotal)}
                 </Text>
               </HStack>
               <Box fontSize="xl">

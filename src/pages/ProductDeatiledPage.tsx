@@ -25,8 +25,7 @@ import { Product } from "../hooks/useProducts";
 const ProductDetailedPage = () => {
   const { selectedProduct } = useSelectedProductContext();
   const { newProduct, deleteProduct, updateProduct } = useNewProductContext();
-  const navigate = useNavigate();
-  const [inCartView, setInCartView] = useState(false); // Add state for cart view
+
   const {
     getItemQuantity,
     increaseCartQuantity,
@@ -35,11 +34,6 @@ const ProductDetailedPage = () => {
   } = useNewCartContext();
 
   const quantity = getItemQuantity(selectedProduct?.id ?? 0);
-
-  // const handleAddToCart = () => {
-  //   navigate("/shoppingCartGrid");
-  //   setInCartView(true); // Set the cart view state when navigating to cart
-  // };
 
   const isProductInNewProduct = newProduct.some(
     (newProd) => newProd.id === selectedProduct?.id
@@ -135,10 +129,10 @@ const ProductDetailedPage = () => {
                     variant="solid"
                     colorScheme="red"
                   >
-                    Delete
+                    Delete Product
                   </Button>
                   <Button variant="solid" colorScheme="teal">
-                    Update
+                    Delete Product
                   </Button>
                 </>
               )}

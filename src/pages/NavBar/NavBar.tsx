@@ -31,15 +31,7 @@ const NavBar = () => {
     isOpen: isSearchOpen,
   } = useDisclosure();
   const { userSignIn } = useUserSignInContext();
-  const { selectedProduct } = useSelectedProductContext();
-  const {
-    getItemQuantity,
-    increaseCartQuantity,
-    decreaseCartQuantity,
-    removeFromCart,
-  } = useNewCartContext();
-
-  const quantity = getItemQuantity(selectedProduct?.id ?? 0);
+  const { cartQuantity } = useNewCartContext();
 
   return (
     <Flex
@@ -102,7 +94,7 @@ const NavBar = () => {
         <UserDropdown />
         <Link to={"/shoppingCartGrid"}>
           <FiShoppingCart fontSize={"40"} />
-          {quantity > 0 && (
+          {cartQuantity > 0 && (
             <Button
               bg="red"
               color="white"
@@ -116,7 +108,7 @@ const NavBar = () => {
               right="2px"
               zIndex="1"
             >
-              {quantity}
+              {cartQuantity}
             </Button>
           )}
         </Link>

@@ -22,6 +22,7 @@ import Exchanges from "./../pages/Footer/Exchanges";
 import ReturnsRefunds from "./../pages/Footer/ReturnsRefunds";
 import AllShoppingCarts from "../pages/AllShoppingCarts";
 import ShoppingCartGrid from "./../pages/ShoppingCart";
+import SingleCart from "./../components/SingleCart";
 
 const router = createBrowserRouter([
   {
