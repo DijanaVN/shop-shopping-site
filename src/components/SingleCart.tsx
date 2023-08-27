@@ -17,16 +17,12 @@ import { useNewCartContext } from "../StateManagement/ShoppingCartContext";
 import { useAllProductsContext } from "../StateManagement/AllProductsContexts";
 
 const SingleCart = ({ id, quantity }: CartItem) => {
-  const { removeFromCart, cartItems, getItemQuantity, cartTotal } =
+  const { removeFromCart, cartItems, getItemQuantity, cartTotal, itemTotal } =
     useNewCartContext();
   const { allProducts } = useAllProductsContext();
 
   const item = allProducts.find((i) => i.id === id);
   if (item == null) return null;
-
-  const itemTotal = formatCurrency(
-    Number(Number(item?.price) * getItemQuantity(item.id))
-  );
 
   console.log(cartTotal);
   console.log(cartItems);

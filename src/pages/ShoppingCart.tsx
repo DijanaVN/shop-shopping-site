@@ -19,9 +19,11 @@ import { useNewCartContext } from "./../StateManagement/ShoppingCartContext";
 
 import SingleCart from "../components/SingleCart";
 import { formatCurrency } from "./../utilities/formatCurrency";
+import { DELIVERY_PRICE } from "./../components/constants";
 
 const ShoppingCartGrid = () => {
-  const { cartTotal, cartItems } = useNewCartContext();
+  const { cartTotal, cartItems, handleDelivery, totalAmount } =
+    useNewCartContext();
 
   return (
     <Box m={15}>
@@ -68,7 +70,7 @@ const ShoppingCartGrid = () => {
               <Text fontSize="2xl" fontWeight="bold">
                 Total:
               </Text>
-              <Text fontWeight={"bold"} fontSize="xl" mb={4}>
+              <Text fontWeight={"bold"} fontSize="xl">
                 {formatCurrency(cartTotal)}
               </Text>
               <Text fontSize="2xl" fontWeight="bold"></Text>
@@ -109,6 +111,7 @@ const ShoppingCartGrid = () => {
                   <Text>Delivery:</Text>
                   <Box>
                     <Button
+                      onClick={() => handleDelivery(true)}
                       marginRight={2}
                       boxShadow="md"
                       marginBottom={1}
@@ -117,6 +120,7 @@ const ShoppingCartGrid = () => {
                       Yes
                     </Button>
                     <Button
+                      onClick={() => handleDelivery(false)}
                       boxShadow="md"
                       marginBottom={1}
                       bgColor="rgba(214, 26, 82, 0.4)"
@@ -127,8 +131,17 @@ const ShoppingCartGrid = () => {
                 </HStack>
                 <Divider borderColor="gray" />
                 <Text mt={2} fontSize="sm">
-                  Standard Delivery (5.00 euro)
+                  Standard Delivery ({formatCurrency(DELIVERY_PRICE)} )
                 </Text>
+                <Divider borderColor="gray" />{" "}
+                <HStack mt={5}>
+                  <Text fontSize="xl" fontWeight="bold">
+                    Total:
+                  </Text>
+                  <Text fontWeight={"bold"} fontSize="xl">
+                    {formatCurrency(totalAmount)}
+                  </Text>
+                </HStack>
               </Box>
             </Box>
             <Button

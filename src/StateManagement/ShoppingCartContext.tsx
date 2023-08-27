@@ -6,6 +6,7 @@ import React, {
   useState,
 } from "react";
 import { useAllProductsContext } from "./AllProductsContexts";
+import { DELIVERY_PRICE } from "../components/constants";
 
 type NewCartContext = {
   getItemQuantity: (id: number) => number;
@@ -15,6 +16,9 @@ type NewCartContext = {
   cartQuantity: number;
   cartItems: CartItem[];
   cartTotal: number;
+  itemTotal: number;
+  totalAmount: number;
+  handleDelivery: (includeDelivery: boolean) => void;
 };
 
 export type CartItem = {
@@ -35,7 +39,9 @@ export function useNewCartContext() {
 export function ShoppingCartProvider({ children }: CartContextProps) {
   const { allProducts } = useAllProductsContext();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [itemTotal, setItemTotal] = useState<number>(0);
   const [cartTotal, setCartTotal] = useState<number>(0);
+  const [totalAmount, setTotalAmount] = useState(cartTotal);
 
   const getItemQuantity = (id: number) => {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
@@ -85,17 +91,25 @@ export function ShoppingCartProvider({ children }: CartContextProps) {
     const updatedCartTotal = cartItems.reduce((total, cartItem) => {
       const item = allProducts.find((i) => i.id === cartItem.id);
       if (item) {
-        const itemTotal = Number(item.price) * cartItem.quantity;
+        const itemTotall = Number(item.price) * cartItem.quantity;
+        setItemTotal(itemTotall);
         return total + itemTotal;
       }
       return total;
     }, 0);
     setCartTotal(updatedCartTotal);
   }, [cartItems, allProducts]);
-
-  console.log(cartItems);
+  const handleDelivery = (includeDelivery: boolean) => {
+    if (includeDelivery) {
+      const total = cartTotal + DELIVERY_PRICE;
+      setTotalAmount(total);
+    } else {
+      setTotalAmount(cartTotal);
+    }
+  };
+  console.log(itemTotal);
   console.log(cartTotal);
-  console.log(cartQuantity);
+  console.log(totalAmount);
 
   return (
     <NewCartContext.Provider
@@ -107,6 +121,9 @@ export function ShoppingCartProvider({ children }: CartContextProps) {
         cartQuantity,
         cartItems,
         cartTotal,
+        itemTotal,
+        totalAmount,
+        handleDelivery,
       }}
     >
       {children}

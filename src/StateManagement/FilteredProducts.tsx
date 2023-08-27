@@ -16,12 +16,6 @@ const FilteredProductContext = createContext<
 
 export function useFilteredProductContext() {
   const context = useContext(FilteredProductContext);
-  if (!context) {
-    throw new Error(
-      "usefilteredProductContext must be used within a filteredProductProvider"
-    );
-  }
-  return context;
 }
 
 export function FilteredProductProvider({ children }: ProductContextProps) {
