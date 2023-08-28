@@ -14,11 +14,12 @@ import { z } from "zod";
 import { useNavigate } from "react-router-dom";
 import { useAllProductsContext } from "../../StateManagement/AllProductsContexts";
 import { useFilteredProductContext } from "../../StateManagement/FilteredProducts";
-import CardFunction from "../../components/ProductCard";
 import img from "../../images/milad-fakurian-HE1_K4_-QT8-unsplash.webp";
 import { FcSearch } from "react-icons/fc";
 import { useSelectedProductContext } from "../../StateManagement/SelectedProductContext";
 import { useState } from "react";
+import ProductCard from "./../../components/ProductCard";
+import { Product } from "../../hooks/useProducts";
 
 const schema = z.object({
   searchText: z
@@ -41,7 +42,7 @@ const SearchPage = ({ onClose }: { onClose: () => void }) => {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const { allProducts } = useAllProductsContext();
-  const { setFilteredProduct, filteredProduct } = useFilteredProductContext();
+  const { filteredProduct, setFilteredProduct } = useFilteredProductContext();
   const { onClick } = useSelectedProductContext();
   const [searchButtonPressed, setSearchButtonPressed] = useState(false);
 
@@ -106,7 +107,7 @@ const SearchPage = ({ onClose }: { onClose: () => void }) => {
           {searchButtonPressed && filteredProduct.length === 0 ? (
             <Text height={"100vh"}>No results for that search.</Text>
           ) : (
-            filteredProduct.map((n) => (
+            filteredProduct.map((n: Product) => (
               <div
                 key={n.id}
                 onClick={() => {
@@ -115,7 +116,15 @@ const SearchPage = ({ onClose }: { onClose: () => void }) => {
                   navigate(`/product/${n.id}`);
                 }}
               >
-                <CardFunction m={n} />
+                <ProductCard
+                  id={n.id}
+                  title={n.title}
+                  price={n.price}
+                  description={n.description}
+                  category={n.category}
+                  image={n.image}
+                  quantity={n.quantity}
+                />
               </div>
             ))
           )}

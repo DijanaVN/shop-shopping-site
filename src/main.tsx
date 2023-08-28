@@ -9,8 +9,8 @@ import customTheme from "./customeTheme";
 import { RouterProvider } from "react-router-dom";
 import router from "./routing/routes";
 import { NewProductProvider } from "./StateManagement/NewProductContext";
-import { SelectedProductProvider } from "./StateManagement/SelectedProductContext";
 import { SearchTextProvider } from "./StateManagement/SearchTextContext";
+import { SelectedProductProvider } from "./StateManagement/SelectedProductContext";
 import { AllProductsProvider } from "./StateManagement/AllProductsContexts";
 import { FilteredProductProvider } from "./StateManagement/FilteredProducts";
 import { UserProvider } from "./StateManagement/UserInfoContext";
@@ -26,8 +26,8 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={customTheme}>
         <SelectedProductProvider>
-          <SearchTextProvider>
-            <FilteredProductProvider>
+          <FilteredProductProvider>
+            <SearchTextProvider>
               <UserProvider>
                 <AllProductsProvider>
                   <NewProductProvider>
@@ -47,8 +47,8 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
                   </NewProductProvider>
                 </AllProductsProvider>
               </UserProvider>
-            </FilteredProductProvider>
-          </SearchTextProvider>
+            </SearchTextProvider>
+          </FilteredProductProvider>
         </SelectedProductProvider>
       </ChakraProvider>
     </QueryClientProvider>

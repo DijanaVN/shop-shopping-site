@@ -10,12 +10,14 @@ type ProductContextProps = {
   children: ReactNode;
 };
 
-const FilteredProductContext = createContext<
-  FilteredProductContext | undefined
->(undefined);
+const FilteredProductContext = createContext<FilteredProductContext>({
+  filteredProduct: [],
+  setFilteredProduct: () => {},
+});
 
 export function useFilteredProductContext() {
   const context = useContext(FilteredProductContext);
+  return context; // Add this line
 }
 
 export function FilteredProductProvider({ children }: ProductContextProps) {
