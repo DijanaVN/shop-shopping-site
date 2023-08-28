@@ -5,7 +5,6 @@ import { useSelectedProductContext } from "../StateManagement/SelectedProductCon
 import ScrollToTopButton from "../components/ScrollToTheTopButton";
 import ProductCard from "../components/ProductCard";
 import "../index.css";
-import { useState } from "react";
 import useScrollToTop from "../hooks/useScrollToTop";
 
 const ProductGridPage = () => {

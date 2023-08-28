@@ -1,7 +1,16 @@
 import React, { ReactNode, createContext, useContext, useState } from "react";
-import { NewProduct } from "../hooks/useCreateNewProduct";
+
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
+export interface NewProduct {
+  id: number;
+  title: string;
+  price: string;
+  description: string;
+  category: string;
+  image: string;
+  quantity: number;
+}
 type NewProductContext = {
   newProduct: NewProduct[];
   setNewProduct: React.Dispatch<React.SetStateAction<NewProduct[]>>;
