@@ -4,8 +4,8 @@ import usePoductsByCategory from "../hooks/useProductsByCategory";
 import image from "../images/milad-fakurian-HE1_K4_-QT8-unsplash.webp";
 import { useSelectedProductContext } from "../StateManagement/SelectedProductContext";
 import { Link } from "react-router-dom";
-import CardFunction from "../components/ProductCard";
 import ScrollToTopButton from "../components/ScrollToTheTopButton";
+import ProductCard from "../components/ProductCard";
 
 const CategoryGridPage = () => {
   const { selectedCategory } = useSelectedCategoryContext();
@@ -30,7 +30,15 @@ const CategoryGridPage = () => {
                 onClick={() => onClick(m)}
                 key={m.id}
               >
-                <CardFunction m={m} />
+                <ProductCard
+                  id={m.id}
+                  title={m.title}
+                  price={m.price}
+                  description={m.description}
+                  category={m.category}
+                  image={m.image}
+                  quantity={m.quantity}
+                />
               </Link>
             ) : (
               ""

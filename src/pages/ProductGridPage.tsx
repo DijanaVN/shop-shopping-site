@@ -1,25 +1,11 @@
-import {
-  Text,
-  Flex,
-  Button,
-  HStack,
-  Box,
-  Card,
-  CardBody,
-  Heading,
-  Stack,
-  Image,
-  ButtonGroup,
-  CardFooter,
-  VStack,
-} from "@chakra-ui/react";
+import { Text, Flex, Box } from "@chakra-ui/react";
 import usePoducts, { Product } from "../hooks/useProducts";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelectedProductContext } from "../StateManagement/SelectedProductContext";
 import ScrollToTopButton from "../components/ScrollToTheTopButton";
 import ProductCard from "../components/ProductCard";
-import { formatCurrency } from "../utilities/formatCurrency";
-import { useNewCartContext } from "../StateManagement/ShoppingCartContext";
+import "../index.css";
+import { useState } from "react";
 
 const ProductGridPage = () => {
   const { searchQuery } = usePoducts();
@@ -58,12 +44,3 @@ const ProductGridPage = () => {
 };
 
 export default ProductGridPage;
-{
-  /* <Link
-              to={`/product/${product.id}`}
-              onClick={() => onClick(product)}
-              key={product.id}
-            >
-              <ProductCard m={product} />
-            </Link> */
-}
