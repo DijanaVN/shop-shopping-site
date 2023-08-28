@@ -52,13 +52,21 @@ const Footer = () => {
             <Divider mb={3} borderColor="gray.600" />
 
             <SimpleGrid columns={2} spacing={2}>
-              <Link to="https://www.instagram.com/">
+              <Link
+                to="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 INSTAGRAM{" "}
                 <Center>
                   <BsInstagram />{" "}
                 </Center>
               </Link>
-              <Link to="https://www.facebook.com">
+              <Link
+                to="https://www.facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 FACEBOOK{" "}
                 <Center>
                   <BsFacebook />
