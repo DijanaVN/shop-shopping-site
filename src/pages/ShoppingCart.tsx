@@ -21,10 +21,24 @@ import SingleCart from "../components/SingleCart";
 import { formatCurrency } from "./../utilities/formatCurrency";
 import { DELIVERY_PRICE } from "./../components/constants";
 import useScrollToTop from "../hooks/useScrollToTop";
+import { useNavigate } from "react-router-dom";
+import ThankYouPopup from "../components/thankYouPopupWindow";
+import { useRef, useState } from "react";
 
 const ShoppingCartGrid = () => {
   const { cartTotal, cartItems, handleDelivery, totalAmount } =
     useNewCartContext();
+  const [isThankYouPopupOpen, setIsThankYouPopupOpen] = useState(false);
+  const handleCheckout = () => {
+    // Implement your checkout logic here
+    // ...
+    // After successful checkout, open the Thank You popup
+    setIsThankYouPopupOpen(true);
+  };
+  const handleCloseThankYouPopup = () => {
+    setIsThankYouPopupOpen(false);
+  };
+  const emptyButtonRef = useRef<HTMLButtonElement>(null);
   useScrollToTop();
   return (
     <Box m={15}>
@@ -146,6 +160,7 @@ const ShoppingCartGrid = () => {
               </Box>
             </Box>
             <Button
+              onClick={handleCheckout}
               bgColor={"green.400"}
               color={"whiteAlpha.800"}
               w={"100%"}
@@ -155,6 +170,11 @@ const ShoppingCartGrid = () => {
             >
               CHECKOUT
             </Button>
+            <ThankYouPopup
+              isOpen={isThankYouPopupOpen}
+              onClose={handleCloseThankYouPopup}
+              cancelRef={emptyButtonRef}
+            />
             <Box
               bgColor={"primary.50"}
               w={"100%"}
