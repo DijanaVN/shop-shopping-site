@@ -18,8 +18,10 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import img from "../../images/margarida-afonso-F01g8NPdOdo-unsplash.webp";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 const HelpPage = () => {
+  useScrollToTop();
   return (
     <>
       <Grid p={6} width={"100%"}>

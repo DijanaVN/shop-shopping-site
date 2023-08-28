@@ -18,6 +18,7 @@ import {
 import { Product } from "../hooks/useProducts";
 import { useNewCartContext } from "../StateManagement/ShoppingCartContext";
 import "../index.css";
+import useScrollToTop from "../hooks/useScrollToTop";
 
 const ProductCard = ({ id, title, image, category, price }: Product) => {
   const {
@@ -27,7 +28,7 @@ const ProductCard = ({ id, title, image, category, price }: Product) => {
     removeFromCart,
   } = useNewCartContext();
   const quantity = getItemQuantity(id ?? 0);
-
+  useScrollToTop();
   return (
     <Box className={`product-card`}>
       <Card

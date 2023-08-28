@@ -1,6 +1,7 @@
 import { VStack, Text, Box, Flex, Image, Divider } from "@chakra-ui/react";
 import { useUserSignInContext } from "../../StateManagement/SignInUserContext";
 import img from "../../images/jason-leung-7bpCPMOZ1rs-unsplash.webp";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 const AdressesPage = () => {
   const { userSignIn } = useUserSignInContext();
@@ -8,7 +9,7 @@ const AdressesPage = () => {
   if (!userSignIn) {
     return null;
   }
-
+  useScrollToTop();
   return (
     <Flex
       direction="column"

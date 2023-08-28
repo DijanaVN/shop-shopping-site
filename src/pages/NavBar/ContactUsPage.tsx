@@ -24,6 +24,7 @@ import {
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import PopupWindow from "../../components/Popupwindow";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 const schema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters").max(50),
@@ -51,7 +52,7 @@ const ContactUs = () => {
     reset();
     setIsSuccessOpen(true);
   };
-
+  useScrollToTop();
   return (
     <Box bg="gray.100" p={12}>
       <Grid templateColumns="repeat(2, 1fr)" gap={12}>

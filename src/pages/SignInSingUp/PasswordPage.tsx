@@ -12,6 +12,7 @@ import img from "../../images/jason-leung-7bpCPMOZ1rs-unsplash.webp";
 import { useRef, useState } from "react";
 import { useUserContext } from "../../StateManagement/UserInfoContext";
 import PopupWindow from "../../components/Popupwindow";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 const PasswordPage = () => {
   const { userSignIn, updateSignInUser } = useUserSignInContext();
@@ -25,6 +26,7 @@ const PasswordPage = () => {
   const cancelRef = useRef<HTMLButtonElement | null>(null);
 
   const handlePasswordChange = () => {
+    useScrollToTop();
     if (!oldPassword || !newPassword || !confirmPassword) {
       return; // Don't proceed if any field is empty
     }

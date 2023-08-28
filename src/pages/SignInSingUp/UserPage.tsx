@@ -17,11 +17,12 @@ import img1 from "../../images/pascal-brauer-ttdio_nOPjQ-unsplash.webp";
 import img2 from "../../images/molly-mears-4_90zmmdo_4-unsplash.webp";
 import { useUserSignInContext } from "../../StateManagement/SignInUserContext";
 import { useNavigate } from "react-router-dom";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 const UserPage: React.FC = () => {
   const { userSignIn } = useUserSignInContext();
   const navigate = useNavigate();
-
+  useScrollToTop();
   return (
     <Box>
       {/* Body */}

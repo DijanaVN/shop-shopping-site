@@ -1,6 +1,8 @@
 import { Box, Center, Text } from "@chakra-ui/react";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 const Shipping = () => {
+  useScrollToTop();
   return (
     <Box margin={10} textAlign={"start"}>
       <Center

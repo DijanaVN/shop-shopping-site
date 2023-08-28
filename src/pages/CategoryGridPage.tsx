@@ -6,6 +6,7 @@ import { useSelectedProductContext } from "../StateManagement/SelectedProductCon
 import { Link } from "react-router-dom";
 import ScrollToTopButton from "../components/ScrollToTheTopButton";
 import ProductCard from "../components/ProductCard";
+import { useEffect } from "react";
 
 const CategoryGridPage = () => {
   const { selectedCategory } = useSelectedCategoryContext();
@@ -14,6 +15,10 @@ const CategoryGridPage = () => {
   if (selectedCategory) {
     const { updatedProductsInCategory } =
       usePoductsByCategory(selectedCategory);
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [selectedCategory]);
 
     return (
       <>

@@ -7,7 +7,9 @@ import {
   UnorderedList,
 } from "@chakra-ui/react";
 import img from "../../images/ahmed-carter-tiWcNvpQF4E-unsplash (1).webp";
+import useScrollToTop from "../../hooks/useScrollToTop";
 const AboutUsPage = () => {
+  useScrollToTop();
   return (
     <Box bg="gray.100" p={12}>
       <Grid templateColumns="repeat(2, 1fr)" gap={12}>

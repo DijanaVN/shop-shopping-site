@@ -17,6 +17,7 @@ import img from "../../images/jason-leung-7bpCPMOZ1rs-unsplash.webp";
 import { useUserSignInContext } from "../../StateManagement/SignInUserContext";
 import { useUserContext } from "../../StateManagement/UserInfoContext";
 import { useRef, useState } from "react";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 const ProfilePage = () => {
   const { userSignIn, setUserSignIn } = useUserSignInContext();
@@ -43,6 +44,7 @@ const ProfilePage = () => {
       navigate("/");
     }
   };
+  useScrollToTop();
   return (
     <Flex
       direction="column"

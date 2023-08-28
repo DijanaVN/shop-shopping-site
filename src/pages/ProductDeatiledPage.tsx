@@ -21,6 +21,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useNewCartContext } from "../StateManagement/ShoppingCartContext";
 import { Product } from "../hooks/useProducts";
+import useScrollToTop from "../hooks/useScrollToTop";
 
 const ProductDetailedPage = () => {
   const { selectedProduct } = useSelectedProductContext();
@@ -40,6 +41,7 @@ const ProductDetailedPage = () => {
   );
 
   if (!selectedProduct) return "";
+  useScrollToTop();
 
   return (
     <Box

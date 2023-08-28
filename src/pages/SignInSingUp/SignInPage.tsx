@@ -14,6 +14,7 @@ import { User } from "../../StateManagement/UserInfoContext";
 import { z } from "zod";
 import { useUserSignInContext } from "../../StateManagement/SignInUserContext";
 import { useNavigate } from "react-router-dom";
+import useScrollToTop from "../../hooks/useScrollToTop";
 const schema = z.object({
   emailOrUsername: z.string().min(1),
   password: z.string().min(1),
@@ -60,7 +61,7 @@ const SignInPage: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       console.error("Validation error:", error);
     }
   };
-
+  useScrollToTop();
   return (
     <Box>
       <form onSubmit={handleSubmit(onSubmit)}>

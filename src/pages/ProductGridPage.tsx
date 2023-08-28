@@ -6,6 +6,7 @@ import ScrollToTopButton from "../components/ScrollToTheTopButton";
 import ProductCard from "../components/ProductCard";
 import "../index.css";
 import { useState } from "react";
+import useScrollToTop from "../hooks/useScrollToTop";
 
 const ProductGridPage = () => {
   const { searchQuery } = usePoducts();
@@ -14,7 +15,7 @@ const ProductGridPage = () => {
   if (!searchQuery) {
     return <Text>Loading...</Text>;
   }
-
+  useScrollToTop();
   return (
     <Box>
       <Flex flexWrap="wrap" justifyContent="space-between" margin={3}>

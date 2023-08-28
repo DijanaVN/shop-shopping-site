@@ -2,8 +2,10 @@ import { Box, Grid, GridItem, HStack, Image } from "@chakra-ui/react";
 import ProductGridPage from "../ProductGridPage";
 import treatyourself from "../../images/freestocks-_3Q3tsJ01nc-unsplash.webp";
 import Header from "./../../components/Header";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 function HomePage() {
+  useScrollToTop();
   return (
     <>
       <Box position="relative">

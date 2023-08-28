@@ -25,6 +25,7 @@ import { useNewProductContext } from "../StateManagement/NewProductContext";
 import useCategories from "../hooks/useCategories";
 import { useNavigate } from "react-router-dom";
 import { generateRandomUniqueUri } from "./GenerateRandomNumberForId";
+import useScrollToTop from "../hooks/useScrollToTop";
 
 const productSchema = z.object({
   id: z.number({ invalid_type_error: "Field is required." }),
@@ -82,7 +83,7 @@ const CreateNewProductForm: React.FC = () => {
       console.error("Error creating new product:", error);
     }
   };
-
+  useScrollToTop();
   return (
     <>
       <Button onClick={onOpen}>Create New Product</Button>

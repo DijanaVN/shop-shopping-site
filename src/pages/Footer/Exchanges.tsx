@@ -1,7 +1,9 @@
 import { Box, Center, ListItem, OrderedList, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 const Exchanges = () => {
+  useScrollToTop();
   return (
     <Box margin={10} textAlign={"start"}>
       <Center

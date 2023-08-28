@@ -11,8 +11,10 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { BsFacebook, BsInstagram } from "react-icons/bs";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 const Footer = () => {
+  useScrollToTop();
   return (
     <Box bg="gray.800" color="white" py={10}>
       <Container maxW="container.lg">

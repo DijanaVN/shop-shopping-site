@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { User, useUserContext } from "../../StateManagement/UserInfoContext";
 import { zodResolver } from "@hookform/resolvers/zod";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 const userSchema = z.object({
   id: z.number(),
@@ -81,7 +82,7 @@ const SignUpPage: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       console.error("Error creating new user:", error);
     }
   };
-
+  useScrollToTop();
   return (
     <Box backgroundPosition="center" backgroundRepeat="no-repeat">
       <form onSubmit={handleSubmit(onSubmit)}>

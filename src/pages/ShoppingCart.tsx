@@ -20,11 +20,12 @@ import { useNewCartContext } from "./../StateManagement/ShoppingCartContext";
 import SingleCart from "../components/SingleCart";
 import { formatCurrency } from "./../utilities/formatCurrency";
 import { DELIVERY_PRICE } from "./../components/constants";
+import useScrollToTop from "../hooks/useScrollToTop";
 
 const ShoppingCartGrid = () => {
   const { cartTotal, cartItems, handleDelivery, totalAmount } =
     useNewCartContext();
-
+  useScrollToTop();
   return (
     <Box m={15}>
       <Grid

@@ -18,6 +18,7 @@ import img from "../../images/jason-leung-7bpCPMOZ1rs-unsplash.webp";
 import { useRef, useState } from "react";
 import { User, useUserContext } from "../../StateManagement/UserInfoContext";
 import PopupWindow from "../../components/Popupwindow";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 const EmailPage = () => {
   const { userSignIn, updateSignInUser } = useUserSignInContext();
@@ -60,7 +61,7 @@ const EmailPage = () => {
   if (!userSignIn) {
     return null;
   }
-
+  useScrollToTop();
   return (
     <Flex
       direction="column"

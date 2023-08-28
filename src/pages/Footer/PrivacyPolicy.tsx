@@ -1,6 +1,8 @@
 import { Box, Text } from "@chakra-ui/react";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 const PrivacyPolicy = () => {
+  useScrollToTop();
   return (
     <Box margin={10} textAlign={"center"}>
       <Text
