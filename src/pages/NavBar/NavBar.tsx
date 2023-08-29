@@ -11,6 +11,7 @@ import {
   DrawerOverlay,
   Button,
   Text,
+  IconButton,
 } from "@chakra-ui/react";
 
 import { FcSearch } from "react-icons/fc";
@@ -23,6 +24,7 @@ import { useUserSignInContext } from "../../StateManagement/SignInUserContext";
 import SearchPage from "./SearchPage";
 import { useNewCartContext } from "../../StateManagement/ShoppingCartContext";
 import useScrollToTop from "../../hooks/useScrollToTop";
+import { MdMenu } from "react-icons/md"; // Added menu icon
 
 const NavBar = () => {
   const {
@@ -44,8 +46,22 @@ const NavBar = () => {
       <Link to={"/"}>
         <Image boxSize="20" src={logoImage} alt="Logo" borderRadius="full" />
       </Link>
+      <IconButton
+        variant={"ghost"}
+        aria-label="Menu"
+        position="fixed"
+        borderRadius="full"
+        top="50px" // Position vertically at the center
+        left="100px" // Adjust the distance from the right edge
+        transform="translateY(-50%)"
+        _hover={{ backgroundColor: "transparent", color: "blue.500" }} //
+        icon={<MdMenu fontSize={"40"} />}
+        onClick={onSearchOpen} // Replace with your menu logic
+        display={{ base: "block", lg: "none" }} // Show only on small screens
+      />
 
       <HStack
+        display={{ base: "none", lg: "flex" }}
         spacing={10}
         fontSize={20}
         fontFamily={"heading"}
@@ -102,7 +118,7 @@ const NavBar = () => {
               borderRadius="full"
               width="2rem"
               height="2.5rem"
-              fontSize="xl"
+              fontSize={{ base: "lg", lg: "xl" }}
               fontWeight="bold"
               position="fixed"
               top="55px"

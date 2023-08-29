@@ -5,6 +5,7 @@ import {
   Box,
   ListItem,
   UnorderedList,
+  GridItem,
 } from "@chakra-ui/react";
 import img from "../../images/ahmed-carter-tiWcNvpQF4E-unsplash (1).webp";
 import useScrollToTop from "../../hooks/useScrollToTop";
@@ -12,7 +13,7 @@ const AboutUsPage = () => {
   useScrollToTop();
   return (
     <Box bg="gray.100" p={12}>
-      <Grid templateColumns="repeat(2, 1fr)" gap={12}>
+      <Grid templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }} gap={12}>
         <Box height="100%" bg="white" p={10} borderRadius="md" boxShadow="md">
           <Text fontSize="xl" fontWeight="bold" textAlign="center">
             Welcome to Shop-Shopping!
@@ -79,8 +80,10 @@ const AboutUsPage = () => {
             <br />
             Sincerely, The Shop-Shopping Team
           </Text>
-        </Box>
-        <Image height="100%" src={img} alt="Shop-Shopping" />
+        </Box>{" "}
+        <GridItem display={{ base: "none", lg: "block" }}>
+          <Image height="100%" src={img} alt="Shop-Shopping" />
+        </GridItem>
       </Grid>
     </Box>
   );

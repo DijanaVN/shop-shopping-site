@@ -14,6 +14,7 @@ import {
   FormControl,
   FormLabel,
   Grid,
+  GridItem,
 } from "@chakra-ui/react";
 import img from "../../images/andrew-neel-ute2XAFQU2I-unsplash.webp";
 import { FieldElement, FieldValues, useForm } from "react-hook-form";
@@ -55,8 +56,10 @@ const ContactUs = () => {
   useScrollToTop();
   return (
     <Box bg="gray.100" p={12}>
-      <Grid templateColumns="repeat(2, 1fr)" gap={12}>
-        <Image height="100%" src={img} alt="Shop-Shopping" />
+      <Grid templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }} gap={12}>
+        <GridItem display={{ base: "none", lg: "block" }}>
+          <Image height="100%" src={img} alt="Shop-Shopping" />
+        </GridItem>
         <Box pt={12} paddingLeft={8} paddingRight={8}>
           <Box>
             <Heading>Contact Us</Heading> <br />

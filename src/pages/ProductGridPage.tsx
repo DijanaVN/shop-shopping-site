@@ -1,7 +1,5 @@
-import { Text, Flex, Box } from "@chakra-ui/react";
+import { Text, Box, SimpleGrid } from "@chakra-ui/react";
 import usePoducts, { Product } from "../hooks/useProducts";
-import { Link } from "react-router-dom";
-import { useSelectedProductContext } from "../StateManagement/SelectedProductContext";
 import ScrollToTopButton from "../components/ScrollToTheTopButton";
 import ProductCard from "../components/ProductCard";
 import "../index.css";
@@ -9,7 +7,6 @@ import useScrollToTop from "../hooks/useScrollToTop";
 
 const ProductGridPage = () => {
   const { searchQuery } = usePoducts();
-  const { onClick } = useSelectedProductContext();
 
   if (!searchQuery) {
     return <Text>Loading...</Text>;
@@ -17,14 +14,15 @@ const ProductGridPage = () => {
   useScrollToTop();
   return (
     <Box>
-      <Flex flexWrap="wrap" justifyContent="space-between" margin={3}>
+      <SimpleGrid
+        columns={{ base: 1, md: 2, lg: 3, xl: 4, "2xl": 5 }} // Adjust the number of columns based on screen size
+        spacing={4}
+        justifyContent="space-between"
+        margin={3}
+      >
         {(searchQuery as Product[]).map((product) => {
           return (
-            <Box
-              // to={`/product/${product.id}`}
-              // onClick={() => onClick(product)}
-              key={product.id}
-            >
+            <Box key={product.id}>
               <ProductCard
                 id={product.id}
                 title={product.title}
@@ -33,11 +31,11 @@ const ProductGridPage = () => {
                 category={product.category}
                 image={product.image}
                 quantity={product.quantity}
-              />{" "}
+              />
             </Box>
           );
         })}
-      </Flex>
+      </SimpleGrid>
       <ScrollToTopButton />
     </Box>
   );

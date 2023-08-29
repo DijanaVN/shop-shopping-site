@@ -24,6 +24,7 @@ import useScrollToTop from "../hooks/useScrollToTop";
 import { useNavigate } from "react-router-dom";
 import ThankYouPopup from "../components/thankYouPopupWindow";
 import { useRef, useState } from "react";
+import ScrollToTopButton from "./../components/ScrollToTheTopButton";
 
 const ShoppingCartGrid = () => {
   const { cartTotal, cartItems, handleDelivery, totalAmount } =
@@ -56,11 +57,11 @@ const ShoppingCartGrid = () => {
     <Box m={15}>
       <Grid
         margin={4}
-        templateColumns="1.5fr 0.5fr "
-        templateRows="repeat(2, 1fr)"
+        templateColumns={{ base: "1fr", lg: "repeat(1.5fr 0.5fr)" }}
+        templateRows={{ base: "repeat(3, auto)", lg: "repeat(2, 1fr)" }}
         gap={4}
       >
-        <GridItem rowSpan={2} colSpan={1}>
+        <GridItem rowSpan={{ base: 1, lg: 2 }} colSpan={{ base: 1, lg: 1 }}>
           <VStack p={4} borderWidth="2px" borderRadius="md" boxShadow="md">
             <Box
               bgColor={"primary.50"}
@@ -104,7 +105,7 @@ const ShoppingCartGrid = () => {
             </HStack>
           </VStack>
         </GridItem>
-        <GridItem rowSpan={2} colSpan={1}>
+        <GridItem rowSpan={{ base: 1, lg: 2 }} colSpan={{ base: 1, lg: 1 }}>
           <VStack p={4} borderWidth="2px" borderRadius="md" boxShadow="md">
             <Box
               bgColor={"primary.50"}
@@ -161,13 +162,9 @@ const ShoppingCartGrid = () => {
                   Standard Delivery ({formatCurrency(DELIVERY_PRICE)} )
                 </Text>
                 <Divider borderColor="gray" />{" "}
-                <HStack mt={5}>
-                  <Text fontSize="xl" fontWeight="bold">
-                    Total:
-                  </Text>
-                  <Text fontWeight={"bold"} fontSize="xl">
-                    {formatCurrency(totalAmount)}
-                  </Text>
+                <HStack mt={5} fontWeight={"bold"} fontSize="xl">
+                  <Text>Total:</Text>
+                  <Text>{formatCurrency(totalAmount)}</Text>
                 </HStack>
               </Box>
             </Box>
@@ -217,7 +214,7 @@ const ShoppingCartGrid = () => {
             </Box>
           </VStack>
         </GridItem>
-        <GridItem rowSpan={1} colSpan={2}>
+        <GridItem rowSpan={{ base: 1, lg: 1 }} colSpan={{ base: 1, lg: 2 }}>
           <Box>
             <Box
               borderWidth="1px"
