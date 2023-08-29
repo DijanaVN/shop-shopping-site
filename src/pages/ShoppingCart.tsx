@@ -29,7 +29,19 @@ const ShoppingCartGrid = () => {
   const { cartTotal, cartItems, handleDelivery, totalAmount } =
     useNewCartContext();
   const [isThankYouPopupOpen, setIsThankYouPopupOpen] = useState(false);
+  const [isCheckoutLoading, setIsCheckoutLoading] = useState(false);
   const handleCheckout = () => {
+    // if (!isUserAuthenticated()) {
+    //   alert("Please sign in to proceed with checkout.");
+    //   return;
+    // }
+
+    setIsCheckoutLoading(true);
+    // Simulate checkout process
+    setTimeout(() => {
+      setIsCheckoutLoading(false);
+      alert("Checkout successful!");
+    }, 2000);
     // Implement your checkout logic here
     // ...
     // After successful checkout, open the Thank You popup

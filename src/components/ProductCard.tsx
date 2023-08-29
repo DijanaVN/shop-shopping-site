@@ -19,15 +19,12 @@ import { Product } from "../hooks/useProducts";
 import { useNewCartContext } from "../StateManagement/ShoppingCartContext";
 import "../index.css";
 import useScrollToTop from "../hooks/useScrollToTop";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ id, title, image, category, price }: Product) => {
-  const {
-    getItemQuantity,
-    increaseCartQuantity,
-    decreaseCartQuantity,
-    removeFromCart,
-  } = useNewCartContext();
-  const quantity = getItemQuantity(id ?? 0);
+  const { increaseCartQuantity } = useNewCartContext();
+  const navigate = useNavigate();
+
   useScrollToTop();
   return (
     <Box className={`product-card`}>
@@ -52,42 +49,26 @@ const ProductCard = ({ id, title, image, category, price }: Product) => {
         <Divider />
         <Center>
           <CardFooter>
-            <ButtonGroup spacing="2">
-              {" "}
-              {quantity === 0 ? (
-                <Button
-                  onClick={() => increaseCartQuantity(id ?? 0)}
-                  variant="solid"
-                  colorScheme="yellow"
-                >
-                  Add to cart
-                </Button>
-              ) : (
-                <VStack>
-                  <HStack>
-                    <Button
-                      onClick={() => increaseCartQuantity(id ?? 0)}
-                      bgColor={"green.200"}
-                    >
-                      +
-                    </Button>
-                    <Text>{quantity} in cart</Text>
-                    <Button
-                      onClick={() => decreaseCartQuantity(id ?? 0)}
-                      bgColor={"orange.300"}
-                    >
-                      -
-                    </Button>
-                  </HStack>
-                  <Button
-                    onClick={() => removeFromCart(id ?? 0)}
-                    bgColor={"red"}
-                  >
-                    Remove
-                  </Button>
-                </VStack>
-              )}
-            </ButtonGroup>
+            <HStack justifyContent={"space-between"} spacing={10}>
+              <Button
+                onClick={() => {
+                  increaseCartQuantity(id ?? 0),
+                    navigate("/shoppingCartGrid"),
+                    useScrollToTop();
+                }}
+                variant="solid"
+                colorScheme="orange"
+              >
+                Add to cart
+              </Button>
+              <Button
+                onClick={() => navigate(`/product/${id}`)}
+                variant="solid"
+                colorScheme="yellow"
+              >
+                Details
+              </Button>
+            </HStack>
           </CardFooter>
         </Center>
       </Card>

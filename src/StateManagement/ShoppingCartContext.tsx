@@ -91,14 +91,14 @@ export function ShoppingCartProvider({ children }: CartContextProps) {
     const updatedCartTotal = cartItems.reduce((total, cartItem) => {
       const item = allProducts.find((i) => i.id === cartItem.id);
       if (item) {
-        const itemTotall = Number(item.price) * cartItem.quantity;
-        setItemTotal(itemTotall);
+        const itemTotal = Number(item.price) * cartItem.quantity;
         return total + itemTotal;
       }
       return total;
     }, 0);
     setCartTotal(updatedCartTotal);
   }, [cartItems, allProducts]);
+
   const handleDelivery = (includeDelivery: boolean) => {
     if (includeDelivery) {
       const total = cartTotal + DELIVERY_PRICE;

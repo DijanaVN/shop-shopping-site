@@ -10,6 +10,7 @@ import {
   Text,
   HStack,
   Button,
+  VStack,
 } from "@chakra-ui/react";
 import { formatCurrency } from "../utilities/formatCurrency";
 import { CartItem } from "../StateManagement/ShoppingCartContext";
@@ -17,12 +18,20 @@ import { useNewCartContext } from "../StateManagement/ShoppingCartContext";
 import { useAllProductsContext } from "../StateManagement/AllProductsContexts";
 
 const SingleCart = ({ id, quantity }: CartItem) => {
-  const { removeFromCart, cartItems, getItemQuantity, cartTotal, itemTotal } =
-    useNewCartContext();
+  const {
+    removeFromCart,
+    cartItems,
+    getItemQuantity,
+    cartTotal,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+  } = useNewCartContext();
   const { allProducts } = useAllProductsContext();
 
   const item = allProducts.find((i) => i.id === id);
   if (item == null) return null;
+
+  const itemTotal = Number(item.price) * quantity;
 
   console.log(cartTotal);
   console.log(cartItems);
@@ -54,13 +63,32 @@ const SingleCart = ({ id, quantity }: CartItem) => {
               {item?.title}
             </Heading>
             <Box fontWeight={"bold"}>Category: {item?.category}</Box>
-            <HStack>
-              <Box fontWeight={"extrabold"} color="primary.300" fontSize="xl">
-                {formatCurrency(Number(item?.price))}
+            <HStack justifyContent={"space-between"}>
+              <HStack>
+                <Box fontWeight={"extrabold"} color="primary.300" fontSize="xl">
+                  {formatCurrency(Number(item?.price))}
+                </Box>
+                {quantity > 1 && (
+                  <Text fontWeight={"extrabold"}>x{quantity}</Text>
+                )}
+              </HStack>
+              <Box>
+                <HStack spacing={"none"}>
+                  <Button
+                    onClick={() => increaseCartQuantity(id ?? 0)}
+                    bgColor={"green.200"}
+                  >
+                    +
+                  </Button>
+                  <Button>{quantity}</Button>
+                  <Button
+                    onClick={() => decreaseCartQuantity(id ?? 0)}
+                    bgColor={"orange.300"}
+                  >
+                    -
+                  </Button>
+                </HStack>
               </Box>
-              {quantity > 1 && (
-                <Text fontWeight={"extrabold"}>x{quantity}</Text>
-              )}
             </HStack>
             <Divider borderColor="black" />
             <Text fontWeight={"extrabold"} fontSize="xl">
@@ -68,7 +96,7 @@ const SingleCart = ({ id, quantity }: CartItem) => {
             </Text>
             <HStack justifyContent={"space-between"}>
               <Box fontWeight={"extrabold"} fontSize="xl" color={"orange"}>
-                {itemTotal}
+                {formatCurrency(itemTotal)}
               </Box>
               <Button
                 onClick={() => removeFromCart(item.id)}

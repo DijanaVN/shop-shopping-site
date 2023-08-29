@@ -20,9 +20,9 @@ const ProductGridPage = () => {
       <Flex flexWrap="wrap" justifyContent="space-between" margin={3}>
         {(searchQuery as Product[]).map((product) => {
           return (
-            <Link
-              to={`/product/${product.id}`}
-              onClick={() => onClick(product)}
+            <Box
+              // to={`/product/${product.id}`}
+              // onClick={() => onClick(product)}
               key={product.id}
             >
               <ProductCard
@@ -34,7 +34,7 @@ const ProductGridPage = () => {
                 image={product.image}
                 quantity={product.quantity}
               />{" "}
-            </Link>
+            </Box>
           );
         })}
       </Flex>

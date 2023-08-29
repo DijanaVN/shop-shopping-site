@@ -21,6 +21,7 @@ const userSchema = z.object({
   email: z.string().email(),
   username: z.string(),
   password: z.string().min(6),
+  confirmPassword: z.string().min(6),
   name: z.object({
     firstname: z.string(),
     lastname: z.string(),
@@ -55,8 +56,11 @@ const SignUpPage: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const { addNewUser } = useUserContext();
 
   const onSubmit = async (data: FieldValues) => {
-    console.log("Submit button clicked");
     try {
+      if (data.password !== data.confirmPassword) {
+        console.error("Passwords do not match");
+        return;
+      }
       const newUserData: User = {
         id: generateRandomUniqueUri(),
         email: data.email,
@@ -116,6 +120,19 @@ const SignUpPage: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               />
               {errors.password && (
                 <Text color={"red"}>This field is required</Text>
+              )}
+            </FormControl>{" "}
+            <FormControl>
+              <FormLabel>Confirm Password</FormLabel>
+              <Input
+                type="password"
+                {...register("confirmPassword", { required: true })}
+              />
+              {errors.confirmPassword && (
+                <Text color={"red"}>Passwords do not match.</Text>
+              )}
+              {errors.confirmPassword?.type === "validate" && (
+                <Text color={"red"}>Passwords do not match</Text>
               )}
             </FormControl>
             <FormControl>

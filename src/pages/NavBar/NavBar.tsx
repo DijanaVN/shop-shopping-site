@@ -22,7 +22,7 @@ import UserDropdown from "../../components/UserDropdown";
 import { useUserSignInContext } from "../../StateManagement/SignInUserContext";
 import SearchPage from "./SearchPage";
 import { useNewCartContext } from "../../StateManagement/ShoppingCartContext";
-import { useSelectedProductContext } from "../../StateManagement/SelectedProductContext";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 const NavBar = () => {
   const {
@@ -96,6 +96,7 @@ const NavBar = () => {
           <FiShoppingCart fontSize={"40"} />
           {cartQuantity > 0 && (
             <Button
+              onClick={() => useScrollToTop()}
               bg="red"
               color="white"
               borderRadius="full"

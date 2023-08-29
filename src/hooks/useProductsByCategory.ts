@@ -15,6 +15,7 @@ const usePoductsByCategory = (category: Category) => {
     queryFn: fetchProducts,
   });
   console.log(searchQuery.data);
+  const isLoading = searchQuery.isLoading;
 
   const combinedProducts: Product[] = [
     ...(searchQuery.data || []),
@@ -25,6 +26,7 @@ const usePoductsByCategory = (category: Category) => {
 
   return {
     updatedProductsInCategory: combinedProducts,
+    isLoading,
   };
 };
 

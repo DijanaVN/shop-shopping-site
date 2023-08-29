@@ -18,9 +18,8 @@ import { useNewProductContext } from "../StateManagement/NewProductContext";
 import treatyourself from "../images/jean-philippe-delberghe-75xPHEQBmvA-unsplash.webp";
 import { formatCurrency } from "./../utilities/formatCurrency";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { useNewCartContext } from "../StateManagement/ShoppingCartContext";
-import { Product } from "../hooks/useProducts";
+
 import useScrollToTop from "../hooks/useScrollToTop";
 
 const ProductDetailedPage = () => {
@@ -33,8 +32,7 @@ const ProductDetailedPage = () => {
     decreaseCartQuantity,
     removeFromCart,
   } = useNewCartContext();
-
-  const quantity = getItemQuantity(selectedProduct?.id ?? 0);
+  const navigate = useNavigate();
 
   const isProductInNewProduct = newProduct.some(
     (newProd) => newProd.id === selectedProduct?.id
@@ -89,39 +87,16 @@ const ProductDetailedPage = () => {
           <CardFooter>
             <ButtonGroup spacing="2">
               {" "}
-              {quantity === 0 ? (
-                <Button
-                  onClick={() => increaseCartQuantity(selectedProduct?.id)}
-                  variant="solid"
-                  colorScheme="yellow"
-                >
-                  Add to cart
-                </Button>
-              ) : (
-                <VStack>
-                  <HStack>
-                    <Button
-                      onClick={() => increaseCartQuantity(selectedProduct?.id)}
-                      bgColor={"green.200"}
-                    >
-                      +
-                    </Button>
-                    <Text>{quantity} in cart</Text>
-                    <Button
-                      onClick={() => decreaseCartQuantity(selectedProduct?.id)}
-                      bgColor={"orange.300"}
-                    >
-                      -
-                    </Button>
-                  </HStack>
-                  <Button
-                    onClick={() => removeFromCart(selectedProduct?.id)}
-                    bgColor={"red"}
-                  >
-                    Remove
-                  </Button>
-                </VStack>
-              )}
+              <Button
+                onClick={() => {
+                  increaseCartQuantity(selectedProduct?.id),
+                    navigate("/shoppingCartGrid");
+                }}
+                variant="solid"
+                colorScheme="yellow"
+              >
+                Add to cart
+              </Button>
               {isProductInNewProduct && (
                 <>
                   <Button
