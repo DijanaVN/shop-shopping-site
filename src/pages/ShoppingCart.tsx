@@ -83,7 +83,9 @@ const ShoppingCartGrid = () => {
               boxShadow="md"
             >
               {cartItems.map((product) => (
-                <SingleCart key={product.id} {...product} />
+                <Box margin={2}>
+                  <SingleCart key={product.id} {...product} />{" "}
+                </Box>
               ))}
             </Box>
             <HStack

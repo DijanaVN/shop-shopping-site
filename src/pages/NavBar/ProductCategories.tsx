@@ -21,15 +21,7 @@ const ProductCategories = () => {
 
   return (
     <Menu>
-      <MenuButton
-        as={Button}
-        variant="unstyled"
-        fontSize={20}
-        fontFamily="heading"
-        fontWeight="bold"
-      >
-        Categories
-      </MenuButton>
+      <MenuButton fontWeight={"bold"}>Categories</MenuButton>
       <MenuList>
         {searchQuery.data.map((category, index) => (
           <MenuItem

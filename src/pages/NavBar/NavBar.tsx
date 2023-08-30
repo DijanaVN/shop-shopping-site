@@ -12,6 +12,7 @@ import {
   Button,
   Text,
   IconButton,
+  Box,
 } from "@chakra-ui/react";
 
 import { FcSearch } from "react-icons/fc";
@@ -25,6 +26,7 @@ import SearchPage from "./SearchPage";
 import { useNewCartContext } from "../../StateManagement/ShoppingCartContext";
 import useScrollToTop from "../../hooks/useScrollToTop";
 import { MdMenu } from "react-icons/md"; // Added menu icon
+import DropDownMenu from "./../../components/DropDownMenu";
 
 const NavBar = () => {
   const {
@@ -32,6 +34,8 @@ const NavBar = () => {
     onClose: onSearchClose,
     isOpen: isSearchOpen,
   } = useDisclosure();
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const { userSignIn } = useUserSignInContext();
   const { cartQuantity } = useNewCartContext();
 
@@ -46,19 +50,8 @@ const NavBar = () => {
       <Link to={"/"}>
         <Image boxSize="20" src={logoImage} alt="Logo" borderRadius="full" />
       </Link>
-      <IconButton
-        variant={"ghost"}
-        aria-label="Menu"
-        position="fixed"
-        borderRadius="full"
-        top="50px" // Position vertically at the center
-        left="100px" // Adjust the distance from the right edge
-        transform="translateY(-50%)"
-        _hover={{ backgroundColor: "transparent", color: "blue.500" }} //
-        icon={<MdMenu fontSize={"40"} />}
-        onClick={onSearchOpen} // Replace with your menu logic
-        display={{ base: "block", lg: "none" }} // Show only on small screens
-      />
+
+      <DropDownMenu />
 
       <HStack
         display={{ base: "none", lg: "flex" }}
