@@ -6,15 +6,9 @@ import {
   Image,
   Divider,
   Button,
-  AlertDialog,
-  AlertDialogOverlay,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogBody,
-  AlertDialogFooter,
 } from "@chakra-ui/react";
 import { useUserSignInContext } from "../../StateManagement/SignInUserContext";
-import img from "../../images/jason-leung-7bpCPMOZ1rs-unsplash.webp";
+import img from "../../../public/images/jason-leung-7bpCPMOZ1rs-unsplash.webp";
 import { useRef, useState } from "react";
 import { User, useUserContext } from "../../StateManagement/UserInfoContext";
 import PopupWindow from "../../components/Popupwindow";
@@ -50,7 +44,7 @@ const EmailPage = () => {
     setUsers(updatedUsers);
     console.log(userSignIn);
     console.log(updatedUsers);
-
+    setIsSuccessOpen(true);
     setNewEmail("");
     setConfirmEmail("");
     setEmailMatchError(false);

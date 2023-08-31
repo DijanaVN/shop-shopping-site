@@ -21,10 +21,8 @@ import SingleCart from "../components/SingleCart";
 import { formatCurrency } from "./../utilities/formatCurrency";
 import { DELIVERY_PRICE } from "./../components/constants";
 import useScrollToTop from "../hooks/useScrollToTop";
-import { useNavigate } from "react-router-dom";
 import ThankYouPopup from "../components/thankYouPopupWindow";
 import { useRef, useState } from "react";
-import ScrollToTopButton from "./../components/ScrollToTheTopButton";
 
 const ShoppingCartGrid = () => {
   const { cartTotal, cartItems, handleDelivery, totalAmount } =
@@ -83,8 +81,8 @@ const ShoppingCartGrid = () => {
               boxShadow="md"
             >
               {cartItems.map((product) => (
-                <Box margin={2}>
-                  <SingleCart key={product.id} {...product} />{" "}
+                <Box key={product.id} margin={2}>
+                  <SingleCart {...product} />{" "}
                 </Box>
               ))}
             </Box>

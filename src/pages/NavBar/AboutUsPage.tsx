@@ -7,7 +7,7 @@ import {
   UnorderedList,
   GridItem,
 } from "@chakra-ui/react";
-import img from "../../images/ahmed-carter-tiWcNvpQF4E-unsplash (1).webp";
+import img from "../../../public/images/ahmed-carter-tiWcNvpQF4E-unsplash (1).webp";
 import useScrollToTop from "../../hooks/useScrollToTop";
 const AboutUsPage = () => {
   useScrollToTop();

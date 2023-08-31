@@ -1,7 +1,7 @@
 import { Flex, Spinner } from "@chakra-ui/react";
 import { useSelectedCategoryContext } from "../StateManagement/SelectedCategoryContext";
 import usePoductsByCategory from "../hooks/useProductsByCategory";
-import image from "../images/milad-fakurian-HE1_K4_-QT8-unsplash.webp";
+import image from "../../public/images/milad-fakurian-HE1_K4_-QT8-unsplash.webp";
 import { useSelectedProductContext } from "../StateManagement/SelectedProductContext";
 import { Link } from "react-router-dom";
 import ScrollToTopButton from "../components/ScrollToTheTopButton";

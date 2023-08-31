@@ -107,9 +107,9 @@ export function ShoppingCartProvider({ children }: CartContextProps) {
       setTotalAmount(cartTotal);
     }
   };
-  console.log(itemTotal);
-  console.log(cartTotal);
-  console.log(totalAmount);
+  // console.log(itemTotal);
+  // console.log(cartTotal);
+  // console.log(totalAmount);
 
   return (
     <NewCartContext.Provider

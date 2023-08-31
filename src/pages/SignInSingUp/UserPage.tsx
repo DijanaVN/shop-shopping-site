@@ -13,8 +13,8 @@ import {
 import { BiSolidPurchaseTag } from "react-icons/bi";
 import { BiHelpCircle } from "react-icons/bi";
 import { ImProfile } from "react-icons/im";
-import img1 from "../../images/pascal-brauer-ttdio_nOPjQ-unsplash.webp";
-import img2 from "../../images/molly-mears-4_90zmmdo_4-unsplash.webp";
+import img1 from "../../../public/images/pascal-brauer-ttdio_nOPjQ-unsplash.webp";
+import img2 from "../../../public/images/molly-mears-4_90zmmdo_4-unsplash.webp";
 import { useUserSignInContext } from "../../StateManagement/SignInUserContext";
 import { useNavigate } from "react-router-dom";
 import useScrollToTop from "../../hooks/useScrollToTop";

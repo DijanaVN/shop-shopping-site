@@ -17,7 +17,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import img from "../../images/margarida-afonso-F01g8NPdOdo-unsplash.webp";
+import img from "../../../public/images/margarida-afonso-F01g8NPdOdo-unsplash.webp";
 import useScrollToTop from "../../hooks/useScrollToTop";
 
 const HelpPage = () => {

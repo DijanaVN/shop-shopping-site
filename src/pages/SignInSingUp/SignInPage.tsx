@@ -8,7 +8,6 @@ import {
   Button,
   Text,
   Center,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { User } from "../../StateManagement/UserInfoContext";
 import { z } from "zod";

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import {
@@ -20,26 +20,24 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { FieldValues, useForm } from "react-hook-form";
-import shoes from "../images/alexandra-gorn-CJ6SJO_yR5w-unsplash.webp";
 import { useNewProductContext } from "../StateManagement/NewProductContext";
 import useCategories from "../hooks/useCategories";
 import { useNavigate } from "react-router-dom";
 import { generateRandomUniqueUri } from "./GenerateRandomNumberForId";
-import useScrollToTop from "../hooks/useScrollToTop";
+import PopupWindow from "./Popupwindow";
 
 const productSchema = z.object({
   id: z.number({ invalid_type_error: "Field is required." }),
   title: z.string().min(3, "Product name must be at least 3 characters"),
   price: z.number({ invalid_type_error: "Price field is required." }),
   description: z.string(),
-  image: z.string(),
+  image: z.any(),
   category: z.enum([
     "electronics",
     "jewelery",
     "men's clothing",
     "women's clothing",
   ]),
-  quantity: z.number(),
 });
 
 type FormData = z.infer<typeof productSchema>;
@@ -48,6 +46,9 @@ const CreateNewProductForm: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { addNewProduct } = useNewProductContext();
   const { searchQuery } = useCategories();
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [popupOpen, setPopupOpen] = useState(false);
+  const cancelRef = useRef<HTMLButtonElement | null>(null);
 
   const {
     handleSubmit,
@@ -56,19 +57,20 @@ const CreateNewProductForm: React.FC = () => {
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(productSchema),
-    defaultValues: { image: shoes, id: generateRandomUniqueUri(), quantity: 0 },
+    defaultValues: { id: generateRandomUniqueUri() },
   });
 
   const navigate = useNavigate();
 
   const onSubmit = async (data: FieldValues) => {
+    console.log(data);
     try {
       const newProductData = {
         id: generateRandomUniqueUri(),
         title: data.title,
         price: data.price,
         description: data.description,
-        image: data.image || shoes,
+        image: imagePreview || "",
         category: data.category,
         quantity: 0,
       };
@@ -76,14 +78,16 @@ const CreateNewProductForm: React.FC = () => {
 
       console.log("Product created successfully");
       console.log(data);
-      navigate(`/Product/${data.id}`);
-      onClose();
-      reset();
+      // navigate(`product/${newProductData.id}`); // Navigate after setting popupOpen
+
+      // onClose();
+      // reset();
     } catch (error) {
       console.error("Error creating new product:", error);
     }
+    setPopupOpen(true); // Open the popup
   };
-  useScrollToTop();
+
   return (
     <>
       <Button onClick={onOpen}>Create New Product</Button>
@@ -102,9 +106,7 @@ const CreateNewProductForm: React.FC = () => {
                   {...register("id")}
                 />
                 <FormErrorMessage>
-                  {errors?.image && (
-                    <Text color="red">{errors.image.message}</Text>
-                  )}
+                  {errors?.id && <Text color="red">{errors.id.message}</Text>}
                 </FormErrorMessage>
               </FormControl>
               <FormControl isInvalid={!!errors.title}>
@@ -157,18 +159,39 @@ const CreateNewProductForm: React.FC = () => {
                   )}
                 </FormErrorMessage>
               </FormControl>
-              <FormControl visibility={"hidden"} isInvalid={!!errors.image}>
-                <FormLabel> Image</FormLabel>
+              <FormControl
+                marginBottom={2}
+                marginTop={2}
+                isInvalid={!!errors.image}
+              >
+                <FormLabel>Image</FormLabel>
                 <Input
-                  defaultValue={shoes}
-                  type="hidden"
+                  type="file"
                   {...register("image")}
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      const reader = new FileReader();
+                      reader.onload = (event) => {
+                        const base64String = event.target?.result as string;
+                        setImagePreview(base64String);
+                      };
+                      reader.readAsDataURL(file);
+                    }
+                  }}
+                  style={{
+                    border: "none",
+                    margin: "1",
+                    paddingTop: "2",
+                  }}
                 />
-                <FormErrorMessage>
-                  {errors?.image && (
-                    <Text color="red">{errors.image.message}</Text>
-                  )}
-                </FormErrorMessage>
+                {imagePreview && (
+                  <img
+                    src={imagePreview} // Use the Base64 string directly
+                    alt="Selected"
+                    style={{ marginTop: "10px", maxWidth: "100px" }}
+                  />
+                )}
               </FormControl>
               <ModalFooter>
                 <Button type="submit" colorScheme="blue" mr={3}>
@@ -176,6 +199,18 @@ const CreateNewProductForm: React.FC = () => {
                 </Button>
                 <Button onClick={onClose}>Cancel</Button>
               </ModalFooter>
+              <PopupWindow
+                isOpen={popupOpen}
+                onClose={() => {
+                  setPopupOpen(false);
+                  onClose(); // Close the main modal
+                  setImagePreview(null);
+                  reset(); // Reset form fields
+                }}
+                state="product"
+                action="added"
+                cancelRef={cancelRef}
+              />
             </form>
           </ModalBody>
         </ModalContent>

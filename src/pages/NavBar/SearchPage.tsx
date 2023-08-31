@@ -14,7 +14,7 @@ import { z } from "zod";
 import { useNavigate } from "react-router-dom";
 import { useAllProductsContext } from "../../StateManagement/AllProductsContexts";
 import { useFilteredProductContext } from "../../StateManagement/FilteredProducts";
-import img from "../../images/milad-fakurian-HE1_K4_-QT8-unsplash.webp";
+import img from "../../../public/images/milad-fakurian-HE1_K4_-QT8-unsplash.webp";
 import { FcSearch } from "react-icons/fc";
 import { useSelectedProductContext } from "../../StateManagement/SelectedProductContext";
 import { useState } from "react";

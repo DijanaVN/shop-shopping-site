@@ -16,7 +16,7 @@ const useCarts = () => {
     queryFn: fetchCarts,
   });
 
-  console.log(searchQuery.data);
+  // console.log(searchQuery.data);
 
   return {
     searchQuery,

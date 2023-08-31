@@ -9,8 +9,6 @@ import {
   Button,
   Image,
   Text,
-  VStack,
-  ButtonGroup,
   HStack,
   Center,
   Box,
@@ -20,8 +18,10 @@ import { useNewCartContext } from "../StateManagement/ShoppingCartContext";
 import "../index.css";
 import useScrollToTop from "../hooks/useScrollToTop";
 import { useNavigate } from "react-router-dom";
+import { useSelectedProductContext } from "../StateManagement/SelectedProductContext";
 
 const ProductCard = ({ id, title, image, category, price }: Product) => {
+  const { selectedProduct, onClick } = useSelectedProductContext();
   const { increaseCartQuantity } = useNewCartContext();
   const navigate = useNavigate();
 
@@ -32,11 +32,10 @@ const ProductCard = ({ id, title, image, category, price }: Product) => {
         height="720px"
         key={id}
         bg={`rgba(247, 215, 238, 0.5)`}
-        maxW="sm"
         marginBottom={5}
       >
         <CardBody>
-          <Image boxSize="sm" src={image} alt={title} borderRadius="lg" />
+          <Image boxSize={"xs"} src={image} alt={title} borderRadius="lg" />
           <Stack mt="6" spacing="3">
             <Heading size="md">{title}</Heading>
             <Text fontWeight={"bold"}>Category: {category}</Text>
@@ -52,9 +51,7 @@ const ProductCard = ({ id, title, image, category, price }: Product) => {
             <HStack justifyContent={"space-between"} spacing={10}>
               <Button
                 onClick={() => {
-                  increaseCartQuantity(id ?? 0),
-                    navigate("/shoppingCartGrid"),
-                    useScrollToTop();
+                  increaseCartQuantity(id ?? 0), navigate("/shoppingCartGrid");
                 }}
                 variant="solid"
                 colorScheme="orange"
@@ -62,7 +59,9 @@ const ProductCard = ({ id, title, image, category, price }: Product) => {
                 Add to cart
               </Button>
               <Button
-                onClick={() => navigate(`/product/${id}`)}
+                onClick={() => {
+                  navigate(`/product/${id}`);
+                }}
                 variant="solid"
                 colorScheme="yellow"
               >

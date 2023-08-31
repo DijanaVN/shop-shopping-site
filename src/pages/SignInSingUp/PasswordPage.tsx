@@ -8,7 +8,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { useUserSignInContext } from "../../StateManagement/SignInUserContext";
-import img from "../../images/jason-leung-7bpCPMOZ1rs-unsplash.webp";
+import img from "../../../public/images/jason-leung-7bpCPMOZ1rs-unsplash.webp";
 import { useRef, useState } from "react";
 import { useUserContext } from "../../StateManagement/UserInfoContext";
 import PopupWindow from "../../components/Popupwindow";

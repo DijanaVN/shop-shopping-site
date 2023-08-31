@@ -28,8 +28,6 @@ export function SelectedProductProvider({ children }: ProductContextProps) {
     setSelectedProduct(Product);
   };
 
-  console.log(selectedProduct);
-
   return (
     <SelectedProductContext.Provider
       value={{

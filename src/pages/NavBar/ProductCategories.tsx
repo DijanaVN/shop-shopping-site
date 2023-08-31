@@ -1,12 +1,4 @@
-import {
-  Text,
-  Box,
-  Button,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-} from "@chakra-ui/react";
+import { Text, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import useCategories from "../../hooks/useCategories";
 import { useSelectedCategoryContext } from "../../StateManagement/SelectedCategoryContext";
 import { Link } from "react-router-dom";

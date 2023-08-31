@@ -42,8 +42,6 @@ const SingleCart = ({ id, quantity }: CartItem) => {
         direction={{ base: "column", sm: "row" }}
         overflow="hidden"
         variant="outline"
-        minW="xs"
-        minH={"xs"}
         justifyContent="center"
         alignItems="center"
         key={item?.id}

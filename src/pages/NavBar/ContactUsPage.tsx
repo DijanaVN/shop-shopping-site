@@ -16,7 +16,7 @@ import {
   Grid,
   GridItem,
 } from "@chakra-ui/react";
-import img from "../../images/andrew-neel-ute2XAFQU2I-unsplash.webp";
+import img from "../../../public/images/andrew-neel-ute2XAFQU2I-unsplash.webp";
 import { FieldElement, FieldValues, useForm } from "react-hook-form";
 import {
   ContactForm,

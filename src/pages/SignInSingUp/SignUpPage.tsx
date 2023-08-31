@@ -10,7 +10,6 @@ import {
   VStack,
   Text,
   Center,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { User, useUserContext } from "../../StateManagement/UserInfoContext";
 import { zodResolver } from "@hookform/resolvers/zod";

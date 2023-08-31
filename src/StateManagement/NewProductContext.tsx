@@ -59,6 +59,8 @@ export function NewProductProvider({ children }: ProductContextProps) {
     );
   };
 
+  console.log(newProduct);
+
   return (
     <NewProductContext.Provider
       value={{
