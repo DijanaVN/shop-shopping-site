@@ -36,29 +36,6 @@ const ShoppingCartGrid = () => {
   const [isThankYouPopupOpen, setIsThankYouPopupOpen] = useState(false);
   const [isCheckoutLoading, setIsCheckoutLoading] = useState(false);
 
-  //   fetch("http://localhost:5173/create-checkout-session", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({
-  //       items: [
-  //         { id: 1, quantity: 3 },
-  //         { id: 2, quantity: 1 },
-  //       ],
-  //     }),
-  //   })
-  //     .then((res) => {
-  //       if (res.ok) return res.json() as Promise<CheckoutResponse>;
-  //       throw new Error("Failed to create checkout session");
-  //     })
-  //     .then(({ url }) => {
-  //       console.log(url);
-  //       window.location.href = url; // Use window.location.href to assign a string URL
-  //     })
-
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // };
   // const handleCloseThankYouPopup = () => {
   //   setIsThankYouPopupOpen(false);
   // };
@@ -149,7 +126,7 @@ const ShoppingCartGrid = () => {
                 </Text>
               </HStack>
               <Box fontSize="xl">
-                <HStack justifyContent={"space-between"}>
+                {/* <HStack justifyContent={"space-between"}>
                   <Text>Delivery:</Text>
                   <Box>
                     <Button
@@ -170,15 +147,15 @@ const ShoppingCartGrid = () => {
                       No
                     </Button>
                   </Box>
-                </HStack>
-                <Divider borderColor="gray" />
+                </HStack> */}
+                {/* <Divider borderColor="gray" />
                 <Text mt={2} fontSize="sm">
                   Standard Delivery ({formatCurrency(DELIVERY_PRICE)} )
-                </Text>
+                </Text> */}
                 <Divider borderColor="gray" />{" "}
                 <HStack mt={5} fontWeight={"bold"} fontSize="xl">
                   <Text>Total:</Text>
-                  <Text>{formatCurrency(totalAmount)}</Text>
+                  <Text>{formatCurrency(cartTotal)}</Text>
                 </HStack>
               </Box>
             </Box>
