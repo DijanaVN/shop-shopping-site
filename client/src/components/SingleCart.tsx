@@ -22,7 +22,6 @@ const SingleCart = ({ id, quantity }: CartItem) => {
   const {
     removeFromCart,
     cartItems,
-    getItemQuantity,
     cartTotal,
     increaseCartQuantity,
     decreaseCartQuantity,
@@ -38,7 +37,17 @@ const SingleCart = ({ id, quantity }: CartItem) => {
   console.log(cartItems);
 
   return (
-    <Flex margin={5}>
+    <Flex
+      margin={2}
+      flexWrap="wrap"
+      justifyContent={{ base: "center", lg: "space-between" }}
+      alignItems="center"
+      p={{ base: 2, lg: 4 }}
+      borderRadius="md"
+      borderWidth="1px"
+      boxShadow="md"
+      width={{ base: "100%", lg: "100%" }}
+    >
       <Card
         direction={{ base: "column", sm: "row" }}
         overflow="hidden"
@@ -48,6 +57,7 @@ const SingleCart = ({ id, quantity }: CartItem) => {
         key={item?.id}
         bg={`rgba(247, 215, 238, 0.5)`}
         display="flex"
+        width="100%"
       >
         <Image
           boxSize="200px"

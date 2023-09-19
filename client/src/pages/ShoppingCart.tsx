@@ -1,6 +1,7 @@
 import {
   Box,
   Divider,
+  Flex,
   Grid,
   GridItem,
   HStack,
@@ -78,9 +79,20 @@ const ShoppingCartGrid = () => {
                 boxShadow="md"
               >
                 {cartItems.map((product) => (
-                  <Box key={product.id} margin={2}>
+                  <Flex
+                    key={product.id}
+                    margin={2}
+                    flexWrap="wrap" // Allow flex items to wrap on small screens
+                    justifyContent={{ base: "center", lg: "space-between" }} // Responsive alignment
+                    alignItems="center" // Align items vertically
+                    p={{ base: 2, lg: 4 }} // Responsive padding
+                    borderRadius="md"
+                    borderWidth="1px"
+                    boxShadow="md"
+                    width={{ base: "100%", lg: "100%" }} // Responsive width
+                  >
                     <SingleCart {...product} />{" "}
-                  </Box>
+                  </Flex>
                 ))}
               </Box>
             )}
@@ -162,9 +174,7 @@ const ShoppingCartGrid = () => {
                   <Box flex="1">
                     <FaCcMastercard />
                   </Box>
-                  <Box flex="1">
-                    <FaCcPaypal />
-                  </Box>
+
                   <Box flex="1">
                     <SiAmericanexpress />
                   </Box>

@@ -91,7 +91,7 @@ const NavBar = () => {
             as={Link}
             to="/userPage"
             fontWeight="bold"
-            fontSize="20"
+            // fontSize="20"
             fontFamily={"heading"}
             textTransform="uppercase"
           >
