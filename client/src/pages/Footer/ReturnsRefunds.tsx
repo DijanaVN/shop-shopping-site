@@ -1,6 +1,7 @@
 import { Box, Center, ListItem, OrderedList, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import useScrollToTop from "../../hooks/useScrollToTop";
+import React from "react";
 
 const ReturnsRefunds = () => {
   useScrollToTop();

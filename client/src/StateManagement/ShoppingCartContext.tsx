@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { useAllProductsContext } from "./AllProductsContexts";
 import { DELIVERY_PRICE } from "../components/constants";
+import { useLocalStorage } from "./../hooks/useLocalStorage";
 
 type NewCartContext = {
   getItemQuantity: (id: number) => number;
@@ -18,6 +19,7 @@ type NewCartContext = {
   cartTotal: number;
   itemTotal: number;
   totalAmount: number;
+  setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
   handleDelivery: (includeDelivery: boolean) => void;
 };
 
@@ -41,7 +43,7 @@ export function useNewCartContext() {
 
 export function ShoppingCartProvider({ children }: CartContextProps) {
   const { allProducts } = useAllProductsContext();
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("cartData", []);
   const [itemTotal, setItemTotal] = useState<number>(0);
   const [cartTotal, setCartTotal] = useState<number>(0);
   const [totalAmount, setTotalAmount] = useState(cartTotal);
@@ -130,6 +132,7 @@ export function ShoppingCartProvider({ children }: CartContextProps) {
         removeFromCart,
         cartQuantity,
         cartItems,
+        setCartItems,
         cartTotal,
         itemTotal,
         totalAmount,

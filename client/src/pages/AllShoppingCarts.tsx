@@ -1,5 +1,6 @@
 import { Box, Center, ListItem, Text, UnorderedList } from "@chakra-ui/react";
 import { useAllCartsContext } from "../StateManagement/AllCartsContext";
+import React from "react";
 
 const AllShoppingCart = () => {
   const { allCarts } = useAllCartsContext();

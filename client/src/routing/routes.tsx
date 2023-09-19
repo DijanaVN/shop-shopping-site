@@ -27,6 +27,7 @@ import Success from "./../pages/Success";
 import StripeCheckoutButton from "../components/stripeCheckoutButton";
 import React from "react";
 import SignUpPage from "./../pages/SignInSingUp/SignUpPage";
+import UserDropdown from "../components/UserDropdown";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,7 @@ const router = createBrowserRouter([
       { path: "/cancel", element: <Cancel /> },
       { path: "/success", element: <Success /> },
       { path: "/stripeCheckoutButton", element: <StripeCheckoutButton /> },
+
       {
         path: "/signup",
         element: (

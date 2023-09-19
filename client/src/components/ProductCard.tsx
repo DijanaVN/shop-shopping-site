@@ -14,16 +14,22 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { Product } from "../hooks/useProducts";
-import { useNewCartContext } from "../StateManagement/ShoppingCartContext";
 import "../index.css";
 import useScrollToTop from "../hooks/useScrollToTop";
 import { useNavigate } from "react-router-dom";
-import { useSelectedProductContext } from "../StateManagement/SelectedProductContext";
 import React from "react";
+import AddToCartButton from "./AddToCartButton";
 
-const ProductCard = ({ id, title, image, category, price }: Product) => {
-  const { selectedProduct, onClick } = useSelectedProductContext();
-  const { increaseCartQuantity } = useNewCartContext();
+const ProductCard = ({
+  id,
+  title,
+  image,
+  category,
+  price,
+  quantity,
+  description,
+  onClose,
+}: Product) => {
   const navigate = useNavigate();
 
   useScrollToTop();
@@ -50,15 +56,16 @@ const ProductCard = ({ id, title, image, category, price }: Product) => {
         <Center>
           <CardFooter>
             <HStack justifyContent={"space-between"} spacing={10}>
-              <Button
-                onClick={() => {
-                  increaseCartQuantity(id ?? 0), navigate("/shoppingCartGrid");
-                }}
-                variant="solid"
-                colorScheme="orange"
-              >
-                Add to cart
-              </Button>
+              <AddToCartButton
+                id={id}
+                title={title}
+                price={price}
+                description={description}
+                category={category}
+                image={image}
+                quantity={quantity}
+                onClose={onClose}
+              />
               <Button
                 onClick={() => {
                   navigate(`/product/${id}`);

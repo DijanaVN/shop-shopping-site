@@ -1,5 +1,6 @@
 import { Box, Center, Text } from "@chakra-ui/react";
 import useScrollToTop from "../../hooks/useScrollToTop";
+import React from "react";
 
 const CookiesSettings = () => {
   useScrollToTop();

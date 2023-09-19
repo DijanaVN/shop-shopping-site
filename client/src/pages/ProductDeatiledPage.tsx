@@ -5,7 +5,6 @@ import {
   Heading,
   Divider,
   CardFooter,
-  ButtonGroup,
   Button,
   Text,
   Image,
@@ -18,9 +17,9 @@ import treatyourself from "../images/jean-philippe-delberghe-75xPHEQBmvA-unsplas
 import { formatCurrency } from "./../utilities/formatCurrency";
 import { useNavigate } from "react-router-dom";
 import { useNewCartContext } from "../StateManagement/ShoppingCartContext";
-
 import useScrollToTop from "../hooks/useScrollToTop";
 import React from "react";
+import AddToCartButton from "./../components/AddToCartButton";
 
 const ProductDetailedPage = () => {
   const { selectedProduct } = useSelectedProductContext();
@@ -87,19 +86,20 @@ const ProductDetailedPage = () => {
               justifyContent={{ base: "center", md: "space-between" }}
               alignItems="center"
             >
-              <Button
-                onClick={() => {
-                  increaseCartQuantity(selectedProduct?.id);
-                  navigate("/shoppingCartGrid");
-                }}
-                variant="solid"
-                colorScheme="yellow"
-                fontSize={{ base: "md", md: "lg" }}
-                marginBottom={{ base: 2, md: 0 }}
-                marginRight={{ base: 0, md: 2 }}
-              >
-                Add to cart
-              </Button>
+              <Box padding={2}>
+                <AddToCartButton
+                  id={selectedProduct.id}
+                  title={selectedProduct.title}
+                  price={selectedProduct.price}
+                  description={selectedProduct.description}
+                  category={selectedProduct.category}
+                  image={selectedProduct.image}
+                  quantity={selectedProduct.quantity}
+                  onClose={function (): void {
+                    throw new Error("Function not implemented.");
+                  }}
+                />
+              </Box>
               {isProductInNewProduct && (
                 <>
                   <Button

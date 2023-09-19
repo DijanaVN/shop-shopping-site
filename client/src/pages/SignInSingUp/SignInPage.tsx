@@ -14,6 +14,7 @@ import { z } from "zod";
 import { useUserSignInContext } from "../../StateManagement/SignInUserContext";
 import { Link, useNavigate } from "react-router-dom";
 import useScrollToTop from "../../hooks/useScrollToTop";
+
 const schema = z.object({
   emailOrUsername: z.string().min(1),
   password: z.string().min(1),
@@ -52,8 +53,8 @@ const SignInPage: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         console.log("User exists:", matchedUser);
         setErrorMessage("");
         setUserSignIn(matchedUser);
-        onClose();
         navigate("/userPage");
+        onClose();
       }
       reset();
     } catch (error) {

@@ -19,17 +19,21 @@ import { useUserContext } from "../../StateManagement/UserInfoContext";
 import { useRef, useState } from "react";
 import useScrollToTop from "../../hooks/useScrollToTop";
 import React from "react";
+import { useNewCartContext } from "../../StateManagement/ShoppingCartContext";
 
 const ProfilePage = () => {
   const { userSignIn, setUserSignIn } = useUserSignInContext();
   const { deleteUser } = useUserContext();
-  const navigate = useNavigate();
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const onCloseConfirmation = () => setIsConfirmationOpen(false);
   const cancelRef = useRef<HTMLButtonElement | null>(null);
+  const { setCartItems } = useNewCartContext();
+
+  const navigate = useNavigate();
 
   const handleSignOut = () => {
-    window.location.reload();
+    setUserSignIn(undefined);
+    setCartItems([]);
     navigate("/");
   };
 

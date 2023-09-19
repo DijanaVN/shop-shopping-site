@@ -14,6 +14,7 @@ export interface Product {
   category: string;
   image: string;
   quantity: number;
+  onClose: () => void;
 }
 
 const usePoducts = () => {
@@ -28,11 +29,18 @@ const usePoducts = () => {
     queryKey: ["products"],
     queryFn: fetchProducts,
   });
-
   useEffect(() => {
+    const convertedNewProducts: Product[] = newProduct.map((product) => ({
+      ...product,
+      quantity: 0,
+      onClose: () => {
+        // Implement the onClose logic here for each new product
+      },
+    }));
+
     const combinedProducts: Product[] = [
       ...(searchQuery.data || []),
-      ...(newProduct || []),
+      ...convertedNewProducts,
     ];
     setAllProducts(combinedProducts);
   }, [searchQuery.data, newProduct, setAllProducts]);
