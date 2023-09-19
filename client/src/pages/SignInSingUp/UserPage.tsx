@@ -18,6 +18,7 @@ import img2 from "../../images/molly-mears-4_90zmmdo_4-unsplash.webp";
 import { useUserSignInContext } from "../../StateManagement/SignInUserContext";
 import { useNavigate } from "react-router-dom";
 import useScrollToTop from "../../hooks/useScrollToTop";
+import { FiShoppingCart } from "react-icons/fi";
 
 const UserPage: React.FC = () => {
   const { userSignIn } = useUserSignInContext();
@@ -52,11 +53,12 @@ const UserPage: React.FC = () => {
                 <GridItem>
                   <IconButton
                     aria-label="Purchases"
-                    icon={<BiSolidPurchaseTag />}
+                    icon={<FiShoppingCart />}
                     colorScheme="blue"
+                    onClick={() => navigate("/shoppingCartGrid")}
                   />
                   <Text fontSize={"sm"} mt={2}>
-                    Purchases
+                    My Cart
                   </Text>
                 </GridItem>
                 <GridItem>

@@ -87,126 +87,135 @@ const SignUpPage: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   };
   useScrollToTop();
   return (
-    <Box backgroundPosition="center" backgroundRepeat="no-repeat">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <VStack spacing={4} align="start">
-          <Box>
-            <Text fontWeight={"bold"} paddingBottom={3} fontSize={"lg"}>
-              User:
-            </Text>
-            <FormControl>
-              <FormLabel>Email</FormLabel>
-              <Input type="email" {...register("email", { required: true })} />
-              {errors.email && (
-                <Text color={"red"}>This field is required</Text>
-              )}
-            </FormControl>
-            <FormControl>
-              <FormLabel>Username</FormLabel>
-              <Input
-                type="text"
-                {...register("username", { required: true })}
-              />
-              {errors.username && (
-                <Text color={"red"}>This field is required</Text>
-              )}
-            </FormControl>
-            <FormControl>
-              <FormLabel>Password</FormLabel>
-              <Input
-                type="password"
-                {...register("password", { required: true })}
-              />
-              {errors.password && (
-                <Text color={"red"}>This field is required</Text>
-              )}
-            </FormControl>{" "}
-            <FormControl>
-              <FormLabel>Confirm Password</FormLabel>
-              <Input
-                type="password"
-                {...register("confirmPassword", { required: true })}
-              />
-              {errors.confirmPassword && (
-                <Text color={"red"}>Passwords do not match.</Text>
-              )}
-              {errors.confirmPassword?.type === "validate" && (
-                <Text color={"red"}>Passwords do not match</Text>
-              )}
-            </FormControl>
-            <FormControl>
-              <FormLabel>First Name</FormLabel>
-              <Input
-                type="text"
-                {...register("name.firstname", { required: true })}
-              />
-              {errors.name?.firstname && (
-                <Text color={"red"}>This field is required</Text>
-              )}
-            </FormControl>
-            <FormControl>
-              <FormLabel>Last Name</FormLabel>
-              <Input
-                type="text"
-                {...register("name.lastname", { required: true })}
-              />
-              {errors.name?.lastname && (
-                <Text color={"red"}>This field is required</Text>
-              )}
-            </FormControl>
-          </Box>
-          <Box marginBottom={3} fontSize={"sm"}>
-            <Text fontWeight={"bold"} paddingBottom={3} fontSize={"lg"}>
-              Address:
-            </Text>
-            <FormControl>
-              <FormLabel>City</FormLabel>
-              <Input
-                type="text"
-                {...register("address.city", { required: true })}
-              />
-              {errors.address?.city && (
-                <Text color={"red"}>This field is required</Text>
-              )}
-            </FormControl>
-            <FormControl>
-              <FormLabel>Street</FormLabel>
-              <Input
-                type="text"
-                {...register("address.street", { required: true })}
-              />
-              {errors.address?.street && (
-                <Text color={"red"}>This field is required</Text>
-              )}
-            </FormControl>
-            <FormControl>
-              <FormLabel>Number</FormLabel>
-              <Input
-                type="text"
-                {...register("address.number", { required: true })}
-              />
-              {errors.address?.number && (
-                <Text color={"red"}>This field is required</Text>
-              )}
-            </FormControl>
-            <FormControl>
-              <FormLabel>Zipcode</FormLabel>
-              <Input
-                type="number"
-                {...register("address.zipcode", { valueAsNumber: true })}
-              />
-              {errors.address?.zipcode && (
-                <Text color={"red"}>This field is required</Text>
-              )}
-            </FormControl>
-          </Box>
-        </VStack>
-        <Center mt={2}>
-          <Button type="submit" colorScheme="blue">
-            Sign Up
-          </Button>
-        </Center>
-      </form>
+    <Box
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
+      paddingBottom={4}
+    >
+      <Center>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <VStack spacing={4} align="start">
+            <Box>
+              <Text fontWeight={"bold"} paddingBottom={3} fontSize={"lg"}>
+                User:
+              </Text>
+              <FormControl>
+                <FormLabel>Email</FormLabel>
+                <Input
+                  type="email"
+                  {...register("email", { required: true })}
+                />
+                {errors.email && (
+                  <Text color={"red"}>This field is required</Text>
+                )}
+              </FormControl>
+              <FormControl>
+                <FormLabel>Username</FormLabel>
+                <Input
+                  type="text"
+                  {...register("username", { required: true })}
+                />
+                {errors.username && (
+                  <Text color={"red"}>This field is required</Text>
+                )}
+              </FormControl>
+              <FormControl>
+                <FormLabel>Password</FormLabel>
+                <Input
+                  type="password"
+                  {...register("password", { required: true })}
+                />
+                {errors.password && (
+                  <Text color={"red"}>This field is required</Text>
+                )}
+              </FormControl>{" "}
+              <FormControl>
+                <FormLabel>Confirm Password</FormLabel>
+                <Input
+                  type="password"
+                  {...register("confirmPassword", { required: true })}
+                />
+                {errors.confirmPassword && (
+                  <Text color={"red"}>Passwords do not match.</Text>
+                )}
+                {errors.confirmPassword?.type === "validate" && (
+                  <Text color={"red"}>Passwords do not match</Text>
+                )}
+              </FormControl>
+              <FormControl>
+                <FormLabel>First Name</FormLabel>
+                <Input
+                  type="text"
+                  {...register("name.firstname", { required: true })}
+                />
+                {errors.name?.firstname && (
+                  <Text color={"red"}>This field is required</Text>
+                )}
+              </FormControl>
+              <FormControl>
+                <FormLabel>Last Name</FormLabel>
+                <Input
+                  type="text"
+                  {...register("name.lastname", { required: true })}
+                />
+                {errors.name?.lastname && (
+                  <Text color={"red"}>This field is required</Text>
+                )}
+              </FormControl>
+            </Box>
+            <Box marginBottom={3} fontSize={"sm"}>
+              <Text fontWeight={"bold"} paddingBottom={3} fontSize={"lg"}>
+                Address:
+              </Text>
+              <FormControl>
+                <FormLabel>City</FormLabel>
+                <Input
+                  type="text"
+                  {...register("address.city", { required: true })}
+                />
+                {errors.address?.city && (
+                  <Text color={"red"}>This field is required</Text>
+                )}
+              </FormControl>
+              <FormControl>
+                <FormLabel>Street</FormLabel>
+                <Input
+                  type="text"
+                  {...register("address.street", { required: true })}
+                />
+                {errors.address?.street && (
+                  <Text color={"red"}>This field is required</Text>
+                )}
+              </FormControl>
+              <FormControl>
+                <FormLabel>Number</FormLabel>
+                <Input
+                  type="text"
+                  {...register("address.number", { required: true })}
+                />
+                {errors.address?.number && (
+                  <Text color={"red"}>This field is required</Text>
+                )}
+              </FormControl>
+              <FormControl>
+                <FormLabel>Zipcode</FormLabel>
+                <Input
+                  type="number"
+                  {...register("address.zipcode", { valueAsNumber: true })}
+                />
+                {errors.address?.zipcode && (
+                  <Text color={"red"}>This field is required</Text>
+                )}
+              </FormControl>
+            </Box>
+          </VStack>
+          <Center mt={2}>
+            <Button type="submit" colorScheme="blue">
+              Sign Up
+            </Button>
+          </Center>
+        </form>
+      </Center>
     </Box>
   );
 };

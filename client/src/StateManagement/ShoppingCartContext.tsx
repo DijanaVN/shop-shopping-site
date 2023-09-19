@@ -25,6 +25,8 @@ export type CartItem = {
   id: number;
   quantity: number;
   price: string | number;
+  title: string;
+  image: string;
 };
 
 type CartContextProps = {
@@ -52,14 +54,14 @@ export function ShoppingCartProvider({ children }: CartContextProps) {
       const existingItem = currentItems.find((item) => item.id === id);
 
       if (existingItem == null) {
-        return [
-          ...currentItems,
-          {
-            id,
-            quantity: 1,
-            price: allProducts.find((product) => product.id === id)?.price || 0,
-          },
-        ];
+        const newItem = {
+          id,
+          quantity: 1,
+          price: allProducts.find((product) => product.id === id)?.price || 0,
+          title: allProducts.find((product) => product.id === id)?.title || "",
+          image: allProducts.find((product) => product.id === id)?.image || "",
+        };
+        return [...currentItems, newItem];
       } else {
         return currentItems.map((item) => {
           if (item.id === id) {
@@ -71,6 +73,7 @@ export function ShoppingCartProvider({ children }: CartContextProps) {
       }
     });
   };
+
   const decreaseCartQuantity = (id: number) => {
     setCartItems((currentItems) => {
       if (currentItems.find((item) => item.id === id)?.quantity === 1) {
@@ -117,9 +120,6 @@ export function ShoppingCartProvider({ children }: CartContextProps) {
       setTotalAmount(cartTotal);
     }
   };
-  console.log(itemTotal);
-  console.log(cartTotal);
-  console.log(cartItems);
 
   return (
     <NewCartContext.Provider
@@ -140,29 +140,3 @@ export function ShoppingCartProvider({ children }: CartContextProps) {
     </NewCartContext.Provider>
   );
 }
-// newCart: Cart[];
-// setNewCart: React.Dispatch<React.SetStateAction<Cart[]>>;
-// handleAddToCart: (selectedProduct: Product, quantity: number) => void;
-
-// newCart: [],
-// setNewCart: () => {},
-// handleAddToCart: () => {},
-// const { addNewCart } = useAllCartsContext();
-// const [newCart, setNewCart] = useLocalStorage<Cart[]>("NewCartStorage", []);
-// newCart,
-// setNewCart,
-// handleAddToCart,
-// const handleAddToCart = (selectedProduct: Product, quantity: number) => {
-//   const { userSignIn } = useUserSignInContext();
-//   if (userSignIn) {
-//     const cartItem = {
-//       id: generateRandomUniqueUri(),
-//       userId: userSignIn.id,
-//       date: new Date().toISOString(),
-//       products: [{ productId: selectedProduct.id, quantity }],
-//     };
-//     addNewCart(cartItem);
-//   } else {
-//     // Handle case when user is not signed in
-//   }
-// };

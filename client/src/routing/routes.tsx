@@ -6,7 +6,7 @@ import CategoryGridPage from "../pages/CategoryGridPage";
 import ProductDetailedPage from "../pages/ProductDeatiledPage";
 import AboutUsPage from "../pages/NavBar/AboutUsPage";
 import ContactUs from "../pages/NavBar/ContactUsPage";
-import SignInPage from "../pages/SignInSingUp/SignUpPage";
+import SignInPage from "../pages/SignInSingUp/SignInPage";
 import SearchPage from "../pages/NavBar/SearchPage";
 import UserPage from "../pages/SignInSingUp/UserPage";
 import ProfilePage from "../pages/SignInSingUp/ProfilePage";
@@ -26,6 +26,7 @@ import Cancel from "../pages/Cancel";
 import Success from "./../pages/Success";
 import StripeCheckoutButton from "../components/stripeCheckoutButton";
 import React from "react";
+import SignUpPage from "./../pages/SignInSingUp/SignUpPage";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,16 @@ const router = createBrowserRouter([
       { path: "/cancel", element: <Cancel /> },
       { path: "/success", element: <Success /> },
       { path: "/stripeCheckoutButton", element: <StripeCheckoutButton /> },
+      {
+        path: "/signup",
+        element: (
+          <SignUpPage
+            onClose={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+          />
+        ),
+      },
 
       {
         path: "/signin",

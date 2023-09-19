@@ -12,7 +12,7 @@ import {
 import { User } from "../../StateManagement/UserInfoContext";
 import { z } from "zod";
 import { useUserSignInContext } from "../../StateManagement/SignInUserContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useScrollToTop from "../../hooks/useScrollToTop";
 const schema = z.object({
   emailOrUsername: z.string().min(1),
@@ -63,32 +63,41 @@ const SignInPage: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   useScrollToTop();
   return (
     <Box>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {errorMessage && <Text color="red">{errorMessage}</Text>}
-        <FormControl>
-          <FormLabel>Email or Username</FormLabel>
-          <Input
-            type="text"
-            {...register("emailOrUsername", { required: true })}
-          />
-          {errors.emailOrUsername && (
-            <Text color="red">This field is required</Text>
-          )}
-        </FormControl>
-        <FormControl>
-          <FormLabel>Password</FormLabel>
-          <Input
-            type="password"
-            {...register("password", { required: true })}
-          />
-          {errors.password && <Text color="red">This field is required</Text>}
-        </FormControl>
-        <Center mt={2}>
-          <Button type="submit" colorScheme="blue">
-            Sign In
-          </Button>
-        </Center>
-      </form>
+      <Center marginBottom={3}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {errorMessage && <Text color="red">{errorMessage}</Text>}
+          <FormControl>
+            <FormLabel>Email or Username</FormLabel>
+            <Input
+              type="text"
+              {...register("emailOrUsername", { required: true })}
+            />
+            {errors.emailOrUsername && (
+              <Text color="red">This field is required</Text>
+            )}
+          </FormControl>
+          <FormControl>
+            <FormLabel>Password</FormLabel>
+            <Input
+              type="password"
+              {...register("password", { required: true })}
+            />
+            {errors.password && <Text color="red">This field is required</Text>}
+          </FormControl>
+          <Center mt={2}>
+            <Button type="submit" colorScheme="blue">
+              Sign In
+            </Button>
+          </Center>
+          <Text padding={2}>
+            New here?{" "}
+            <Link to="/signup" style={{ textDecoration: "underline" }}>
+              Sign up
+            </Link>{" "}
+            now to create an account and get started!
+          </Text>
+        </form>
+      </Center>
     </Box>
   );
 };
