@@ -6,6 +6,8 @@ import {
   InputRightElement,
   Box,
   Flex,
+  Grid,
+  Center,
 } from "@chakra-ui/react";
 import { useSearchText } from "../../StateManagement/SearchTextContext";
 import { FieldValues, useForm } from "react-hook-form";
@@ -98,35 +100,49 @@ const SearchPage = ({ onClose }: { onClose: () => void }) => {
             </Text>
           )}
         </form>
-        <Flex
-          fontSize={"lg"}
-          flexWrap="wrap"
-          margin={2}
-          alignItems="center" // Center align vertically
-          flexDirection="column"
-        >
+        <Flex>
           {searchButtonPressed && filteredProduct.length === 0 ? (
             <Text height={"100vh"}>No results for that search.</Text>
           ) : (
             filteredProduct.map((n: Product) => (
-              <div
-                key={n.id}
-                onClick={() => {
-                  onClick(n);
-                  onClose();
-                  navigate(`/product/${n.id}`);
+              <Grid
+                templateColumns={{
+                  base: "1fr",
+                  md: "repeat(2, 1fr)",
+                  lg: "repeat(3, 1fr)",
                 }}
+                gap={4}
+                margin={2}
               >
-                <ProductCard
-                  id={n.id}
-                  title={n.title}
-                  price={n.price}
-                  description={n.description}
-                  category={n.category}
-                  image={n.image}
-                  quantity={n.quantity}
-                />
-              </div>
+                <Center
+                  key={n.id}
+                  margin={5}
+                  flexWrap="wrap"
+                  alignItems="center" // Align items vertically
+                  borderRadius="md"
+                  borderWidth="1px"
+                  boxShadow="md"
+                  width="100%"
+                  onClick={() => {
+                    onClick(n);
+                    onClose();
+                    navigate(`/product/${n.id}`);
+                  }}
+                >
+                  <Box margin={5}>
+                    <ProductCard
+                      id={n.id}
+                      title={n.title}
+                      price={n.price}
+                      description={n.description}
+                      category={n.category}
+                      image={n.image}
+                      quantity={n.quantity}
+                      onClose={n.onClose}
+                    />
+                  </Box>
+                </Center>{" "}
+              </Grid>
             ))
           )}
         </Flex>

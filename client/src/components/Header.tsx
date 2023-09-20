@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <HStack>
       <CreateNewProductForm />
-      <Button onClick={() => navigate("/shoppingCart")}>Show All Carts</Button>
+      {/* <Button onClick={() => navigate("/shoppingCart")}>Show All Carts</Button> */}
     </HStack>
   );
 };

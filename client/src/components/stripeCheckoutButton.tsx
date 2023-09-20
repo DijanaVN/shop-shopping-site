@@ -43,11 +43,7 @@ const StripeCheckoutButton: React.FC = () => {
   };
   return (
     <Box>
-      <Button
-        colorScheme="green" // You can choose your desired color scheme
-        size="lg"
-        onClick={handleCheckout}
-      >
+      <Button colorScheme="green" size="lg" onClick={handleCheckout}>
         Checkout
       </Button>
     </Box>

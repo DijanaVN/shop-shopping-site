@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Grid, Spinner } from "@chakra-ui/react";
+import { Box, Center, Grid, Spinner } from "@chakra-ui/react";
 import { useSelectedCategoryContext } from "../StateManagement/SelectedCategoryContext";
 import usePoductsByCategory from "../hooks/useProductsByCategory";
 import { useSelectedProductContext } from "../StateManagement/SelectedProductContext";
@@ -38,7 +38,7 @@ const CategoryGridPage = () => {
                   key={m.id}
                   margin={5}
                   flexWrap="wrap"
-                  alignItems="center" // Align items vertically
+                  alignItems="center"
                   borderRadius="md"
                   borderWidth="1px"
                   boxShadow="md"

@@ -4,11 +4,7 @@ import React from "react";
 
 const Cancel = () => {
   return (
-    <Flex
-      justifyContent="center"
-      alignItems="center"
-      height="50vh" // This makes the container take up the full viewport height
-    >
+    <Flex justifyContent="center" alignItems="center" height="50vh">
       <Box>
         <Text>
           The payment is canceled, please go back to your{" "}

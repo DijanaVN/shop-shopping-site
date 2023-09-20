@@ -6,7 +6,6 @@ import React, {
   useState,
 } from "react";
 import { useAllProductsContext } from "./AllProductsContexts";
-import { DELIVERY_PRICE } from "../components/constants";
 import { useLocalStorage } from "./../hooks/useLocalStorage";
 
 type NewCartContext = {
@@ -116,7 +115,7 @@ export function ShoppingCartProvider({ children }: CartContextProps) {
 
   const handleDelivery = (includeDelivery: boolean) => {
     if (includeDelivery) {
-      const total = cartTotal + DELIVERY_PRICE;
+      const total = cartTotal;
       setTotalAmount(total);
     } else {
       setTotalAmount(cartTotal);

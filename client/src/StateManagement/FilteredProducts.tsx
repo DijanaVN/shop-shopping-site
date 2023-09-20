@@ -17,7 +17,7 @@ const FilteredProductContext = createContext<FilteredProductContext>({
 
 export function useFilteredProductContext() {
   const context = useContext(FilteredProductContext);
-  return context; // Add this line
+  return context;
 }
 
 export function FilteredProductProvider({ children }: ProductContextProps) {

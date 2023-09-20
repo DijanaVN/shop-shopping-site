@@ -1,4 +1,4 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import apiClientDetails from "./../services/api-client-details";
 import { useNewProductContext } from "../StateManagement/NewProductContext";
 import { useAllProductsContext } from "../StateManagement/AllProductsContexts";
@@ -33,9 +33,7 @@ const usePoducts = () => {
     const convertedNewProducts: Product[] = newProduct.map((product) => ({
       ...product,
       quantity: 0,
-      onClose: () => {
-        // Implement the onClose logic here for each new product
-      },
+      onClose: () => {},
     }));
 
     const combinedProducts: Product[] = [

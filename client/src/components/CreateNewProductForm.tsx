@@ -78,14 +78,11 @@ const CreateNewProductForm: React.FC = () => {
 
       console.log("Product created successfully");
       console.log(data);
-      // navigate(`product/${newProductData.id}`); // Navigate after setting popupOpen
-
-      // onClose();
-      // reset();
+   
     } catch (error) {
       console.error("Error creating new product:", error);
     }
-    setPopupOpen(true); // Open the popup
+    setPopupOpen(true);
   };
 
   return (
@@ -187,7 +184,7 @@ const CreateNewProductForm: React.FC = () => {
                 />
                 {imagePreview && (
                   <img
-                    src={imagePreview} // Use the Base64 string directly
+                    src={imagePreview} 
                     alt="Selected"
                     style={{ marginTop: "10px", maxWidth: "100px" }}
                   />
@@ -203,9 +200,9 @@ const CreateNewProductForm: React.FC = () => {
                 isOpen={popupOpen}
                 onClose={() => {
                   setPopupOpen(false);
-                  onClose(); // Close the main modal
+                  onClose(); 
                   setImagePreview(null);
-                  reset(); // Reset form fields
+                  reset(); 
                 }}
                 state="product"
                 action="added"

@@ -14,7 +14,7 @@ interface PopupWindowProps {
   onClose: () => void;
   state: string;
   action: string;
-  cancelRef: React.RefObject<HTMLButtonElement>; // Use React.RefObject<HTMLButtonElement>
+  cancelRef: React.RefObject<HTMLButtonElement>;
 }
 
 const PopupWindow: React.FC<PopupWindowProps> = ({

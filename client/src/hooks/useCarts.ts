@@ -1,4 +1,4 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import apiClientCarts from "../services/api-client-cart";
 
 export interface Cart {
@@ -15,8 +15,6 @@ const useCarts = () => {
     queryKey: ["carts"],
     queryFn: fetchCarts,
   });
-
-  // console.log(searchQuery.data);
 
   return {
     searchQuery,

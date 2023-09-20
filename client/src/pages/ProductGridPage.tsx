@@ -33,6 +33,7 @@ const ProductGridPage = () => {
                 category={product.category}
                 image={product.image}
                 quantity={product.quantity}
+                onClose={product.onClose}
               />{" "}
             </Box>
           );

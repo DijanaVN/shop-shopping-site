@@ -4,7 +4,6 @@ import React from "react";
 
 const AllShoppingCart = () => {
   const { allCarts } = useAllCartsContext();
-  console.log(allCarts);
 
   return (
     <>

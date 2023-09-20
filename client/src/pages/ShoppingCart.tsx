@@ -11,12 +11,9 @@ import {
 
 import { RiVisaFill } from "react-icons/ri";
 import { FaCcMastercard } from "react-icons/fa";
-import { FaCcPaypal } from "react-icons/fa";
 import { SiAmericanexpress } from "react-icons/si";
-
 import ProductGridPage from "./ProductGridPage";
 import { useNewCartContext } from "./../StateManagement/ShoppingCartContext";
-
 import SingleCart from "../components/SingleCart";
 import { formatCurrency } from "./../utilities/formatCurrency";
 import useScrollToTop from "../hooks/useScrollToTop";
@@ -50,7 +47,7 @@ const ShoppingCartGrid = () => {
                 MY CART
               </Text>
             </Box>
-            {cartItems.length === 0 ? ( // Check if cart is empty
+            {cartItems.length === 0 ? (
               <Box
                 bgColor={"primary.50"}
                 p={4}

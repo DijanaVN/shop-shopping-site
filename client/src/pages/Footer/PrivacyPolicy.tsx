@@ -1,5 +1,6 @@
 import { Box, Text } from "@chakra-ui/react";
 import useScrollToTop from "../../hooks/useScrollToTop";
+import React from "react";
 
 const PrivacyPolicy = () => {
   useScrollToTop();
