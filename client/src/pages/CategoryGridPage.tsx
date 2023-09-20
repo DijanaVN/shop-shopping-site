@@ -1,7 +1,6 @@
-import { Flex, Spinner } from "@chakra-ui/react";
+import { Box, Center, Flex, Grid, Spinner } from "@chakra-ui/react";
 import { useSelectedCategoryContext } from "../StateManagement/SelectedCategoryContext";
 import usePoductsByCategory from "../hooks/useProductsByCategory";
-// import image from "../../src/images/"
 import { useSelectedProductContext } from "../StateManagement/SelectedProductContext";
 import { Link } from "react-router-dom";
 import ScrollToTopButton from "../components/ScrollToTheTopButton";
@@ -21,38 +20,55 @@ const CategoryGridPage = () => {
 
     return (
       <>
-        <Flex
-          flexWrap="wrap"
-          justifyContent="space-between"
+        <Grid
+          templateColumns={{
+            base: "1fr",
+            md: "repeat(2, 1fr)",
+            lg: "repeat(3, 1fr)",
+          }}
+          gap={4}
           margin={2}
-          // backgroundImage={image}
         >
           {isLoading ? (
             <Spinner size="lg" m="auto" />
           ) : (
             updatedProductsInCategory?.map((m) =>
               selectedCategory === m.category ? (
-                <Link
-                  to={`/product/${m.id}`}
-                  onClick={() => onClick(m)}
+                <Center
                   key={m.id}
+                  margin={5}
+                  flexWrap="wrap"
+                  alignItems="center" // Align items vertically
+                  borderRadius="md"
+                  borderWidth="1px"
+                  boxShadow="md"
+                  width="100%"
                 >
-                  <ProductCard
-                    id={m.id}
-                    title={m.title}
-                    price={m.price}
-                    description={m.description}
-                    category={m.category}
-                    image={m.image}
-                    quantity={m.quantity}
-                  />
-                </Link>
+                  <Link
+                    to={`/product/${m.id}`}
+                    onClick={() => onClick(m)}
+                    key={m.id}
+                  >
+                    <Box margin={5}>
+                      <ProductCard
+                        id={m.id}
+                        title={m.title}
+                        price={m.price}
+                        description={m.description}
+                        category={m.category}
+                        image={m.image}
+                        quantity={m.quantity}
+                        onClose={m.onClose}
+                      />
+                    </Box>
+                  </Link>
+                </Center>
               ) : (
                 ""
               )
             )
           )}
-        </Flex>
+        </Grid>
         <ScrollToTopButton />
       </>
     );

@@ -17,17 +17,21 @@ const usePoductsByCategory = (category: Category) => {
   console.log(searchQuery.data);
   const isLoading = searchQuery.isLoading;
 
+  const convertedNewProducts: Product[] = newProduct.map((product) => ({
+    ...product,
+    onClose: () => {
+      // Implement the onClose logic here for each new product
+    },
+  }));
+
   const combinedProducts: Product[] = [
     ...(searchQuery.data || []),
-    ...(newProduct || []),
+    ...convertedNewProducts,
   ];
-
-  console.log(combinedProducts);
 
   return {
     updatedProductsInCategory: combinedProducts,
     isLoading,
   };
 };
-
 export default usePoductsByCategory;
