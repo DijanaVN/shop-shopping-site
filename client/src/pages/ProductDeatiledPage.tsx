@@ -31,8 +31,8 @@ const ProductDetailedPage = () => {
   const isProductInNewProduct = newProduct.some(
     (newProd) => newProd.id === selectedProduct?.id
   );
-  console.log(newProduct);
-  if (!selectedProduct) return "";
+
+  if (!selectedProduct) return null;
   useScrollToTop();
 
   return (
