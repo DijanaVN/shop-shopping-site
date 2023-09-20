@@ -12,6 +12,10 @@ const CategoryGridPage = () => {
   const { selectedCategory } = useSelectedCategoryContext();
   const { onClick } = useSelectedProductContext();
 
+  if (!selectedCategory) {
+    return null; //
+  }
+
   if (selectedCategory) {
     const { updatedProductsInCategory, isLoading } =
       usePoductsByCategory(selectedCategory);
