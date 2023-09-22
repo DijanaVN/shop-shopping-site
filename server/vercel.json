@@ -4,12 +4,20 @@
     {
       "src": "./server.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "./api/handlerFunction.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
       "dest": "/"
+    },
+    {
+      "src": "/api/handlerFunction",
+      "dest": "/api/handlerFunction.js"
     }
   ]
 }
