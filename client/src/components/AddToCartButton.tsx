@@ -24,6 +24,7 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({ id, onClose }) => {
   const addToCart = () => {
     if (userSignIn) {
       increaseCartQuantity(id ?? 0), navigate("/shoppingCartGrid");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       setIsSignedIn(true);
     }
