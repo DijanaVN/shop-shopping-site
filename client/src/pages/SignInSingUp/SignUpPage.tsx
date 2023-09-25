@@ -82,10 +82,7 @@ const SignUpPage: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         },
       };
       addNewUser(newUserData);
-      console.log("User created successfully");
       setIsSuccessOpen(true);
-      navigate("/signin");
-      onClose();
       reset();
     } catch (error) {
       console.error("Error creating new user:", error);

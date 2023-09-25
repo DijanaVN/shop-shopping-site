@@ -33,9 +33,9 @@ const ThankYouPopup: React.FC<ThankYouPopupWindowProps> = ({
           <AlertDialogBody>
             Thank you for signing up! We're delighted to welcome you as a valued
             member of our community. Please{" "}
-            <Link to="/signin" style={{ textDecoration: "underline" }}>
-              sign in
-            </Link>{" "}
+            {/* <Link to="/signin" style={{ textDecoration: "underline" }}> */}
+            sign in
+            {/* </Link>{" "} */}
             to start your shopping journey with us!
           </AlertDialogBody>
           <AlertDialogFooter>
