@@ -1,4 +1,4 @@
-import { Box, Button } from "@chakra-ui/react";
+import { Box, Button, Spinner } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { useNewCartContext } from "../StateManagement/ShoppingCartContext";
@@ -13,6 +13,7 @@ const StripeCheckoutButton: React.FC = () => {
   const stripePromise = loadStripe(stripePublishableKey);
 
   const handleCheckout = async () => {
+    setIsLoading(true);
     const lineItems = cartItems.map((item) => {
       if (typeof item.price !== "number") {
         console.error(`Invalid price for item: ${item.id}`);
@@ -31,19 +32,25 @@ const StripeCheckoutButton: React.FC = () => {
       };
     });
 
-    const { data } = await axios.post(
-      `${import.meta.env.VITE_REACT_APP_SERVER_URL}/checkout`,
-      {
-        lineItems,
-      }
-    );
-    const stripe = await stripePromise;
-    await stripe?.redirectToCheckout({ sessionId: data.id });
+    try {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_SERVER_URL}/checkout`,
+        {
+          lineItems,
+        }
+      );
+      const stripe = await stripePromise;
+      await stripe?.redirectToCheckout({ sessionId: data.id });
+    } catch (error) {
+      console.error("Error during checkout:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
   return (
     <Box>
       <Button colorScheme="green" size="lg" onClick={handleCheckout}>
-        Checkout
+        {isLoading ? <Spinner size="sm" mr={2} /> : null} Checkout
       </Button>
     </Box>
   );
