@@ -33,9 +33,6 @@ const SingleCart = ({ id, quantity }: CartItem) => {
 
   const itemTotal = Number(item.price) * quantity;
 
-  console.log(cartTotal);
-  console.log(cartItems);
-
   return (
     <Flex
       margin={2}

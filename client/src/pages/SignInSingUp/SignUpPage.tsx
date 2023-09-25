@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import {
@@ -14,6 +14,8 @@ import {
 import { User, useUserContext } from "../../StateManagement/UserInfoContext";
 import { zodResolver } from "@hookform/resolvers/zod";
 import useScrollToTop from "../../hooks/useScrollToTop";
+import { useNavigate } from "react-router-dom";
+import ThankYouPopup from "./../../components/thankYouPopupWindow";
 
 const userSchema = z.object({
   id: z.number(),
@@ -36,6 +38,7 @@ const userSchema = z.object({
 type FormData = z.infer<typeof userSchema>;
 
 const SignUpPage: React.FC<{ onClose: () => void }> = ({ onClose }) => {
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const generateRandomUniqueUri = (): number => {
     const timestamp = Date.now(); // Get the current timestamp in milliseconds
     const randomNum = Math.floor(Math.random() * 1000); // Generate a random number between 0 and 999
@@ -53,6 +56,8 @@ const SignUpPage: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   });
 
   const { addNewUser } = useUserContext();
+  const navigate = useNavigate();
+  const cancelRef = useRef<HTMLButtonElement | null>(null);
 
   const onSubmit = async (data: FieldValues) => {
     try {
@@ -78,7 +83,8 @@ const SignUpPage: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       };
       addNewUser(newUserData);
       console.log("User created successfully");
-      console.log(newUserData);
+      setIsSuccessOpen(true);
+      navigate("/signin");
       onClose();
       reset();
     } catch (error) {
@@ -213,7 +219,17 @@ const SignUpPage: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             <Button type="submit" colorScheme="blue">
               Sign Up
             </Button>
-          </Center>
+          </Center>{" "}
+          <ThankYouPopup
+            isOpen={isSuccessOpen}
+            onClose={() => {
+              setIsSuccessOpen(false);
+              navigate("/signin");
+              onClose();
+              reset();
+            }}
+            cancelRef={cancelRef}
+          />
         </form>
       </Center>
     </Box>

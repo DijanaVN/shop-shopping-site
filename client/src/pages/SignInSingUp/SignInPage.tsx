@@ -45,12 +45,10 @@ const SignInPage: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             user.username === data.emailOrUsername) &&
           user.password === data.password
       );
-      console.log(matchedUser);
 
       if (!matchedUser) {
         setErrorMessage("Wrong email address/username or password.");
       } else if (matchedUser.password === data.password) {
-        console.log("User exists:", matchedUser);
         setErrorMessage("");
         setUserSignIn(matchedUser);
         navigate("/userPage");

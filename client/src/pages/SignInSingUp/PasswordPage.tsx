@@ -1,3 +1,4 @@
+import React from "react";
 import {
   VStack,
   Text,
@@ -13,7 +14,6 @@ import { useRef, useState } from "react";
 import { useUserContext } from "../../StateManagement/UserInfoContext";
 import PopupWindow from "../../components/Popupwindow";
 import useScrollToTop from "../../hooks/useScrollToTop";
-import React from "react";
 
 const PasswordPage = () => {
   const { userSignIn, updateSignInUser } = useUserSignInContext();
@@ -26,20 +26,20 @@ const PasswordPage = () => {
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const cancelRef = useRef<HTMLButtonElement | null>(null);
 
+  useScrollToTop();
   const handlePasswordChange = () => {
-    useScrollToTop();
     if (!oldPassword || !newPassword || !confirmPassword) {
-      return; // Don't proceed if any field is empty
+      return;
     }
 
     if (newPassword !== confirmPassword) {
       setPasswordMatchError(true);
-      return; // Don't proceed if new password and confirm password don't match
+      return;
     }
 
     if (oldPassword !== userSignIn?.password) {
       setWrongOldPassword(true);
-      return; // Don't proceed if old password is incorrect
+      return;
     }
 
     updateSignInUser({
@@ -50,8 +50,6 @@ const PasswordPage = () => {
       u.id === userSignIn.id ? { ...u, password: newPassword } : u
     );
     setUsers(updatedUsers);
-    console.log(userSignIn);
-    console.log(updatedUsers);
     setOldPassword("");
     setNewPassword("");
     setConfirmPassword("");
@@ -91,9 +89,10 @@ const PasswordPage = () => {
 
           <Flex direction={"column"} alignItems="center" gap="3">
             <Box>
+              <Text>Old Password</Text>
               <input
                 type="password"
-                placeholder="Old Password"
+                placeholder="Enter your password"
                 value={oldPassword}
                 onChange={(e) => setOldPassword(e.target.value)}
               />{" "}
@@ -108,29 +107,36 @@ const PasswordPage = () => {
                 </Button>
               ) : null}
             </Box>
-            <input
-              type="password"
-              placeholder="New Password"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-            />
             <Box>
+              <Text>New Password</Text>
               <input
                 type="password"
-                placeholder="Confirm New Password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />{" "}
-              {confirmPassword !== "" && confirmPassword === newPassword ? (
-                <Button
-                  variant="solid"
-                  colorScheme="green"
-                  size={"xs"}
-                  onClick={() => alert("Password is correct!")}
-                >
-                  ✓
-                </Button>
-              ) : null}
+                placeholder="Enter your new password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+            </Box>
+            <Box>
+              {" "}
+              <Box>
+                <Text>Confirm New Password</Text>
+                <input
+                  type="password"
+                  placeholder="Confirm your new password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />{" "}
+                {confirmPassword !== "" && confirmPassword === newPassword ? (
+                  <Button
+                    variant="solid"
+                    colorScheme="green"
+                    size={"xs"}
+                    onClick={() => alert("Password is correct!")}
+                  >
+                    ✓
+                  </Button>
+                ) : null}
+              </Box>
             </Box>
             {passwordMatchError && (
               <Text fontSize={"sm"} color="red">

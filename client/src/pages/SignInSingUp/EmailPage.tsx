@@ -43,8 +43,6 @@ const EmailPage = () => {
       u.id === userSignIn?.id ? { ...u, email: newEmail } : u
     );
     setUsers(updatedUsers);
-    console.log(userSignIn);
-    console.log(updatedUsers);
     setIsSuccessOpen(true);
     setNewEmail("");
     setConfirmEmail("");

@@ -14,7 +14,7 @@ const usePoductsByCategory = (category: Category) => {
     queryKey: ["category", category],
     queryFn: fetchProducts,
   });
-  console.log(searchQuery.data);
+
   const isLoading = searchQuery.isLoading;
 
   const convertedNewProducts: Product[] = newProduct.map((product) => ({

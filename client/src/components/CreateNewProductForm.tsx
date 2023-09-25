@@ -63,7 +63,6 @@ const CreateNewProductForm: React.FC = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data: FieldValues) => {
-    console.log(data);
     try {
       const newProductData = {
         id: generateRandomUniqueUri(),
@@ -75,10 +74,6 @@ const CreateNewProductForm: React.FC = () => {
         quantity: 0,
       };
       addNewProduct(newProductData);
-
-      console.log("Product created successfully");
-      console.log(data);
-   
     } catch (error) {
       console.error("Error creating new product:", error);
     }
@@ -184,7 +179,7 @@ const CreateNewProductForm: React.FC = () => {
                 />
                 {imagePreview && (
                   <img
-                    src={imagePreview} 
+                    src={imagePreview}
                     alt="Selected"
                     style={{ marginTop: "10px", maxWidth: "100px" }}
                   />
@@ -200,9 +195,9 @@ const CreateNewProductForm: React.FC = () => {
                 isOpen={popupOpen}
                 onClose={() => {
                   setPopupOpen(false);
-                  onClose(); 
+                  onClose();
                   setImagePreview(null);
-                  reset(); 
+                  reset();
                 }}
                 state="product"
                 action="added"

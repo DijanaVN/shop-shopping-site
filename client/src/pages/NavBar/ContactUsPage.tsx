@@ -49,7 +49,7 @@ const ContactUs = () => {
 
   const onSubmit = (data: ContactForm) => {
     setContactForm([...contactForm, data]);
-    console.log(data);
+
     reset();
     setIsSuccessOpen(true);
   };

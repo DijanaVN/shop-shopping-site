@@ -8,6 +8,7 @@ import {
   AlertDialogFooter,
   Button,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 interface ThankYouPopupWindowProps {
   isOpen: boolean;
@@ -30,11 +31,15 @@ const ThankYouPopup: React.FC<ThankYouPopupWindowProps> = ({
         <AlertDialogContent>
           <AlertDialogHeader>Thank You!</AlertDialogHeader>
           <AlertDialogBody>
-            Your order has been successfully placed. Thank you for your
-            purchase!
+            Thank you for signing up! We're delighted to welcome you as a valued
+            member of our community. Please{" "}
+            <Link to="/signin" style={{ textDecoration: "underline" }}>
+              sign in
+            </Link>{" "}
+            to start your shopping journey with us!
           </AlertDialogBody>
           <AlertDialogFooter>
-            <Button colorScheme="green" onClick={onClose}>
+            <Button colorScheme="green" onClick={onClose} ref={cancelRef}>
               OK
             </Button>
           </AlertDialogFooter>

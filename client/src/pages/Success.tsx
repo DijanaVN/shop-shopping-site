@@ -9,7 +9,7 @@ const Success = () => {
         <Text>
           Your payment has been successfully processed. To place another order,
           please{" "}
-          <Link to="/shoppingCartGrid" style={{ textDecoration: "underline" }}>
+          <Link to="/signin" style={{ textDecoration: "underline" }}>
             sign in
           </Link>{" "}
           and visit your{" "}

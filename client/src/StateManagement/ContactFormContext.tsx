@@ -26,7 +26,6 @@ export function useContactFormContext() {
 
 export function ContactFormProvider({ children }: ContactFormContextProps) {
   const [contactForm, setContactForm] = useState<ContactForm[]>([]);
-  console.log(contactForm);
 
   return (
     <ContactFormContext.Provider

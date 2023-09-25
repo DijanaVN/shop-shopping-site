@@ -55,7 +55,7 @@ const SearchPage = ({ onClose }: { onClose: () => void }) => {
       product.title.toLowerCase().includes(data.searchText.toLowerCase())
     );
 
-    console.log(filteredProducts);
+   
     setFilteredProduct(filteredProducts);
     setSearchButtonPressed(true);
     reset();
