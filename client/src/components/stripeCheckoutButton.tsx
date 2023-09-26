@@ -24,7 +24,7 @@ const StripeCheckoutButton: React.FC = () => {
           currency: "eur",
           product_data: {
             name: item.title,
-            images: [item.image],
+            // images: [item.image],
           },
           unit_amount: item.price * 100,
         },
