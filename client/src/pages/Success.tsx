@@ -1,10 +1,12 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNewCartContext } from "../StateManagement/ShoppingCartContext";
 
 const Success = () => {
+  const { setCartItems } = useNewCartContext();
   useEffect(() => {
-    localStorage.removeItem("cartData");
+    setCartItems([]);
   }, []);
   return (
     <Flex justifyContent="center" alignItems="center" height="50vh">
