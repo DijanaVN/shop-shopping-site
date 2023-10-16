@@ -25,6 +25,7 @@ import useCategories from "../hooks/useCategories";
 import { useNavigate } from "react-router-dom";
 import { generateRandomUniqueUri } from "./GenerateRandomNumberForId";
 import PopupWindow from "./Popupwindow";
+import defaultImage from "../images/Shop-Shopping-_2_ (1).webp";
 
 const productSchema = z.object({
   id: z.number({ invalid_type_error: "Field is required." }),
@@ -69,7 +70,7 @@ const CreateNewProductForm: React.FC = () => {
         title: data.title,
         price: data.price,
         description: data.description,
-        image: imagePreview || "",
+        image: imagePreview || defaultImage,
         category: data.category,
         quantity: 0,
       };
@@ -120,7 +121,7 @@ const CreateNewProductForm: React.FC = () => {
                 </FormErrorMessage>
               </FormControl>
               <FormControl isInvalid={!!errors.price}>
-                <FormLabel>Price: $</FormLabel>
+                <FormLabel>Price: €</FormLabel>
                 <Flex align="center">
                   <Input
                     type="number"
@@ -169,6 +170,8 @@ const CreateNewProductForm: React.FC = () => {
                         setImagePreview(base64String);
                       };
                       reader.readAsDataURL(file);
+                    } else {
+                      setImagePreview(defaultImage);
                     }
                   }}
                   style={{
@@ -179,7 +182,11 @@ const CreateNewProductForm: React.FC = () => {
                 />
                 {imagePreview && (
                   <img
-                    src={imagePreview}
+                    src={
+                      imagePreview === defaultImage
+                        ? defaultImage
+                        : imagePreview
+                    }
                     alt="Selected"
                     style={{ marginTop: "10px", maxWidth: "100px" }}
                   />
