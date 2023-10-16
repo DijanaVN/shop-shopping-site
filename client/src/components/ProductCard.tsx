@@ -16,7 +16,7 @@ import {
 import { Product } from "../hooks/useProducts";
 import "../index.css";
 import useScrollToTop from "../hooks/useScrollToTop";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import AddToCartButton from "./AddToCartButton";
 
@@ -42,15 +42,17 @@ const ProductCard = ({
         marginBottom={5}
       >
         <CardBody>
-          <Image boxSize={"xs"} src={image} alt={title} borderRadius="lg" />
-          <Stack mt="6" spacing="3">
-            <Heading size="md">{title}</Heading>
-            <Text fontWeight={"bold"}>Category: {category}</Text>
+          <Link to={`/product/${id}`}>
+            <Image boxSize={"xs"} src={image} alt={title} borderRadius="lg" />
+            <Stack mt="6" spacing="3">
+              <Heading size="md">{title}</Heading>
+              <Text fontWeight={"bold"}>Category: {category}</Text>
 
-            <Text fontWeight={"extrabold"} color="primary.300" fontSize="2xl">
-              {formatCurrency(Number(price))}
-            </Text>
-          </Stack>
+              <Text fontWeight={"extrabold"} color="primary.300" fontSize="2xl">
+                {formatCurrency(Number(price))}
+              </Text>
+            </Stack>
+          </Link>
         </CardBody>{" "}
         <Divider />
         <Center>
