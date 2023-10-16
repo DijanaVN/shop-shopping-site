@@ -38,7 +38,7 @@ const ProductCard = ({
       <Card
         height="720px"
         key={id}
-        bg={`rgba(247, 215, 238, 0.5)`}
+        bg={`rgba(247, 215, 238,0.8)`}
         marginBottom={5}
       >
         <CardBody>
