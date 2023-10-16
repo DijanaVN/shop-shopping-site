@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: "https://shop-shopping-site-client.vercel.app/" }));
 app.use(express.urlencoded({ extended: true }));
 
 const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY || "", {
