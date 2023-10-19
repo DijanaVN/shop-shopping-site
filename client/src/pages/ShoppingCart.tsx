@@ -76,7 +76,7 @@ const ShoppingCartGrid = () => {
                 boxShadow="md"
               >
                 {cartItems.map((product) => (
-                  <SingleCart {...product} />
+                  <SingleCart key={product.id} {...product} />
                 ))}
               </Box>
             )}
