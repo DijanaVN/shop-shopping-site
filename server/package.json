@@ -5,7 +5,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "devStart": "node server.js",
+    "devStart": "nodemon server.js",
     "start": "node server.js"
   },
   "keywords": [],

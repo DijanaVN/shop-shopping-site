@@ -2,16 +2,34 @@ import dotenv from "dotenv";
 import express from "express";
 import Stripe from "stripe";
 import cors from "cors";
+import helmet from "helmet";
 
 dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      process.env.CLIENT_URL,
+      "https://shop-shopping-site-client.vercel.app",
+    ],
+  })
+);
+
 app.use(express.urlencoded({ extended: true }));
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      defaultSrc: ["'none'"],
+      fontSrc: ["'self'", "data:"],
+    },
+  })
+);
 
 const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY || "", {
-  apiVersion: "2023-08-16",
+  apiVersion: "2023-10-16",
 });
 
 app.post("/checkout", async (req, res) => {
@@ -23,6 +41,7 @@ app.post("/checkout", async (req, res) => {
       success_url: `${process.env.CLIENT_URL}/success`,
       cancel_url: `${process.env.CLIENT_URL}/cancel`,
     });
+
     return res.status(201).json(session);
   } catch (error) {
     console.error("Error creating checkout session:", error);
