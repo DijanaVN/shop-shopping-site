@@ -2,7 +2,7 @@
   "redirects": [
     {
       "from": "/*",
-      "to": "/client/dist/index.html",
+      "to": "/client/dist",
       "status": 200
     },
     {
@@ -12,7 +12,7 @@
     }
   ],
   "build": {
-    "command": "npm run build",
+    "command": "cd client && npm run build",
     "functions": "server/functions",
     "publish": "client/dist",
     "base": "/"
