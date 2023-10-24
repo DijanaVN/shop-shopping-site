@@ -1,0 +1,15 @@
+[[redirects]]
+  from = "/*"
+  to = "/client/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/api/*"
+  to = "/api/:splat"
+  status = 200
+
+[build]
+  command = "cd client && npm run build"
+  functions = "server/api"  
+  publish = "client"
+  base = "/"
