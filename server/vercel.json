@@ -1,7 +1,7 @@
 {
   "version": 2,
 
-  "routes": [
+  "rewrites": [
     {
       "src": "/(.*)",
       "dest": "/"
@@ -10,5 +10,10 @@
       "src": "/api/handlerFunction",
       "dest": "/api/handlerFunction.js"
     }
-  ]
+  ],
+  "functions": {
+    "api/handlerFunction": {
+      "runtime": "@vercel/node"
+    }
+  }
 }

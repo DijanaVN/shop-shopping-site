@@ -8,15 +8,28 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*"); // Allow requests from any origin
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE"); // Allow these HTTP methods
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  ); // Allow these headers
+  next();
+});
 
 app.use(express.urlencoded({ extended: true }));
 app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
     directives: {
-      defaultSrc: ["'none'"],
-      fontSrc: ["'self'", "data:"],
+      defaultSrc: ["'self'"],
+      fontSrc: ["'self'", "<URL for fonts>"], // Add the URL for fonts here
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+      imgSrc: ["'self'", "data:"],
+      connectSrc: ["'self'", "<API endpoint URL>"], // Add the URL for API endpoints here
+      // Add other necessary directives for your applica
     },
   })
 );
