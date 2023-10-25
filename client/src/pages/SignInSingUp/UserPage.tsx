@@ -9,6 +9,8 @@ import {
   IconButton,
   Image,
   Text,
+  Center,
+  Button,
 } from "@chakra-ui/react";
 import { BiSolidPurchaseTag } from "react-icons/bi";
 import { BiHelpCircle } from "react-icons/bi";
@@ -19,10 +21,18 @@ import { useUserSignInContext } from "../../StateManagement/SignInUserContext";
 import { useNavigate } from "react-router-dom";
 import useScrollToTop from "../../hooks/useScrollToTop";
 import { FiShoppingCart } from "react-icons/fi";
+import { useNewCartContext } from "../../StateManagement/ShoppingCartContext";
 
 const UserPage: React.FC = () => {
-  const { userSignIn } = useUserSignInContext();
+  const { userSignIn, setUserSignIn } = useUserSignInContext();
   const navigate = useNavigate();
+  const { setCartItems } = useNewCartContext();
+
+  const handleSignOut = () => {
+    setUserSignIn(undefined);
+    setCartItems([]);
+    navigate("/");
+  };
   useScrollToTop();
   return (
     <Box>
@@ -40,13 +50,24 @@ const UserPage: React.FC = () => {
               >
                 Welcome{" "}
                 {
-                  <Text
-                    fontStyle={"italic"}
-                    fontSize="20"
-                    textTransform="uppercase"
-                  >
-                    {userSignIn?.name.firstname}
-                  </Text>
+                  <Box>
+                    <Text
+                      fontStyle={"italic"}
+                      fontSize="20"
+                      textTransform="uppercase"
+                    >
+                      {userSignIn?.name.firstname}
+                    </Text>{" "}
+                    <Text
+                      marginTop={5}
+                      align={"end"}
+                      fontSize={"xs"}
+                      onClick={handleSignOut}
+                      cursor="pointer"
+                    >
+                      Sign Out
+                    </Text>
+                  </Box>
                 }
               </Heading>
               <Grid templateColumns="repeat(3, 1fr)" gap={10} mb={5}>
